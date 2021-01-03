@@ -68,15 +68,30 @@ header {
     width: 120px;
 }
 
-.btn-active {
+.btn-compare.btn-active {
     background-color: #119DA4;
     color: #EAEAEA;
 }
+
+.btn-visualise.btn-active {
+    background-color: #BA7BA1;
+    color: #EAEAEA;
+}
+
+.btn-map.btn-active {
+    background-color: #212738;
+    color: #EAEAEA;
+}
+
 
 /************************************************************* Covid Data*/
 .covid-data {
     min-height: 200px;
     width: 100%;
+}
+
+.covid-data-container, .covid-info-container {
+    border-radius: 15px;
 }
 
 #covid-compare .covid-data-container {
