@@ -50,12 +50,22 @@ header {
 
 /************************************************************* COVID Toggler */
 
-.covid-toggler {
+#covid-toggler {
     margin-top:10px;
 }
 
-.covid-toggler .btn {
+#covid-toggler .btn {
     width: 120px;
+}
+
+/************************************************************* Covid Data*/
+#covid-data {
+    min-height: 200px;
+    width: 100%;
+}
+
+#covid-data .container {
+    background-color: #212738;
 }
 
 /************************************************************* Footer */
@@ -64,4 +74,9 @@ header {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.footer-section {
+    background-color: #119DA4;
+    height: 30px;
 }
