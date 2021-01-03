@@ -13,6 +13,7 @@ body {
     padding: 0;
     margin: 0;
     background: #EAEAEA;
+    font-family: 'Raleway', sans-serif;
 }
 
 /************************************************************* Font rules */
@@ -37,7 +38,6 @@ body {
     border-bottom: 5px solid #212738;
 }
 
-
 .span-italic {
     font-style: italic;
 }
@@ -48,7 +48,17 @@ header {
     margin-top: 50px;
 }
 
-/************************************************************* Header */
+/************************************************************* COVID Toggler */
+
+.covid-toggler {
+    margin-top:10px;
+}
+
+.covid-toggler .btn {
+    width: 120px;
+}
+
+/************************************************************* Footer */
 
 #footer {
   position: absolute;
