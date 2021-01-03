@@ -12,12 +12,20 @@ $(document).ready(function () {
 
             // Checks which button has been pressed, and adds respective background color for testing
             if ($(this).hasClass("btn-compare")) {
-                $(".covid-data-container").addClass("background-test-1");
+                toggleCovidSections("#covid-compare");
             } else if ($(this).hasClass("btn-visualise")) {
-                $(".covid-data-container").addClass("background-test-2");
+                toggleCovidSections("#covid-visualise");
             } else if ($(this).hasClass("btn-map")) {
-                $(".covid-data-container").addClass("background-test-3");
+                toggleCovidSections("#covid-map");
             }
         }
     });
 });
+
+function toggleCovidSections(activeElement) {
+    $("#covid-info").addClass("d-none");
+    $("#covid-compare").addClass("d-none");
+    $("#covid-visualise").addClass("d-none");
+    $("#covid-map").addClass("d-none");
+    $(activeElement).removeClass("d-none");
+}
