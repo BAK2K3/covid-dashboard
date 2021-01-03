@@ -8,9 +8,7 @@ $(document).ready(function () {
             $(".btn").removeClass("btn-active");
             $(this).addClass("btn-active");
 
-            $(".covid-data-container").removeClass("background-test-1 background-test-2 background-test-3");
-
-            // Checks which button has been pressed, and adds respective background color for testing
+            // Checks which button has been pressed, and adds/removes classes respectively. 
             if ($(this).hasClass("btn-compare")) {
                 toggleCovidSections("#covid-compare");
             } else if ($(this).hasClass("btn-visualise")) {
@@ -22,9 +20,12 @@ $(document).ready(function () {
     });
 });
 
+// Function for removing all sections from view, and removing the d-none bootstrap class from the section chosen
 function toggleCovidSections(activeElement) {
     $("#covid-info").addClass("d-none");
     $("#covid-compare").addClass("d-none");
+    // Need to consider a more 'global' implementation of the below
+    $("#output-field").html("");
     $("#covid-visualise").addClass("d-none");
     $("#covid-map").addClass("d-none");
     $(activeElement).removeClass("d-none");
