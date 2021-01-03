@@ -12,8 +12,10 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background: #119DA4;
+    background: #EAEAEA;
 }
+
+/*********************************************************** Font rules */
 
 .heading-font {
     font-family: 'Crimson Text', serif;
@@ -21,4 +23,8 @@ body {
 
 .body-font {
     font-family: 'Raleway', sans-serif;
+}
+
+.dark-font {
+    color: #212738;
 }
