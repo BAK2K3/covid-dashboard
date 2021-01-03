@@ -26,39 +26,55 @@
         </div>
     </header>
 
-    <!-- Main Body  -->
-    <!-- COVID Toggler -->
-    <section id="covid-toggler" class="d-flex justify-content-center">
-        <div class="btn-group btn-group-lg" role="group" aria-label="Data Toggler for COVID Data Visualisation">
-            <button type="button" class="btn btn-compare">Compare</button>
-            <button type="button" class="btn btn-visualise">Visualise</button>
-            <button type="button" class="btn btn-map">Map</button>
-        </div>
-    </section>
+    <div class="content-wrapper">
 
-    <!-- COVID Info Section -->
-    <section id="covid-info" class="d-flex justify-content-center covid-data">
-        <div class="container covid-info-container">Info
-        </div>
-    </section>
+        <!-- Main Body  -->
+        <!-- COVID Toggler -->
+        <section id="covid-toggler" class="d-flex justify-content-center">
+            <div class="btn-group btn-group-lg" role="group" aria-label="Data Toggler for COVID Data Visualisation">
+                <button type="button" class="btn btn-compare">Compare</button>
+                <button type="button" class="btn btn-visualise">Visualise</button>
+                <button type="button" class="btn btn-map">Map</button>
+            </div>
+        </section>
 
-    <!-- COVID Compare Section -->
-    <section id="covid-compare" class="d-flex justify-content-center covid-data d-none">
-        <div class="container covid-data-container">Compare
-        </div>
-    </section>
+        <!-- COVID Info Section -->
+        <section id="covid-info" class="d-flex justify-content-center covid-data">
+            <div class="container covid-info-container">Info
+            </div>
+        </section>
 
-    <!-- COVID Visualise Section -->
-    <section id="covid-visualise" class="d-flex justify-content-center covid-data d-none">
-        <div class="container covid-data-container">Visualise
-        </div>
-    </section>
+        <!-- COVID Compare Section -->
+        <section id="covid-compare" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-data-container">
 
-    <!-- COVID Map Section -->
-    <section id="covid-map" class="d-flex justify-content-center covid-data d-none">
-        <div class="container covid-data-container">Map
-        </div>
-    </section>
+                <form>
+                    <select name="countrySelect" id="countrySelect">
+                        <option value="">Loading</option>
+                    </select>
+                </form>
+                <button class="btn" onclick="searchFunction()">Search for Country</button>
+
+                <div class="col align-self-center" id="output-field">
+                    <p>Please select a country for detailed statistics!</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- COVID Visualise Section -->
+        <section id="covid-visualise" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-data-container">Visualise
+            </div>
+        </section>
+
+        <!-- COVID Map Section -->
+        <section id="covid-map" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-data-container">Map
+            </div>
+        </section>
+
+    </div>
 
     <!-- Footer -->
     <footer id="footer">
@@ -85,6 +101,7 @@
 
     <!-- Navigation Script -->
     <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/compare.js"></script>
 </body>
 
 </html>
