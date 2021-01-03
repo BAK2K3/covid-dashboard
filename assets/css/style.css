@@ -65,21 +65,28 @@ header {
 }
 
 /************************************************************* Covid Data*/
-#covid-data {
+.covid-data {
     min-height: 200px;
     width: 100%;
 }
 
-.background-test-1 {
+#covid-compare .covid-data-container {
     background-color: #119DA4;
+
 }
 
-.background-test-2 {
+#covid-visualise .covid-data-container {
     background-color: #BA7BA1;
+  
 }
 
-.background-test-3 {
+#covid-map .covid-data-container {
     background-color: #212738;
+
+}
+
+.covid-info-container {
+    background-color: #9F86C0;
 }
 
 /************************************************************* Footer */
