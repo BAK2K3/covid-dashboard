@@ -15,7 +15,7 @@ body {
     background: #EAEAEA;
 }
 
-/*********************************************************** Font rules */
+/************************************************************* Font rules */
 
 .heading-font {
     font-family: 'Crimson Text', serif;
@@ -27,4 +27,31 @@ body {
 
 .dark-font {
     color: #212738;
+}
+
+/************************************************************* Headings */
+
+.main-heading {
+    font-weight: 700;
+    font-size: 3rem;
+    border-bottom: 5px solid #212738;
+}
+
+
+.span-italic {
+    font-style: italic;
+}
+
+/************************************************************* Header */
+
+header {
+    margin-top: 50px;
+}
+
+/************************************************************* Header */
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
