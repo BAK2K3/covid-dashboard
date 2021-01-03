@@ -59,13 +59,26 @@ header {
     width: 120px;
 }
 
+.btn-active {
+    background-color: #119DA4;
+    color: #EAEAEA;
+}
+
 /************************************************************* Covid Data*/
 #covid-data {
     min-height: 200px;
     width: 100%;
 }
 
-#covid-data .container {
+.background-test-1 {
+    background-color: #119DA4;
+}
+
+.background-test-2 {
+    background-color: #BA7BA1;
+}
+
+.background-test-3 {
     background-color: #212738;
 }
 
