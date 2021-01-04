@@ -25,7 +25,7 @@ function toggleCovidSections(activeElement) {
     $("#covid-info").addClass("d-none");
     $("#covid-compare").addClass("d-none");
     // Need to consider a more 'global' implementation of the below
-    $("#output-field").html("");
+    $("#covid-table-body").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
     $("#covid-visualise").addClass("d-none");
     $("#covid-map").addClass("d-none");
     $(activeElement).removeClass("d-none");
