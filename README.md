@@ -1,8 +1,6 @@
 ![COVID Dashboard Logo](https://res.cloudinary.com/bak2k3/image/upload/v1609599348/covid-dashboard/logo-mockup_ylnewv.jpg)
 
-This project is an interactive dashboard for up-to-date COVID-19 statistics. 
-
-## COVID Dashboard
+**COVID Dashboard** is an interactive dashboard for up-to-date COVID-19 statistics. 
 
 # Table of contents
 
