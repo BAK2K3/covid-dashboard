@@ -107,11 +107,18 @@ header {
 #covid-map .covid-data-container {
     background-color: #212738;
     color: #EAEAEA;
-
 }
 
 .covid-info-container {
     background-color: #9F86C0;
+}
+
+/************************************************************* Covid Compare*/
+
+.btn-table {
+    color: #EAEAEA;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 /************************************************************* Footer */
