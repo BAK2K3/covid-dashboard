@@ -48,17 +48,28 @@
         <section id="covid-compare" class="d-flex justify-content-center covid-data d-none">
             <div class="container covid-data-container">
 
-                <form>
-                    <select name="countrySelect" id="countrySelect">
-                        <option value="">Loading</option>
-                    </select>
-                </form>
-                <button class="btn" onclick="searchFunction()">Search for Country</button>
-
-                <div class="col align-self-center" id="output-field">
-                    <p>Please select a country for detailed statistics!</p>
-                </div>
-
+                <!-- Table  -->
+                <table class="table text-center covid-table">
+                    <thead>
+                        <tr>
+                            <!-- Country Select 1 -->
+                            <th scope="col"><select name="countrySelect1" id="countrySelect1">
+                                    <option value="">Country Select</option>
+                                </select></th>
+                            <!-- Submit Button -->
+                            <th scope="col"><button class="btn btn-table" onclick="searchFunction()">Search for
+                                    Country</button>
+                            </th>
+                            <!-- Country Select 2 -->
+                            <th scope="col"><select name="countrySelect2" id="countrySelect2">
+                                    <option value="">Country Select</option>
+                                </select></th>
+                        </tr>
+                    </thead>
+                    <!-- Empty table body for dynamic html generation -->
+                    <tbody id="covid-table-body">
+                    </tbody>
+                </table>
             </div>
         </section>
 
