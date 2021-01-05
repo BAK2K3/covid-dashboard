@@ -49,7 +49,7 @@
             <div class="container covid-data-container">
 
                 <!-- Table  -->
-                <table class="table text-center covid-table">
+                <table class="table table-responsive text-center covid-table">
                     <thead>
                         <tr>
                             <!-- Country Select 1 -->
@@ -91,6 +91,13 @@
         <!-- COVID Map Section -->
         <section id="covid-map" class="d-flex justify-content-center covid-data d-none">
             <div class="container covid-data-container">Map
+                <select name="countrySelectMap" id="countrySelectMap">
+                    <option value="">Country Select</option>
+                </select>
+                <button class="btn" onclick="generateMap()">View Map</button>
+                <div class="mapContainer">
+                    <div class="map"></div>
+                </div>
             </div>
         </section>
 
@@ -124,10 +131,17 @@
         integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA=="
         crossorigin="anonymous"></script>
 
-    <!-- Navigation Script -->
+    <!-- jquery Mapael -->
+    <script src="https://pagecdn.io/lib/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>
+    <script src="assets/js/world_countries.js"></script>
+
+    <!-- Internal Scripts -->
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/compare.js"></script>
     <script src="assets/js/visualise.js"></script>
+    <script src="assets/js/maps.js"></script>
+
 </body>
 
 </html>
