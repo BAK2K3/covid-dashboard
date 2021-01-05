@@ -67,6 +67,7 @@ function fetchCountries() {
             // Insert the generated list into the Country Select Drop downs
             $("#countrySelect1").html(listItemsHTML);
             $("#countrySelect2").html(listItemsHTML);
+            $('#countrySelectVisualise').html(listItemsHTML);
 
             // Catch errors
         }, function (errorResponse) {
