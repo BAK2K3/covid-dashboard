@@ -68,6 +68,7 @@ function fetchCountries() {
             $("#countrySelect1").html(listItemsHTML);
             $("#countrySelect2").html(listItemsHTML);
             $('#countrySelectVisualise').html(listItemsHTML);
+            $('#countrySelectMap').html(listItemsHTML);
 
             // Catch errors
         }, function (errorResponse) {
