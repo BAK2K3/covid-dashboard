@@ -1,3 +1,5 @@
+var myLineChart;
+
 function formatTimeSeries(response) {
 
     // Define the country, data labels, and extract the required data
@@ -32,7 +34,7 @@ function generateGraph(countryLabel, timescaleLabels, datasets) {
 
     // Create an instance of the line chart, using the labels and datasets formatted previously
     var ctx = $('#lineChart');
-    var myLineChart = new Chart(ctx, {
+    myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: timescaleLabels,
