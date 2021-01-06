@@ -57,6 +57,14 @@ header {
     margin-top: 50px;
 }
 
+#headingAnchor {
+    text-decoration: none;
+}
+
+#headingAnchor:hover  {
+    text-decoration: none;
+}
+
 /************************************************************* COVID Toggler */
 
 #covid-toggler {
