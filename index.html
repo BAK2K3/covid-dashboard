@@ -22,7 +22,9 @@
     <!-- Header -->
     <header>
         <div class="d-flex justify-content-center">
-            <h1 class="heading-font dark-font main-heading">COVID <span class="span-italic">Dashboard</span></h1>
+            <a id="headingAnchor" href="#">
+                <h1 class="heading-font dark-font main-heading">COVID <span class="span-italic">Dashboard</span></h1>
+            </a>
         </div>
     </header>
 
@@ -40,7 +42,17 @@
 
         <!-- COVID Info Section -->
         <section id="covid-info" class="d-flex justify-content-center covid-data">
-            <div class="container covid-info-container">Info
+            <div class="container covid-info-container text-center">
+
+                <h2> Welcome to the Covid Dashboard </h2>
+                <h3> An interactive interface, utilising the most up-to-date COVID-19 statistics available.</h3>
+
+                <p class=""><strong>Compare:</strong> Compare selected country data side by side.</p>
+                <p class=""><strong>Visualise:</strong> View historical infection data for the past 30 days.</p>
+                <p class=""><strong>Map:</strong> View a heatmap of the world for selected statistic.</p>
+
+
+
             </div>
         </section>
 
@@ -49,7 +61,7 @@
             <div class="container covid-data-container">
 
                 <!-- Table  -->
-                <table class="table table-responsive text-center covid-table">
+                <table class="table table-responsive table-striped text-center covid-table">
                     <thead>
                         <tr>
                             <!-- Country Select 1 -->
@@ -137,10 +149,11 @@
     <script src="assets/js/world_countries.js"></script>
 
     <!-- Internal Scripts -->
-    <script src="assets/js/navigation.js"></script>
+
     <script src="assets/js/compare.js"></script>
     <script src="assets/js/visualise.js"></script>
     <script src="assets/js/maps.js"></script>
+    <script src="assets/js/navigation.js"></script>
 
 </body>
 
