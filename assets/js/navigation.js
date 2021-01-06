@@ -18,15 +18,39 @@ $(document).ready(function () {
             }
         }
     });
+
+    // On heading click
+    $("#headingAnchor").on("click", function () {
+
+        // Removes all active classes from togglers
+        $(".btn").removeClass("btn-active");
+        // Calls the toggleCovidSections with the exception
+        toggleCovidSections("#covid-info");
+
+    });
+
+
 });
 
 // Function for removing all sections from view, and removing the d-none bootstrap class from the section chosen
 function toggleCovidSections(activeElement) {
+
     $("#covid-info").addClass("d-none");
+
+    // Reset compare section
     $("#covid-compare").addClass("d-none");
-    // Need to consider a more 'global' implementation of the below
     $("#covid-table-body").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
+
+    // Reset visualise section
     $("#covid-visualise").addClass("d-none");
+    console.log(typeof (myLineChart));
+    if (typeof (myLineChart) !== "undefined") {
+        myLineChart.destroy();
+    }
+
+    // Reset map section
     $("#covid-map").addClass("d-none");
+    $(".map").html("");
     $(activeElement).removeClass("d-none");
+
 }
