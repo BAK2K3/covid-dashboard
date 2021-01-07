@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    // On button Click
-    $(".btn").on("click", function () {
+    // On covid-toggler button Click
+    $("#covid-toggler .btn").on("click", function () {
         // Checks if the button is already active
         if (!$(this).hasClass("btn-active")) {
             // If not, remove active class from all .btn classes, and add to this button.
@@ -43,7 +43,6 @@ function toggleCovidSections(activeElement) {
 
     // Reset visualise section
     $("#covid-visualise").addClass("d-none");
-    console.log(typeof (myLineChart));
     if (typeof (myLineChart) !== "undefined") {
         myLineChart.destroy();
     }
