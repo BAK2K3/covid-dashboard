@@ -1,8 +1,14 @@
 // Global variable for the chart to be accessed via different parts of the script
 var myLineChart;
 
+// Global variable for appropriately named array for nested objects to be passed to the maps script
+var graphConfig = {};
+
 // Function for formatting the required data
-function formatTimeSeries() {
+function formatTimeSeries(update) {
+
+    // Reset dataset
+    graphConfig = {};
 
     // Find the index position of the country within the visual compare dataset
     let indextargetCountry = globalVisualDataset.findIndex(function (entry) {
@@ -14,9 +20,7 @@ function formatTimeSeries() {
     var timescaleLabels = Object.keys(globalVisualDataset[indextargetCountry].timeline.cases);
     var fullData = Object.entries(globalVisualDataset[indextargetCountry].timeline);
 
-    // Create the appropriately named array for nested objects to be passed to the maps script
-    var datasets = [];
-
+    let datasets = [];
     // Iterate through the datasets contained (cases, recovered, deaths)
     fullData.forEach(element => {
 
@@ -33,21 +37,38 @@ function formatTimeSeries() {
 
     });
 
-    // Call generate graph function with newly created country label, date label, and datasets
-    generateGraph(countryLabel, timescaleLabels, datasets);
-}
-
-function generateGraph(countryLabel, timescaleLabels, datasets) {
-
-    // Create an instance of the line chart, using the labels and datasets formatted previously
-    var ctx = $('#lineChart');
-    myLineChart = new Chart(ctx, {
+    graphConfig = {
         type: 'line',
         data: {
             labels: timescaleLabels,
             datasets: datasets
         }
-    });
+    }
 
+    if (update == false) {
+        // Call generate graph function with newly created country label, date label, and datasets
+        generateGraph();
+    } else {
+        // Update the graph with the newly requested data
+        myLineChart.data.labels = timescaleLabels;
+        myLineChart.data.datasets = datasets;
+        // Update the graph
+        myLineChart.update();
+    }
+}
+
+function generateGraph() {
+
+    // Create an instance of the line chart, using the labels and datasets formatted previously
+    var ctx = $('#lineChart');
+    myLineChart = new Chart(ctx, graphConfig);
 
 }
+
+$("#countrySelectVisualise").change(function () {
+
+    if (typeof (myLineChart) !== "undefined") {
+        formatTimeSeries(true);
+    }
+
+})
