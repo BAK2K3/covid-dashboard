@@ -6,10 +6,10 @@ function searchFunction() {
     var targetCountry2 = $("#countrySelect2").val();
 
     // Find the index position of each country within the global compare dataset
-    var indextargetCountry1 = globalCompareDataset.findIndex(function (entry) {
+    var indexTargetCountry1 = globalCompareDataset.findIndex(function (entry) {
         return entry.country == targetCountry1
     });
-    var indextargetCountry2 = globalCompareDataset.findIndex(function (entry) {
+    var indexTargetCountry2 = globalCompareDataset.findIndex(function (entry) {
         return entry.country == targetCountry2
     });
 
@@ -26,11 +26,11 @@ function searchFunction() {
 
         // Checks whether the key is "updated", and if so converts the responses to date format.
         if (el === "updated") {
-            firstCountryData = new Date(globalCompareDataset[indextargetCountry1][el]);
-            secondCountryData = new Date(globalCompareDataset[indextargetCountry2][el]);
+            firstCountryData = new Date(globalCompareDataset[indexTargetCountry1][el]);
+            secondCountryData = new Date(globalCompareDataset[indexTargetCountry2][el]);
         } else {
-            firstCountryData = globalCompareDataset[indextargetCountry1][el];
-            secondCountryData = globalCompareDataset[indextargetCountry2][el];
+            firstCountryData = globalCompareDataset[indexTargetCountry1][el];
+            secondCountryData = globalCompareDataset[indexTargetCountry2][el];
         }
 
         // Add the variables for countries 1 and 2 to a table row, and add to existing html output
