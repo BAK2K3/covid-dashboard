@@ -41,3 +41,14 @@ function searchFunction() {
     $("#covid-table-body").html(outputHTML);
 
 }
+
+// On country select (for compare) being changed
+$("#countrySelect1").add("#countrySelect2").on('change', function () {
+
+    // Check whether the initial table has been generated
+    if ($("#covid-table-body").html() != '<tr><td colspan="3"> Please select two countries to compare statistics.</td></tr>') {
+        // If so, re-perform the search function to update table.
+        searchFunction();
+    }
+
+})
