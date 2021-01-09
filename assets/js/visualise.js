@@ -11,14 +11,14 @@ function formatTimeSeries(update) {
     graphConfig = {};
 
     // Find the index position of the country within the visual compare dataset
-    let indextargetCountry = globalVisualDataset.findIndex(function (entry) {
+    let indexTargetCountry = globalVisualDataset.findIndex(function (entry) {
         return entry.country == $('#countrySelectVisualise').val();
     });
 
     // Define the country, data labels, and extract the required data
-    var countryLabel = globalVisualDataset[indextargetCountry].country;
-    var timescaleLabels = Object.keys(globalVisualDataset[indextargetCountry].timeline.cases);
-    var fullData = Object.entries(globalVisualDataset[indextargetCountry].timeline);
+    var countryLabel = globalVisualDataset[indexTargetCountry].country;
+    var timescaleLabels = Object.keys(globalVisualDataset[indexTargetCountry].timeline.cases);
+    var fullData = Object.entries(globalVisualDataset[indexTargetCountry].timeline);
 
     let datasets = [];
     // Iterate through the datasets contained (cases, recovered, deaths)
