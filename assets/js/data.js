@@ -110,9 +110,9 @@ function fetchApiData(callback = $.noop, argument = "all") {
 
 }
 
+// Map the global data to appropriate HTML strings for selectors
 function generateHTML() {
 
-    // Map the countries from the data 
     var listItemsCompare = globalCompareDataset.map(function (item) {
         return ` <option value = "${item.country}" > ${item.country} </option> `;
     })
@@ -123,11 +123,16 @@ function generateHTML() {
 
     })
 
+    var listItemsMap = "";
+    Object.keys(globalCompareDataset[0]).forEach(function (item) {
+        listItemsMap += ` <option value = "${item}" > ${item} </option> `;
+    })
+
     // Insert the generated lists into the relevant Country Select Drop downs
     $("#countrySelect1").html(listItemsCompare);
     $("#countrySelect2").html(listItemsCompare);
     $('#countrySelectVisualise').html(listItemsVisual);
-    $('#countrySelectMap').html(listItemsVisual);
+    $('#countrySelectMap').html(listItemsMap);
 }
 
 // On document load, fetch datasets then generate required HTML elements
