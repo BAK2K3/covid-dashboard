@@ -1,11 +1,18 @@
+// Global variable for the chart to be accessed via different parts of the script
 var myLineChart;
 
-function formatTimeSeries(response) {
+// Function for formatting the required data
+function formatTimeSeries() {
+
+    // Find the index position of the country within the visual compare dataset
+    let indextargetCountry = globalVisualDataset.findIndex(function (entry) {
+        return entry.country == $('#countrySelectVisualise').val();
+    });
 
     // Define the country, data labels, and extract the required data
-    var countryLabel = response.country;
-    var timescaleLabels = Object.keys(response.timeline.cases);
-    var fullData = Object.entries(response.timeline);
+    var countryLabel = globalVisualDataset[indextargetCountry].country;
+    var timescaleLabels = Object.keys(globalVisualDataset[indextargetCountry].timeline.cases);
+    var fullData = Object.entries(globalVisualDataset[indextargetCountry].timeline);
 
     // Create the appropriately named array for nested objects to be passed to the maps script
     var datasets = [];
@@ -43,22 +50,4 @@ function generateGraph(countryLabel, timescaleLabels, datasets) {
     });
 
 
-}
-
-// Function called from index.html selector button
-// Obtains the relevant data from the historic data section of the API
-function obtainGraphData() {
-
-    // Obtain country name selected
-    var graphCountry = $('#countrySelectVisualise').val();
-
-    $.when(
-        // Make an API request for the last 30 days of historical data for selected country
-        $.getJSON(`https://disease.sh/v3/covid-19/historical/${graphCountry}?lastdays=30`)
-
-    ).then(
-        function (response) {
-            // Pass this data to the formatTimeSeries function, to appropriately format the data
-            formatTimeSeries(response);
-        })
 }
