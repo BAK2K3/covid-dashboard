@@ -34,7 +34,7 @@ const condensedCountryList = ["Afghanistan", "Albania", "Algeria", "Andorra", "A
     "Bolivia", "Bosnia", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cabo Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "DRC", "Costa Rica",
     "Côte d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
     "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan",
-    "Jordan", "Kazakhstan", "Kenya", "S. Korea", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", " Madagascar",
+    "Jordan", "Kazakhstan", "Kenya", "S. Korea", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar",
     "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
     "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
     "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain",
@@ -42,7 +42,7 @@ const condensedCountryList = ["Afghanistan", "Albania", "Algeria", "Andorra", "A
     "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
 
 // Function for API request for all countries
-function fetchApiData(callback, argument = "all") {
+function fetchApiData(callback = $.noop, argument = "all") {
 
     // If all data is required
     if (argument === "all") {
@@ -91,11 +91,8 @@ function fetchApiData(callback, argument = "all") {
 
         // Query the historical endpoint using condensed country list
         $.when(
-
             $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
-
         ).then(
-
             function (visualDataset) {
                 // Assign the response to the relevant global variable
                 globalVisualDataset = visualDataset;
@@ -104,7 +101,6 @@ function fetchApiData(callback, argument = "all") {
                 if (typeof callback === 'function') {
                     callback();
                 }
-
                 // Catch errors
             }, function (errorResponse) {
                 console.log(errorResponse);
@@ -117,31 +113,25 @@ function fetchApiData(callback, argument = "all") {
 function generateHTML() {
 
     // Map the countries from the data 
-
     var listItemsCompare = globalCompareDataset.map(function (item) {
         return ` <option value = "${item.country}" > ${item.country} </option> `;
     })
 
     var listItemsVisual = "";
-
     condensedCountryList.forEach(function (item) {
         listItemsVisual += ` <option value = "${item}" > ${item} </option> `;
 
     })
 
-    // Insert the generated list into the Country Select Drop downs
+    // Insert the generated lists into the relevant Country Select Drop downs
     $("#countrySelect1").html(listItemsCompare);
     $("#countrySelect2").html(listItemsCompare);
     $('#countrySelectVisualise').html(listItemsVisual);
     $('#countrySelectMap').html(listItemsVisual);
-
 }
-
-
 
 // On document load, fetch datasets then generate required HTML elements
 $(document).ready(
-
     fetchApiData(generateHTML, "all")
 );
 
