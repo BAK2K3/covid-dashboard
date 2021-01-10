@@ -1,6 +1,9 @@
 // Global access mapdata
 var mapData = {};
 
+// Global legend data
+var mapLegends = {};
+
 // Function for formattings "globalCompareData" for Mapael.js
 function formatMapData() {
 
@@ -22,7 +25,7 @@ function formatMapData() {
                 mapData[statistic].areas[fullISO[country.country]] = {
                     // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
                     value: country[statistic], href: "#", tooltip: {
-                        content: `${country.country} <br/> ${statistic} : ${country[statistic]}`
+                        content: `<strong>${country.country}</strong> <br/> ${statistic}: ${country[statistic]}`
                     }
                 };
             }
@@ -50,11 +53,79 @@ function formatMapData() {
 
 }
 
+// Function for generating the Legends (tier for colours)
+function generateLegends(statistic) {
+
+    // Initiate maxValue;
+    let maxValue = 0;
+
+    // Iterate through each country, in order to ascertain the maximum value for this statistic
+    Object.keys(mapData[statistic].areas).forEach(function (country) {
+
+        // Determine if the value is higher than that currently stored (maxValue)
+        if (mapData[statistic].areas[country].value > maxValue) {
+
+            // if so, overrite the maxValue
+            maxValue = mapData[statistic].areas[country].value;
+        }
+    })
+
+    // Access global "mapLegends", and overwrite current legends (tiers)
+    mapLegends = {
+        area: {
+            title: statistic,
+            slices: [
+                {
+                    // Lower quarter
+                    max: Math.round(maxValue / 4),
+                    attrs: {
+                        fill: "#97e766"
+                    },
+                    label: `Less than ${Math.round(maxValue / 4)}`
+                },
+                {
+                    // Lower Half
+                    min: Math.round(maxValue / 4),
+                    max: Math.round(maxValue / 2),
+                    attrs: {
+                        fill: "#7fd34d"
+                    },
+                    label: `More than ${Math.round(maxValue / 4)}, but Less than ${Math.round(maxValue / 2)}`
+                },
+                {
+                    // Lower 3/4s
+                    min: Math.round(maxValue / 2),
+                    max: Math.round((maxValue / 2) + (maxValue / 4)),
+                    attrs: {
+                        fill: "#5faa32"
+                    },
+                    label: `More than ${Math.round(maxValue / 2)}, but Less than ${Math.round((maxValue / 2) + (maxValue / 4))}`
+                },
+                {
+                    // Max Value
+                    min: Math.round((maxValue / 2) + (maxValue / 4)),
+                    max: Math.round(maxValue),
+                    attrs: {
+                        fill: "#3f7d1a"
+                    },
+                    label: `More than ${Math.round(maxValue / 2) + (maxValue / 4)}, but Less than ${Math.round(maxValue)}`
+                }
+
+            ]
+        }
+    }
+}
+
 // Function for generating the map
 function generateMap() {
 
     // Assign the current value within the Stat selector
     let statisticChoice = $("#statisticSelectMap").val();
+
+    // Generate legends (tiers) for current statistic if  legends have yet to be generated
+    if ($.isEmptyObject(mapLegends)) {
+        generateLegends(statisticChoice);
+    }
 
     // Call the mapael jquery function
     $(".mapContainer").mapael({
@@ -77,63 +148,32 @@ function generateMap() {
             },
         },
         // Basic legend for testing
-        legend: {
-            area: {
-                title: "To be confirmed",
-                slices: [
-                    {
-                        max: 100,
-                        attrs: {
-                            fill: "#97e766"
-                        },
-                        label: "To be confirmed"
-                    },
-                    {
-                        min: 100,
-                        max: 1000,
-                        attrs: {
-                            fill: "#7fd34d"
-                        },
-                        label: "To be confirmed"
-                    },
-                    {
-                        min: 1000,
-                        max: 10000,
-                        attrs: {
-                            fill: "#5faa32"
-                        },
-                        label: "To be confirmed"
-                    },
-                    {
-                        min: 1000000,
-                        attrs: {
-                            fill: "#3f7d1a"
-                        },
-                        label: "To be confirmed"
-                    }
-                ]
-            }
-        },
+        legend: mapLegends,
 
         // Assign the "areas" parameter the currently selected statistic
         areas: mapData[statisticChoice]["areas"]
     });
-
 }
 
 // Update the Mapael map to target specific statistic within nested object (mapdata)
 $("#statisticSelectMap").change(function () {
 
     // If mapData is not empty
-    if (mapData != "{}") {
+    if (!($.isEmptyObject(mapData))) {
+
+        // Generate new legend data from given statistic
+        generateLegends($("#statisticSelectMap").val());
+
         // Trigger mapael update
         $(".mapContainer").trigger('update', [{
-            // Set the mapOptions "areas" to the currently selected statistic
+
             mapOptions: {
-                'areas': mapData[$("#statisticSelectMap").val()]["areas"]
+                // Set the mapOptions "areas" to the currently selected statistic
+                'areas': mapData[$("#statisticSelectMap").val()]["areas"],
+                // Set the mapOptions "legend" to the newly generated legend
+                'legend': mapLegends
             },
             animDuration: 300
         }]);
     }
-
 });
