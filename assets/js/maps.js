@@ -76,39 +76,46 @@ function generateLegends(statistic) {
             title: statistic,
             slices: [
                 {
-                    // Lower quarter
-                    max: Math.round(maxValue / 4),
+                    // No Data
+                    sliceValue: -1,
+                    attrs: {
+                        fill: "#FFF"
+                    },
+                    label: `No data available.`
+                },
+                {
+                    // Lower Eight
+                    max: Math.round(maxValue / 8),
                     attrs: {
                         fill: "#97e766"
                     },
-                    label: `Less than ${Math.round(maxValue / 4)}`
+                    label: `Less than ${Math.round(maxValue / 8)}.`
                 },
                 {
-                    // Lower Half
-                    min: Math.round(maxValue / 4),
-                    max: Math.round(maxValue / 2),
+                    // Lower Sixth
+                    min: Math.round(maxValue / 8),
+                    max: Math.round(maxValue / 6),
                     attrs: {
                         fill: "#7fd34d"
                     },
-                    label: `More than ${Math.round(maxValue / 4)}, but Less than ${Math.round(maxValue / 2)}`
+                    label: `More than ${Math.round(maxValue / 8)}, but Less than ${Math.round(maxValue / 6)}.`
                 },
                 {
-                    // Lower 3/4s
-                    min: Math.round(maxValue / 2),
-                    max: Math.round((maxValue / 2) + (maxValue / 4)),
+                    // Lower Quarter
+                    min: Math.round(maxValue / 6),
+                    max: Math.round(maxValue / 4),
                     attrs: {
                         fill: "#5faa32"
                     },
-                    label: `More than ${Math.round(maxValue / 2)}, but Less than ${Math.round((maxValue / 2) + (maxValue / 4))}`
+                    label: `More than ${Math.round(maxValue / 6)}, but Less than ${Math.round(maxValue / 4)}.`
                 },
                 {
                     // Max Value
-                    min: Math.round((maxValue / 2) + (maxValue / 4)),
-                    max: Math.round(maxValue),
+                    min: Math.round(maxValue / 4),
                     attrs: {
                         fill: "#3f7d1a"
                     },
-                    label: `More than ${Math.round(maxValue / 2) + (maxValue / 4)}, but Less than ${Math.round(maxValue)}`
+                    label: `More than ${Math.round(maxValue / 4)}.`
                 }
 
             ]
