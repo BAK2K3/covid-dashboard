@@ -33,8 +33,12 @@ function searchFunction() {
             secondCountryData = globalCompareDataset[indexTargetCountry2][el];
         }
 
-        // Add the variables for countries 1 and 2 to a table row, and add to existing html output
-        outputHTML += ` <tr><td>${firstCountryData}</td><td><strong>${el}</strong></td><td>${secondCountryData}</td></tr >`
+        // Checks the statistic is not "Null" in the dictionary
+        if (statisticDictionary[el] !== null) {
+            // Add the variables for countries 1 and 2 to a table row, and add to existing html output
+            outputHTML += ` <tr><td>${firstCountryData}</td><td><strong>${statisticDictionary[el]}</strong></td><td>${secondCountryData}</td></tr >`
+        }
+
     })
 
     // Set Output field to "output HTML" as generated above.
