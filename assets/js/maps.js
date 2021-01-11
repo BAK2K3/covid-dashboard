@@ -127,7 +127,7 @@ function generateLegends(statistic) {
 function generateMap() {
 
     // Assign the current value within the Stat selector
-    let statisticChoice = $("#statisticSelectMap").val();
+    let statisticChoice = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
 
     // Generate legends (tiers) for current statistic if  legends have yet to be generated
     if ($.isEmptyObject(mapLegends)) {
@@ -169,14 +169,15 @@ $("#statisticSelectMap").change(function () {
     if (!($.isEmptyObject(mapData))) {
 
         // Generate new legend data from given statistic
-        generateLegends($("#statisticSelectMap").val());
+        let newStatistic = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
+        generateLegends(newStatistic);
 
         // Trigger mapael update
         $(".mapContainer").trigger('update', [{
 
             mapOptions: {
                 // Set the mapOptions "areas" to the currently selected statistic
-                'areas': mapData[$("#statisticSelectMap").val()]["areas"],
+                'areas': mapData[newStatistic]["areas"],
                 // Set the mapOptions "legend" to the newly generated legend
                 'legend': mapLegends
             },
