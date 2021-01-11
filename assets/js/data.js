@@ -48,6 +48,42 @@ const worldCountriesISOList = ["PE", "BF", "FR", "LY", "BY", "PK", "ID", "YE", "
     "AM", "SN", "TG", "ES", "GA", "HU", "MW", "TJ", "KH", "KR", "HN", "IS", "NI", "CL", "MA", "LR", "NL", "CF", "SK", "LT", "ZW", "LK", "IL", "LA", "KP", "GR", "TM", "EC", "BJ", "SI", "NO", "MD", "LB", "NP", "ER", "US", "KZ", "SZ", "UZ", "MN",
     "BT", "NC", "FJ", "KW", "TL", "BS", "VU", "FK", "GM", "QA", "JM", "CY", "PR", "PS", "BN", "TT", "PF", "WS", "LU", "KM", "FO", "SS", "BH"];
 
+// Dictionary for mapping key statistics from Compare dataset
+// Null = To be skipped
+// String = Representative text for statistic
+const statisticDictionary = {
+    updated: "Time of Update",
+    country: "Name of Country",
+    countryInfo: null,
+    cases: "Total Amount of Cases",
+    todayCases: "Amount of Cases Diagnosed Today",
+    deaths: "Total Cases of Deaths",
+    todayDeaths: "Amount of Deaths Today",
+    recovered: "Total Cases Recovered",
+    todayRecovered: "Amount Recovered Today",
+    active: "Currently Active Cases",
+    critical: "Currently Critical Cases",
+    casesPerOneMillion: "Cases Per One Million",
+    deathsPerOneMillion: "Deaths Per One Millions",
+    tests: "Total Amount of Tests",
+    testsPerOneMillion: "Tests per One Million",
+    population: "Population of Country",
+    continent: null,
+    oneCasePerPeople: null,
+    oneDeathPerPeople: null,
+    oneTestPerPeople: null,
+    activePerOneMillion: null,
+    recoveredPerOneMillion: null,
+    criticalPerOneMillion: null
+}
+
+
+// Function for obtaining key from specified value
+// https://stackoverflow.com/a/28191966/13810970
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 // Function for API request for all countries
 function fetchApiData(callback = $.noop, argument = "all") {
 
@@ -135,7 +171,10 @@ function generateHTML() {
     // List Stats for Map Section
     var listItemsMap = "";
     Object.keys(globalCompareDataset[0]).forEach(function (item) {
-        listItemsMap += ` <option value = "${item}" > ${item} </option> `;
+        // Checks that statistic is not null in statisticDictionary
+        if (statisticDictionary[item] !== null) {
+            listItemsMap += ` <option value = "${statisticDictionary[item]}" > ${statisticDictionary[item]} </option> `;
+        }
     })
 
     // Insert the generated lists into the relevant Country Select Drop downs
