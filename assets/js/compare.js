@@ -37,7 +37,7 @@ function searchFunction() {
 
         // Checks the statistic is not "Null" in the dictionary
         if (statisticDictionary[el] !== null) {
-            // Add the variables for countries 1 and 2 to a table row, and add to existing html output
+            // Add the variables for countries 1 and 2 to a table row, obtain relevant string from dictionairy, and add to existing html output
             outputHTML += ` <tr><td>${firstCountryData}</td><td><strong>${statisticDictionary[el]}</strong></td><td>${secondCountryData}</td></tr >`
         }
 
