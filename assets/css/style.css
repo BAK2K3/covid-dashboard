@@ -129,6 +129,15 @@ header {
     letter-spacing: 1px;
 }
 
+.covid-table {
+    table-layout:fixed;
+    width: 100%;
+}
+
+#countrySelect1, #countrySelect2 {
+    width: 100%;
+}
+
 /************************************************************* Footer */
 /* Sticky Footer using Flexbox: https://css-tricks.com/couple-takes-sticky-footer/ */
 #footer {
@@ -159,6 +168,10 @@ header {
     max-width: 200px;
     display: none;
     color: #343434;
+}
+
+.mapael .areaLegend svg text {
+    fill: #EAEAEA;
 }
 
 /* For all zoom buttons */
