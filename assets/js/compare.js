@@ -24,10 +24,12 @@ function searchFunction() {
         var firstCountryData;
         var secondCountryData;
 
-        // Checks whether the key is "updated", and if so converts the responses to date format.
+        // Checks whether the key is "updated", and if so converts the responses to shorthand date format.
         if (el === "updated") {
             firstCountryData = new Date(globalCompareDataset[indexTargetCountry1][el]);
+            firstCountryData = firstCountryData.toDateString() + " " + firstCountryData.getHours() + ":" + firstCountryData.getMinutes();
             secondCountryData = new Date(globalCompareDataset[indexTargetCountry2][el]);
+            secondCountryData = secondCountryData.toDateString() + " " + secondCountryData.getHours() + ":" + secondCountryData.getMinutes();
         } else {
             firstCountryData = globalCompareDataset[indexTargetCountry1][el];
             secondCountryData = globalCompareDataset[indexTargetCountry2][el];
