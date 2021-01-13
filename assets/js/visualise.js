@@ -16,7 +16,7 @@ function formatTimeSeries(update) {
     var countryLabel = globalVisualDataset[indexTargetCountry].country;
 
     // Check whether current graph exists, and is also not already displaying country selected, otherwise skips whole next section 
-    if ((typeof (myLineChart) == "undefined") || (myLineChart.options.title.text !== countryLabel)) {
+    if ((typeof (myLineChart) == "undefined") || (myLineChart.canvas == null) || (myLineChart.options.title.text !== countryLabel)) {
 
         // Reset dataset
         graphConfig = {};
