@@ -28,13 +28,17 @@ $(document).ready(function () {
         toggleCovidSections("#covid-info");
 
     });
-
-
 });
 
 // Function for removing all sections from view, and removing the d-none bootstrap class from the section chosen
 function toggleCovidSections(activeElement) {
 
+    // Check if toggler exists, and if so, remove it.
+    if (!$("#covid-splash").hasClass("d-none")) {
+        $("#covid-splash").addClass("d-none");
+    }
+
+    // Reset info section
     $("#covid-info").addClass("d-none");
 
     // Reset compare section
