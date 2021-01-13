@@ -171,8 +171,8 @@ function generateHTML() {
     // List Stats for Map Section
     var listItemsMap = "";
     Object.keys(globalCompareDataset[0]).forEach(function (item) {
-        // Checks that statistic is not null in statisticDictionary
-        if (statisticDictionary[item] !== null) {
+        // Checks that statistic is not null in statisticDictionary, also prevents Update Time/Country Name from being added
+        if (statisticDictionary[item] !== null && statisticDictionary[item] !== "Time of Update" && statisticDictionary[item] !== "Name of Country") {
             listItemsMap += ` <option value = "${statisticDictionary[item]}" > ${statisticDictionary[item]} </option> `;
         }
     })
