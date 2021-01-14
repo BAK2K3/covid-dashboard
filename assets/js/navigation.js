@@ -54,6 +54,7 @@ function toggleCovidSections(activeElement) {
     // Reset map section
     $("#covid-map").addClass("d-none");
     $(".map").html("");
+    $(".areaLegend").html("");
     $(activeElement).removeClass("d-none");
 
 }
