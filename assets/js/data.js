@@ -184,7 +184,7 @@ function generateHTML() {
     $('#statisticSelectMap').html(listItemsMap);
 
     // Once everything has finished loading, remove the loading icon and add the info page 
-    toggleCovidSections('#covid-info');
+    toggleCovidSections('#covidInfo');
 }
 
 // On document load, fetch datasets then generate required HTML elements

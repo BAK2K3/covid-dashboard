@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // On covid-toggler button Click
-    $("#covid-toggler .btn").on("click", function () {
+    $("#covidToggler .btn").on("click", function () {
         // Checks if the button is already active
         if (!$(this).hasClass("btn-active")) {
             // If not, remove active class from all .btn classes, and add to this button.
@@ -10,11 +10,11 @@ $(document).ready(function () {
 
             // Checks which button has been pressed, and adds/removes classes respectively. 
             if ($(this).hasClass("btn-compare")) {
-                toggleCovidSections("#covid-compare");
+                toggleCovidSections("#covidCompare");
             } else if ($(this).hasClass("btn-visualise")) {
-                toggleCovidSections("#covid-visualise");
+                toggleCovidSections("#covidVisualise");
             } else if ($(this).hasClass("btn-map")) {
-                toggleCovidSections("#covid-map");
+                toggleCovidSections("#covidMap");
             }
         }
     });
@@ -25,7 +25,7 @@ $(document).ready(function () {
         // Removes all active classes from togglers
         $(".btn").removeClass("btn-active");
         // Calls the toggleCovidSections with the exception
-        toggleCovidSections("#covid-info");
+        toggleCovidSections("#covidInfo");
 
     });
 });
@@ -34,26 +34,27 @@ $(document).ready(function () {
 function toggleCovidSections(activeElement) {
 
     // Check if toggler exists, and if so, remove it.
-    if (!$("#covid-splash").hasClass("d-none")) {
-        $("#covid-splash").addClass("d-none");
+    if (!$("#covidSplash").hasClass("d-none")) {
+        $("#covidSplash").addClass("d-none");
     }
 
     // Reset info section
-    $("#covid-info").addClass("d-none");
+    $("#covidInfo").addClass("d-none");
 
     // Reset compare section
-    $("#covid-compare").addClass("d-none");
-    $("#covid-table-body").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
+    $("#covidCompare").addClass("d-none");
+    $("#covidTableBody").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
 
     // Reset visualise section
-    $("#covid-visualise").addClass("d-none");
+    $("#covidVisualise").addClass("d-none");
     if (typeof (myLineChart) !== "undefined") {
         myLineChart.destroy();
     }
 
     // Reset map section
-    $("#covid-map").addClass("d-none");
+    $("#covidMap").addClass("d-none");
     $(".map").html("");
+    // Only CSS class with camelcase due to Mapael targeting
     $(".areaLegend").html("");
     $(activeElement).removeClass("d-none");
 
