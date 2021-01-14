@@ -12,6 +12,7 @@ function formatMapData() {
 
         // Initialise the parent object for the given statistic
         mapData[statistic] = {};
+
         // Initialise the "areas" field (required for Mapael) for each statistic
         mapData[statistic].areas = {};
 
@@ -23,6 +24,7 @@ function formatMapData() {
 
                 // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
                 mapData[statistic].areas[fullISO[country.country]] = {
+
                     // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
                     value: country[statistic], href: "#", tooltip: {
                         content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
@@ -50,7 +52,6 @@ function formatMapData() {
 
     // Once all data preperation is complete, generate the map
     generateMap();
-
 }
 
 // Function for generating the Legends (tier for colours)
@@ -136,6 +137,7 @@ function generateMap() {
 
     // Call the mapael jquery function
     $(".mapContainer").mapael({
+
         // Use the world_countries map
         map: {
             name: "world_countries",
@@ -154,6 +156,7 @@ function generateMap() {
                 touch: true
             },
         },
+
         // Basic legend for testing
         legend: mapLegends,
 
