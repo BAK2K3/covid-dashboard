@@ -30,9 +30,15 @@ function searchFunction() {
             firstCountryData = firstCountryData.toDateString() + " " + firstCountryData.getHours() + ":" + firstCountryData.getMinutes();
             secondCountryData = new Date(globalCompareDataset[indexTargetCountry2][el]);
             secondCountryData = secondCountryData.toDateString() + " " + secondCountryData.getHours() + ":" + secondCountryData.getMinutes();
-        } else {
+            // Checks whether the key is "country", and if so returns raw string.
+        } else if (el == "country") {
             firstCountryData = globalCompareDataset[indexTargetCountry1][el];
             secondCountryData = globalCompareDataset[indexTargetCountry2][el];
+            // Otherwise, returns a formatted number string (i.e comma seperated).
+        } else {
+            // Locale Number Formatting https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+            firstCountryData = Number(globalCompareDataset[indexTargetCountry1][el]).toLocaleString();
+            secondCountryData = Number(globalCompareDataset[indexTargetCountry2][el]).toLocaleString();
         }
 
         // Checks the statistic is not "Null" in the dictionary
