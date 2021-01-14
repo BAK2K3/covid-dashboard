@@ -64,7 +64,7 @@ const statisticDictionary = {
     active: "Currently Active Cases",
     critical: "Currently Critical Cases",
     casesPerOneMillion: "Cases Per One Million",
-    deathsPerOneMillion: "Deaths Per One Millions",
+    deathsPerOneMillion: "Deaths Per One Million",
     tests: "Total Amount of Tests",
     testsPerOneMillion: "Tests per One Million",
     population: "Population of Country",
