@@ -165,8 +165,8 @@ function generateMap() {
 // Update the Mapael map to target specific statistic within nested object (mapdata)
 $("#statisticSelectMap").change(function () {
 
-    // If mapData is not empty
-    if (!($.isEmptyObject(mapData))) {
+    // If mapData is not empty, and if areaLegend is not empty
+    if (!($.isEmptyObject(mapData)) && ($(".areaLegend").html() !== "")) {
 
         // Generate new legend data from given statistic
         let newStatistic = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
