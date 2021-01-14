@@ -67,12 +67,12 @@ header {
 
 /************************************************************* COVID Toggler */
 
-#covid-toggler {
+#covidToggler {
     margin-top:10px;
     margin-bottom: 5px;
 }
 
-#covid-toggler .btn {
+#covidToggler .btn {
     width: 120px;
 }
 
@@ -167,17 +167,17 @@ header {
     border-radius: 15px;
 }
 
-#covid-compare .covid-data-container {
+#covidCompare .covid-data-container {
     background-color: #119DA4;
 
 }
 
-#covid-visualise .covid-data-container {
+#covidVisualise .covid-data-container {
     background-color: #BA7BA1;
   
 }
 
-#covid-map .covid-data-container {
+#covidMap .covid-data-container {
     background-color: #212738;
     color: #EAEAEA;
 }
@@ -201,6 +201,13 @@ header {
 
 #countrySelect1, #countrySelect2 {
     width: 100%;
+}
+
+/* Override Bootstrap table alignment */
+/* https://stackoverflow.com/questions/43306233/vertically-align-text-in-a-table-cell */
+table th, table td{
+   display: table-cell;
+   vertical-align: middle;
 }
 
 /************************************************************* Footer */
