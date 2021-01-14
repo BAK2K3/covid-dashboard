@@ -73,7 +73,7 @@ function generateLegends(statistic) {
     // Access global "mapLegends", and overwrite current legends (tiers)
     mapLegends = {
         area: {
-            title: statistic,
+            title: statisticDictionary[statistic],
             slices: [
                 {
                     // No Data
