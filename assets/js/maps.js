@@ -25,7 +25,7 @@ function formatMapData() {
                 mapData[statistic].areas[fullISO[country.country]] = {
                     // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
                     value: country[statistic], href: "#", tooltip: {
-                        content: `<strong>${country.country}</strong> <br/> ${statistic}: ${country[statistic]}`
+                        content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
                     }
                 };
             }
@@ -89,7 +89,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#97e766"
                     },
-                    label: `Less than ${Math.round(maxValue / 8)}.`
+                    label: `Less than ${Number(Math.round(maxValue / 8)).toLocaleString()}.`
                 },
                 {
                     // Lower Sixth
@@ -98,7 +98,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#7fd34d"
                     },
-                    label: `More than ${Math.round(maxValue / 8)}, but Less than ${Math.round(maxValue / 6)}.`
+                    label: `More than ${Number(Math.round(maxValue / 8)).toLocaleString()}, but Less than ${Number(Math.round(maxValue / 6)).toLocaleString()}.`
                 },
                 {
                     // Lower Quarter
@@ -107,7 +107,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#5faa32"
                     },
-                    label: `More than ${Math.round(maxValue / 6)}, but Less than ${Math.round(maxValue / 4)}.`
+                    label: `More than ${Number(Math.round(maxValue / 6)).toLocaleString()}, but Less than ${Number(Math.round(maxValue / 4)).toLocaleString()}.`
                 },
                 {
                     // Max Value
@@ -115,7 +115,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#3f7d1a"
                     },
-                    label: `More than ${Math.round(maxValue / 4)}.`
+                    label: `More than ${Number(Math.round(maxValue / 4)).toLocaleString()}.`
                 }
 
             ]
