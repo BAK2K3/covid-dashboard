@@ -157,7 +157,8 @@ function fetchApiData(callback = $.noop, argument = "all") {
 function generateHTML() {
 
     // List full set of countries for compare
-    var listItemsCompare = globalCompareDataset.map(function (item) {
+    var listItemsCompare = ' <option value = "none" > Select a Country </option> ';
+    listItemsCompare += globalCompareDataset.map(function (item) {
         return ` <option value = "${item.country}" > ${item.country} </option> `;
     })
 
