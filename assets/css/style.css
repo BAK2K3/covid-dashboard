@@ -13,7 +13,7 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background: #EAEAEA;
+    background: #EFF1F3;
     font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
@@ -37,11 +37,11 @@ body {
 }
 
 .dark-font {
-    color: #212738;
-}
+    color: #0E0F19;
+} 
 
 .light-font {
-    color: #EAEAEA;
+    color: #EFF1F3;
 }
 
 /************************************************************* Headings */
@@ -49,7 +49,8 @@ body {
 .main-heading {
     font-weight: 700;
     font-size: 3rem;
-    border-bottom: 5px solid #212738;
+    border-bottom: 5px solid #0E0F19;
+    text-shadow:  6px 0px 19px rgba(114,163,192,0.54);
 }
 
 .span-italic {
@@ -73,8 +74,8 @@ header {
 /************************************************************* Covid Splash Screen*/
 
 .covid-splash-container {
-    background-color: #EAEAEA;
-    color: #212738;
+    background-color: #EFF1F3;
+    color: #0E0F19;
     padding: 25px;
 }
 
@@ -95,7 +96,7 @@ header {
   position: absolute;
   width: 32px;
   height: 32px;
-  background: #212738;
+  background: #0E0F19;
   animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:after,
@@ -105,7 +106,7 @@ header {
   display: block;
   width: 32px;
   height: 32px;
-  background: #212738;
+  background: #0E0F19;
 }
 .lds-heart div:before {
   left: -24px;
@@ -159,19 +160,10 @@ header {
   box-shadow: none;
 }
 
-.btn-compare.btn-active {
-    background-color: #119DA4;
-    color: #EAEAEA;
-}
-
-.btn-visualise.btn-active {
-    background-color: #BA7BA1;
-    color: #EAEAEA;
-}
-
-.btn-map.btn-active {
-    background-color: #212738;
-    color: #EAEAEA; 
+#covidToggler .btn-active {
+    background-color: #72A3C0;
+    color: #0E0F19;
+    font-weight: 600;
 }
 
 /* Button animation from Hover.css */
@@ -221,7 +213,7 @@ header {
 }
 
 .hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
-  color: white;
+  color: #0E0F19;
   /* Removed border from Upwards fill */
   border: none;
 }
@@ -233,18 +225,18 @@ header {
 
 /* Targetted Customisation for the sweep effect */
 .btn-compare.hvr-sweep-to-top:before {
-    background: #119DA4;
-    border-color: #119DA4;
+    background: #72A3C0;
+    border-color: #72A3C0;
 }
 
 .btn-visualise.hvr-sweep-to-top:before {
-    background: #BA7BA1;
-    border-color: #BA7BA1;
+    background: #72A3C0;
+    border-color: #72A3C0;
 }
 
 .btn-map.hvr-sweep-to-top:before {
-    background: #212738;
-    border-color: #212738;
+    background: #72A3C0;
+    border-color: #72A3C0;
 }
 
 /************************************************************* Covid Data*/
@@ -258,30 +250,30 @@ header {
 }
 
 #covidCompare .covid-data-container {
-    background-color: #119DA4;
-    border-color: #119DA4;
+    background-color: #72A3C0;
+    border-color: #72A3C0;
 }
 
 #covidVisualise .covid-data-container {
-    background-color: #BA7BA1;
-    border-color: #BA7BA1;
+    background-color: #72A3C0;
+    border-color: #72A3C0;
 }
 
 #covidMap .covid-data-container {
-    background-color: #212738;
-    border-color: #212738;
-    color: #EAEAEA;
+    background-color: #72A3C0;
+    border-color: #72A3C0;
+    color: #40A4DF;
 }
 
-.covid-info-container {
-    background-color: #9F86C0;
-    border-color: #9F86C0;
+#covidInfo .covid-info-container {
+    background-color: #72A3C0;
+
 }
 
 /************************************************************* Covid Compare*/
 
 .btn-table {
-    color: #EAEAEA;
+    color: #EFF1F3;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -309,7 +301,7 @@ table th, table td{
 }
 
 .footer-section {
-    background-color: #119DA4;
+    background-color: #72A3C0;
     height: 30px;
 }
 
@@ -335,7 +327,7 @@ table th, table td{
 }
 
 .mapael .areaLegend svg text {
-    fill: #EAEAEA;
+    fill: #0E0F19;
 }
 
 /* For all zoom buttons */
