@@ -100,14 +100,14 @@
         </section>
 
         <!-- COVID Visualise Section -->
-        <section id="covidVisualise" class="d-flex flex-column justify-content-center covid-data d-none">
+        <section id="covidVisualise" class="d-flex justify-content-center covid-data d-none">
             <!-- Container for Visualisation section -->
             <div class="container covid-data-container">
 
                 <!-- Container for Selector -->
                 <div class="input-section d-flex justify-content-center">
                     <!-- Selector for Country  -->
-                    <select name="countrySelectVisualise" id="countrySelectVisualise" class="text-center">
+                    <select name="countrySelectVisualise" id="countrySelectVisualise">
                         <option value="">Country Select</option>
                     </select>
                 </div>
@@ -123,12 +123,15 @@
         <section id="covidMap" class="d-flex justify-content-center covid-data d-none">
             <!-- Container for Map -->
             <div class="container covid-data-container">
-                <!-- Statistic Selector -->
-                <select name="statisticSelectMap" id="statisticSelectMap">
-                    <option value="">Country Select</option>
-                </select>
-                <!-- Submit button for map -->
-                <button class="btn" onclick="formatMapData()">View Map</button>
+
+                <!-- Container for Selector -->
+                <div class="input-section d-flex justify-content-center">
+                    <!-- Statistic Selector -->
+                    <select name="statisticSelectMap" id="statisticSelectMap">
+                        <option value="">Statistics Select</option>
+                    </select>
+                </div>
+
                 <!-- Placeholder divs (map/arealegend) for Mapael -->
                 <div class="mapContainer">
                     <div class="map"></div>
