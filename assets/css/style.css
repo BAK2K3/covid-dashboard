@@ -40,6 +40,10 @@ body {
     color: #212738;
 }
 
+.light-font {
+    color: #EAEAEA;
+}
+
 /************************************************************* Headings */
 
 .main-heading {
@@ -183,6 +187,8 @@ header {
   transition-property: color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  /* Removed border from downwards fill */
+  border: none;
 }
 
 .hvr-sweep-to-top:before {
@@ -193,6 +199,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
   /* Removed default background color, amended borders */
   border-bottom-left-radius: 0;
@@ -200,7 +207,7 @@ header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   /*****************************************************/
-
+  
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
@@ -215,7 +222,7 @@ header {
 
 .hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
   color: white;
-  /* Removed border from internal fill */
+  /* Removed border from Upwards fill */
   border: none;
 }
 
