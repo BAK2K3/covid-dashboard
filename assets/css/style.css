@@ -270,6 +270,16 @@ header {
 
 }
 
+.input-section{
+      padding-top: 20px;
+      padding-bottom: 10px;
+}
+
+.input-section select {
+    text-align: center;
+    text-align-last: center;
+}
+
 /************************************************************* Covid Compare*/
 
 .btn-table {
@@ -305,8 +315,14 @@ table th, table td{
     height: 30px;
 }
 
-/************************************************************* Mapael */
-/***********Formatting obtained from git - standard********************/
+/************************************************************* Covid Visualise */
+
+
+
+
+/************************************************************* Covid Map */
+
+/* Mapael - Formatting obtained from git */
 
 .mapael .map {
         position: relative;
