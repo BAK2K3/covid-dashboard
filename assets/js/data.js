@@ -162,7 +162,7 @@ function generateHTML() {
     })
 
     // List Condensed Countries (for historical availablity) for Visualise
-    var listItemsVisual = "";
+    var listItemsVisual = ' <option value = "none" > Select a Country </option> ';
     condensedCountryList.forEach(function (item) {
         listItemsVisual += ` <option value = "${item}" > ${item} </option> `;
 
