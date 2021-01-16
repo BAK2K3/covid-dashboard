@@ -5,18 +5,21 @@ var myLineChart;
 var graphConfig = {};
 
 // Function for formatting the required data
-function formatTimeSeries(update) {
+function formatTimeSeries() {
+
+    // Obtain value of selector
+    selectValue = $('#countrySelectVisualise').val();
 
     // Find the index position of the country within the visual compare dataset
     let indexTargetCountry = globalVisualDataset.findIndex(function (entry) {
-        return entry.country == $('#countrySelectVisualise').val();
+        return entry.country == selectValue;
     });
 
     // Extract chosen country from selector
     var countryLabel = globalVisualDataset[indexTargetCountry].country;
 
-    // Check whether current graph exists, and is also not already displaying country selected, otherwise skips whole next section 
-    if ((typeof (myLineChart) == "undefined") || (myLineChart.canvas == null) || (myLineChart.options.title.text !== countryLabel)) {
+    // Check whether current graph exists, and is also not already displaying country selected
+    if ((typeof (myLineChart) == "undefined") || (myLineChart.options.title.text !== countryLabel)) {
 
         // Reset dataset
         graphConfig = {};
@@ -27,7 +30,7 @@ function formatTimeSeries(update) {
 
         let datasets = [];
         // Iterate through the datasets contained (cases, recovered, deaths)
-        fullData.forEach(element => {
+        fullData.forEach(function (element) {
 
             // Create a new object
             let obj = {};
@@ -51,10 +54,6 @@ function formatTimeSeries(update) {
             },
             options: {
                 responsive: true,
-                title: {
-                    display: true,
-                    text: countryLabel
-                },
                 scales: {
                     xAxes: [{
                         display: true,
@@ -74,8 +73,8 @@ function formatTimeSeries(update) {
             }
         }
 
-        // Checks whether parameter "update" has been provided to parent function
-        if (update == false) {
+        // Checks whether graph exists again
+        if ((typeof (myLineChart) == "undefined") || (myLineChart.canvas == null)) {
             // Call generate graph function with newly created country label, date label, and datasets
             generateGraph();
         } else {
@@ -97,10 +96,15 @@ function generateGraph() {
 
 }
 
+// Function to excecute on selector change
 $("#countrySelectVisualise").change(function () {
 
-    if (typeof (myLineChart) !== "undefined") {
-        formatTimeSeries(true);
+    // If the value selected is "Select a country", destroy the graph
+    if ($(this).val() == "none") {
+        myLineChart.destroy();
+    } else {
+        // Elseexecute formateTimeSeries function.
+        formatTimeSeries();
     }
 
 })
