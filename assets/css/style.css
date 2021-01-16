@@ -21,7 +21,8 @@ body {
 
 .content-wrapper {
     flex: 1 0 auto; 
-  padding: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
 
@@ -136,23 +137,22 @@ header {
 #covidToggler {
     margin-top:10px;
     margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
 }
 
 #covidToggler .btn {
     width: 120px;
+    border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin:0;
 }
 
 #covidToggler .btn:focus {
   box-shadow: none;
-}
-
-#covidToggler .btn {
-  width: 120px;
-  border-bottom: 0;
 }
 
 .btn-compare.btn-active {
@@ -170,7 +170,6 @@ header {
     color: #EAEAEA; 
 }
 
-
 /* Button animation from Hover.css */
 /* https://github.com/IanLunn/Hover/blob/master/css/hover.css */
 /* Sweep To Top */
@@ -179,7 +178,6 @@ header {
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
-  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0); */
   position: relative;
   -webkit-transition-property: color;
   transition-property: color;
@@ -217,6 +215,8 @@ header {
 
 .hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
   color: white;
+  /* Removed border from internal fill */
+  border: none;
 }
 
 .hvr-sweep-to-top:hover:before, .hvr-sweep-to-top:focus:before, .hvr-sweep-to-top:active:before {
@@ -224,25 +224,27 @@ header {
   transform: scaleY(1);
 }
 
-/* Customisation for the sweep effect */
-
+/* Targetted Customisation for the sweep effect */
 .btn-compare.hvr-sweep-to-top:before {
     background: #119DA4;
+    border-color: #119DA4;
 }
 
 .btn-visualise.hvr-sweep-to-top:before {
     background: #BA7BA1;
+    border-color: #BA7BA1;
 }
 
 .btn-map.hvr-sweep-to-top:before {
     background: #212738;
+    border-color: #212738;
 }
-
 
 /************************************************************* Covid Data*/
 .covid-data {
     min-height: 200px;
     width: 100%;
+    margin-top: -1px;
 }
 
 .covid-data-container, .covid-info-container {
@@ -251,21 +253,23 @@ header {
 
 #covidCompare .covid-data-container {
     background-color: #119DA4;
-
+    border-color: #119DA4;
 }
 
 #covidVisualise .covid-data-container {
     background-color: #BA7BA1;
-  
+    border-color: #BA7BA1;
 }
 
 #covidMap .covid-data-container {
     background-color: #212738;
+    border-color: #212738;
     color: #EAEAEA;
 }
 
 .covid-info-container {
     background-color: #9F86C0;
+    border-color: #9F86C0;
 }
 
 /************************************************************* Covid Compare*/
@@ -369,4 +373,24 @@ table th, table td{
 .mapael .map {
     margin: 10px;
     position: relative;
+}
+
+
+/************************************************************* Media Queries */
+
+/********** Mobile Devices **********/
+
+/* Covid Toggler */
+
+@media only screen and (max-width: 576px) {
+
+  #covidToggler {
+    justify-content: space-between; 
+  }
+
+  #covidToggler .btn {
+    width: 100px;
+    padding: 5px 0 5px 0;
+    font-size: 15px;
+  }
 }
