@@ -100,15 +100,18 @@
         </section>
 
         <!-- COVID Visualise Section -->
-        <section id="covidVisualise" class="d-flex justify-content-center covid-data d-none">
+        <section id="covidVisualise" class="d-flex flex-column justify-content-center covid-data d-none">
             <!-- Container for Visualisation section -->
             <div class="container covid-data-container">
-                <!-- Selector for Country  -->
-                <select name="countrySelectVisualise" id="countrySelectVisualise">
-                    <option value="">Country Select</option>
-                </select>
-                <!-- Submit button -->
-                <button class="btn" onclick="formatTimeSeries(false)">View Data</button>
+
+                <!-- Container for Selector -->
+                <div class="input-section d-flex justify-content-center">
+                    <!-- Selector for Country  -->
+                    <select name="countrySelectVisualise" id="countrySelectVisualise" class="text-center">
+                        <option value="">Country Select</option>
+                    </select>
+                </div>
+
                 <!-- Placeholder chart-containter for Chart.js -->
                 <div class="chart-container">
                     <canvas id="lineChart"></canvas>
