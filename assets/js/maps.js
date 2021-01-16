@@ -168,8 +168,13 @@ function generateMap() {
 // Update the Mapael map to target specific statistic within nested object (mapdata)
 $("#statisticSelectMap").change(function () {
 
-    // If mapData is not empty, and if areaLegend is not empty
-    if (!($.isEmptyObject(mapData)) && ($(".areaLegend").html() !== "")) {
+    // If the value selected is the default option, destroy the map
+    if ($(this).val() == "none") {
+        $(".map").html("");
+        $(".areaLegend").html("");
+
+    } else if (!($.isEmptyObject(mapData)) && ($(".areaLegend").html() !== "")) {
+        // If mapData is not empty, and if areaLegend is not empty
 
         // Generate new legend data from given statistic
         let newStatistic = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
@@ -186,5 +191,9 @@ $("#statisticSelectMap").change(function () {
             },
             animDuration: 300
         }]);
+    } else {
+        // Otherwise, generate map
+        formatMapData();
     }
+
 });
