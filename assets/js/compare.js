@@ -2,15 +2,15 @@
 function formatTableData() {
 
     // Obtain countries selected from dropdown menus
-    var targetCountry1 = $("#countrySelect1").val();
-    var targetCountry2 = $("#countrySelect2").val();
+    var firstTargetCountry = $("#firstCountrySelect").val();
+    var secondTargetCountry = $("#secondCountrySelect").val();
 
     // Find the index position of each country within the global compare dataset
-    var indexTargetCountry1 = globalCompareDataset.findIndex(function (entry) {
-        return entry.country == targetCountry1
+    var firstTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
+        return entry.country == firstTargetCountry
     });
-    var indexTargetCountry2 = globalCompareDataset.findIndex(function (entry) {
-        return entry.country == targetCountry2
+    var secondTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
+        return entry.country == secondTargetCountry
     });
 
     // Obtain the list of keys for the response (statistic names)
@@ -29,22 +29,22 @@ function formatTableData() {
 
             // Checks whether the statistic is "updated", and if so converts the responses to shorthand date format.
             if (el === "updated") {
-                firstCountryData = new Date(globalCompareDataset[indexTargetCountry1][el]);
+                firstCountryData = new Date(globalCompareDataset[firstTargetCountryIndex][el]);
                 firstCountryData = firstCountryData.toDateString() + " " + firstCountryData.getHours() + ":" + firstCountryData.getMinutes();
-                secondCountryData = new Date(globalCompareDataset[indexTargetCountry2][el]);
+                secondCountryData = new Date(globalCompareDataset[secondTargetCountryIndex][el]);
                 secondCountryData = secondCountryData.toDateString() + " " + secondCountryData.getHours() + ":" + secondCountryData.getMinutes();
 
                 // Checks whether the statistic is "country", and if so returns raw string.
             } else if (el == "country") {
-                firstCountryData = globalCompareDataset[indexTargetCountry1][el];
-                secondCountryData = globalCompareDataset[indexTargetCountry2][el];
+                firstCountryData = globalCompareDataset[firstTargetCountryIndex][el];
+                secondCountryData = globalCompareDataset[secondTargetCountryIndex][el];
 
                 // Otherwise, returns a formatted number string (i.e comma seperated) along with respective formatting for bigger/smaller values
             } else {
 
                 // Define number variables for each country, for later calculation and referencing
-                let firstCountryNumber = globalCompareDataset[indexTargetCountry1][el];
-                let secondCountryNumber = globalCompareDataset[indexTargetCountry2][el];
+                let firstCountryNumber = globalCompareDataset[firstTargetCountryIndex][el];
+                let secondCountryNumber = globalCompareDataset[secondTargetCountryIndex][el];
 
                 // Assign the "Data" variables the string locale formatted number
                 // Locale Number Formatting https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
@@ -80,8 +80,8 @@ function formatTableData() {
     $("#covidTableBody").html(outputHTML);
 }
 
-// On country select (for compare) being changed
-$("#countrySelect1").add("#countrySelect2").on('change', function () {
+// On either country select changing
+$("#firstCountrySelect").add("#secondCountrySelect").on('change', function () {
 
     // Check whether the initial table has been generated
     if ($("#covidTableBody").html() != '<tr><td colspan="3"> Please select two countries to compare statistics.</td></tr>') {
