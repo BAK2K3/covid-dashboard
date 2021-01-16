@@ -48,6 +48,7 @@ function toggleCovidSections(activeElement) {
     // Reset visualise section
     $("#covidVisualise").addClass("d-none");
     if (typeof (myLineChart) !== "undefined") {
+        // Destroy the graph if it exists
         myLineChart.destroy();
     }
 
