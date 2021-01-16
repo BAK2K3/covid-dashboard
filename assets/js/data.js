@@ -178,8 +178,8 @@ function generateHTML() {
     })
 
     // Insert the generated lists into the relevant Country Select Drop downs
-    $("#countrySelect1").html(listItemsCompare);
-    $("#countrySelect2").html(listItemsCompare);
+    $("#firstCountrySelect").html(listItemsCompare);
+    $("#secondCountrySelect").html(listItemsCompare);
     $('#countrySelectVisualise').html(listItemsVisual);
     $('#statisticSelectMap').html(listItemsMap);
 
