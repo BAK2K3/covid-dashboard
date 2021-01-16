@@ -65,32 +65,6 @@ header {
     text-decoration: none;
 }
 
-/************************************************************* COVID Toggler */
-
-#covidToggler {
-    margin-top:10px;
-    margin-bottom: 5px;
-}
-
-#covidToggler .btn {
-    width: 120px;
-}
-
-.btn-compare.btn-active {
-    background-color: #119DA4;
-    color: #EAEAEA;
-}
-
-.btn-visualise.btn-active {
-    background-color: #BA7BA1;
-    color: #EAEAEA;
-}
-
-.btn-map.btn-active {
-    background-color: #212738;
-    color: #EAEAEA;
-}
-
 /************************************************************* Covid Splash Screen*/
 
 .covid-splash-container {
@@ -157,6 +131,114 @@ header {
   }
 }
 
+/************************************************************* COVID Toggler */
+
+#covidToggler {
+    margin-top:10px;
+    margin-bottom: 0px;
+}
+
+#covidToggler .btn {
+    width: 120px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#covidToggler .btn:focus {
+  box-shadow: none;
+}
+
+#covidToggler .btn {
+  width: 120px;
+  border-bottom: 0;
+}
+
+.btn-compare.btn-active {
+    background-color: #119DA4;
+    color: #EAEAEA;
+}
+
+.btn-visualise.btn-active {
+    background-color: #BA7BA1;
+    color: #EAEAEA;
+}
+
+.btn-map.btn-active {
+    background-color: #212738;
+    color: #EAEAEA; 
+}
+
+
+/* Button animation from Hover.css */
+/* https://github.com/IanLunn/Hover/blob/master/css/hover.css */
+/* Sweep To Top */
+.hvr-sweep-to-top {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0); */
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.hvr-sweep-to-top:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Removed default background color, amended borders */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /*****************************************************/
+
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
+  color: white;
+}
+
+.hvr-sweep-to-top:hover:before, .hvr-sweep-to-top:focus:before, .hvr-sweep-to-top:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
+/* Customisation for the sweep effect */
+
+.btn-compare.hvr-sweep-to-top:before {
+    background: #119DA4;
+}
+
+.btn-visualise.hvr-sweep-to-top:before {
+    background: #BA7BA1;
+}
+
+.btn-map.hvr-sweep-to-top:before {
+    background: #212738;
+}
+
+
 /************************************************************* Covid Data*/
 .covid-data {
     min-height: 200px;
@@ -199,7 +281,7 @@ header {
     width: 100%;
 }
 
-#countrySelect1, #countrySelect2 {
+#firstCountrySelect, #secondCountrySelect {
     width: 100%;
 }
 
@@ -222,7 +304,7 @@ table th, table td{
 }
 
 /************************************************************* Mapael */
-/***********Formatting obtained from git - standard*********** Mapael */
+/***********Formatting obtained from git - standard********************/
 
 .mapael .map {
         position: relative;
@@ -288,4 +370,3 @@ table th, table td{
     margin: 10px;
     position: relative;
 }
-
