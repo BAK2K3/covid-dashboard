@@ -344,14 +344,16 @@ table th, table td{
 /************************************************************* Covid Map */
 
 /* Mapael - Formatting obtained from git */
+/* view-source:https://rawgit.com/neveldo/jQuery-Mapael/2.2.0/examples/advanced/update_event_for_refreshing_elements.html */
 
 .mapael .map {
         position: relative;
+          margin: 10px;
     }
 
 .mapael .mapTooltip {
     position: absolute;
-    background-color: #fff;
+    background-color: #EFF1F3;
     moz-opacity: 0.70;
     opacity: 0.70;
     filter: alpha(opacity=70);
@@ -360,7 +362,7 @@ table th, table td{
     z-index: 1000;
     max-width: 200px;
     display: none;
-    color: #343434;
+    color: #212529;
 }
 
 .mapael .areaLegend svg text {
@@ -405,12 +407,6 @@ table th, table td{
     top: 50px;
 }
 
-.mapael .map {
-    margin: 10px;
-    position: relative;
-}
-
-
 /************************************************************* Media Queries */
 
 /********** Mobile Devices **********/
@@ -436,7 +432,7 @@ table th, table td{
   }
 
   #covidToggler .btn {
-    max-width: 80px;
+    max-width: 90px;
     padding: 5px 0 5px 0;
     font-size: 15px;
   }
@@ -458,10 +454,24 @@ table th, table td{
 
   #covidVisualise .covid-data-container {
       padding: 0;
- }
+  }
 
-.chart-container {
+  .chart-container {
       min-height: 350px;
+  }
+
+  /* Map */
+
+  .mapael .mapTooltip {
+    font-size: 12px;
+  }
+
+  .map svg {
+    min-height: 250px;
+  }
+
+  #covidMap .covid-data-container {
+    padding: 0;
   }
   
 }
