@@ -291,9 +291,23 @@ select:focus {
     width: 100%;
 }
 
+.table-heading {
+    text-decoration: underline;
+}
+
 #firstCountrySelect, #secondCountrySelect {
     width: 100%;
     max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #EFF1F3;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: #EFF1F3;
 }
 
 /* Override Bootstrap table alignment */
@@ -326,7 +340,7 @@ table th, table td{
 /* view-source:https://rawgit.com/neveldo/jQuery-Mapael/2.2.0/examples/advanced/update_event_for_refreshing_elements.html */
 
 .input-section #statisticSelectMap {
-    min-width: 40%;
+    min-width: 30%;
 }
 
 .mapael .map {
@@ -431,6 +445,21 @@ table th, table td{
 
   .input-section {
       padding-top:10px;
+  }
+
+  /* Compare */
+
+  #covidCompare .covid-data-container {
+    padding: 0px 5px 0 5px;
+  }
+
+  #firstCountrySelect, #secondCountrySelect {
+      margin-bottom: 5px;
+      margin-top: 5px;
+  }
+
+  table {
+      font-size: 12px;
   }
 
   /* Visualise */
