@@ -337,8 +337,9 @@ table th, table td{
 
 /************************************************************* Covid Visualise */
 
-
-
+#lineChart {
+    margin: 0;
+}
 
 /************************************************************* Covid Map */
 
@@ -418,11 +419,15 @@ table th, table td{
 
 
     /* Headings */
-  .main-heading {
 
-    font-size: 2rem;
+    header {
+        margin-top:35px; 
+    }
+   
+    .main-heading {
 
-}
+      font-size: 2rem;
+    }
 
 
   /* Covid Toggler */
@@ -447,6 +452,16 @@ table th, table td{
 
   .input-section {
       padding-top:10px;
+  }
+
+  /* Visualise */
+
+  #covidVisualise .covid-data-container {
+      padding: 0;
+ }
+
+.chart-container {
+      min-height: 350px;
   }
   
 }
