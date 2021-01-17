@@ -416,13 +416,22 @@ table th, table td{
 
 @media only screen and (max-width: 576px) {
 
+
+    /* Headings */
+  .main-heading {
+
+    font-size: 2rem;
+
+}
+
+
   /* Covid Toggler */
   #covidToggler {
     justify-content: space-between; 
   }
 
   #covidToggler .btn {
-    width: 100px;
+    max-width: 80px;
     padding: 5px 0 5px 0;
     font-size: 15px;
   }
@@ -430,6 +439,14 @@ table th, table td{
   /* Data Containers */
   .covid-data  {
     margin-top: -1px;
+  }
+
+  select {
+      font-size: 11px;
+  }
+
+  .input-section {
+      padding-top:10px;
   }
   
 }
