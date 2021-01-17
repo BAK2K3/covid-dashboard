@@ -24,8 +24,15 @@ function formatTimeSeries() {
         // Reset dataset
         graphConfig = {};
 
-        // Define data labels, and extract the required data
-        var timescaleLabels = Object.keys(globalVisualDataset[indexTargetCountry].timeline.cases);
+        // Define timescale data labels, 
+        var timescaleLabels = [];
+
+        // Convert the timescales to date objects
+        Object.keys(globalVisualDataset[indexTargetCountry].timeline.cases).forEach(function (date) {
+            timescaleLabels.push(new Date(date));
+        });
+
+        // Obtain the full historic data object for chosen country
         var fullData = Object.entries(globalVisualDataset[indexTargetCountry].timeline);
 
         let datasets = [];
@@ -34,7 +41,7 @@ function formatTimeSeries() {
 
             // Create a new object
             let obj = {};
-            // Format the data appropriately for the maps script.
+            // Format the data appropriately for the graph script.
             obj["data"] = Object.values(element[1]);
             obj["label"] = element[0];
             // Generate random colour for the line
@@ -49,14 +56,32 @@ function formatTimeSeries() {
         graphConfig = {
             type: 'line',
             data: {
+                // Set x and y data
                 labels: timescaleLabels,
                 datasets: datasets
             },
             options: {
+                // Set graph to be responsive, but disable aspect ratio
                 responsive: true,
+                maintainAspectRatio: false,
+
+                // Reduce length of boxes fractionally
+                legend: {
+                    labels: {
+                        boxWidth: 35,
+                    }
+                },
+
                 scales: {
                     xAxes: [{
+                        // Set X Axes as time series
                         display: true,
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                quarter: 'MMM YYYY'
+                            },
+                        },
                         scaleLabel: {
                             display: true,
                             labelString: 'Date'
@@ -79,9 +104,7 @@ function formatTimeSeries() {
             generateGraph();
         } else {
             // Replace the graph with the newly requested data
-            myLineChart.data.labels = timescaleLabels;
             myLineChart.data.datasets = datasets;
-            myLineChart.options.title.text = countryLabel;
             // Update the graph
             myLineChart.update();
         }
@@ -92,6 +115,11 @@ function generateGraph() {
 
     // Create an instance of the line chart, using the labels and datasets formatted previously
     var ctx = $('#lineChart');
+
+    // Set Chart default font settings
+    Chart.defaults.global.defaultFontColor = "#212529";
+    Chart.defaults.global.defaultFontFamily = "'Raleway', 'sans-serif'";
+
     myLineChart = new Chart(ctx, graphConfig);
 
 }
@@ -102,6 +130,8 @@ $("#countrySelectVisualise").change(function () {
     // If the value selected is "Select a country", destroy the graph
     if ($(this).val() == "none") {
         myLineChart.destroy();
+        // Remove lingering inline style attribute preventing specified width/height
+        $("#lineChart").removeAttr("width");
     } else {
         // Elseexecute formateTimeSeries function.
         formatTimeSeries();
