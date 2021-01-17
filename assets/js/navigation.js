@@ -36,6 +36,7 @@ function toggleCovidSections(activeElement) {
     // Check if toggler exists, and if so, remove it.
     if (!$("#covidSplash").hasClass("d-none")) {
         $("#covidSplash").addClass("d-none");
+        $("#covidToggler").removeClass("d-none");
     }
 
     // Reset info section
