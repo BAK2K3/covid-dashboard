@@ -284,7 +284,8 @@ select {
     text-align: center;
     text-align-last: center;
     border: 1px solid #0E0F19;
-    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    box-shadow: 
+    8px 8px 8px 0 rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
     -moz-appearance: none;
