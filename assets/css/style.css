@@ -51,6 +51,7 @@ body {
     font-size: 3rem;
     text-shadow:  6px 0px 19px rgba(114,163,192,0.54);
     text-decoration: underline;
+    margin-bottom: 0;
 }
 
 .span-italic {
@@ -278,9 +279,23 @@ header {
       padding-bottom: 10px;
 }
 
-.input-section select {
+select {
+
     text-align: center;
     text-align-last: center;
+    border: 1px solid #0E0F19;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: 15px;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #EFF1F3;
+    
+}
+
+select:focus {
+    outline: none;
 }
 
 /************************************************************* Covid Compare*/
@@ -298,6 +313,7 @@ header {
 
 #firstCountrySelect, #secondCountrySelect {
     width: 100%;
+    max-width: 100%;
 }
 
 /* Override Bootstrap table alignment */
