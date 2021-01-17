@@ -148,13 +148,137 @@
     <footer id="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 text-center footer-section">Github</div>
-                <div class="col-4 text-center footer-section">Disease.sh</div>
-                <div class="col-4 text-center footer-section">Js packages</div>
+                <!-- Github Link -->
+                <div class="col-4 text-center footer-section footer-github">
+                    <a href="https://github.com/BAK2K3" target="_blank" rel="noreferrer"><i class="fas fa-laptop-code"
+                            aria-hidden="true"></i> BAK2K3<span class="sr-only">Github</span></a>
+                </div>
+                <!-- Donate Modal Link -->
+                <div class="col-4 text-center footer-section footer-donate"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#donateModal" class="">Donate</a></div>
+                <!-- Credits Modal Link -->
+                <div class="col-4 text-center footer-section footer-credits"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#creditsModal" class="">Credits</a></div>
             </div>
-
         </div>
     </footer>
+
+
+
+    <!--  Donate Modal -->
+
+    <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <!-- Price Table -->
+            <div class="modal-content table-responsive">
+
+                <!-- Package Heading -->
+                <div class="modal-heading text-center heading-font">
+                    <h2 id="donateModalLabel">Donate</h2>
+                </div>
+                <div class="table-responsive body-font">
+                    <table class="table table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th> This project was developed from the safety and comfort of my own
+                                    home, surrounded by a healthy family. I'm lucky to be in this position,
+                                    but others may not be. Please consider donating to a worthy cause during this time;
+                                    be it supporting those who work tirelessly to allow this country to keep
+                                    functioning, those who are on the brink of scientific breakthroughs,
+                                    or those who are currently in a less fortunate position.
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://www.nhscharitiestogether.co.uk/donate/" target="_blank"
+                                        rel="noreferrer">NHS Charities Together</a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.crisis.org.uk/get-involved/donate/" target="_blank"
+                                        rel="noreferrer">Crisis</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.mind.org.uk/donate/donation-appeal-2020/" target="_blank"
+                                        rel="noreferrer">Mind</a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://safelives.org.uk/" target="_blank" rel="noreferrer">Safe Lives</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Credits Modal -->
+
+    <div class="modal fade" id="creditsModal" tabindex="-1" aria-labelledby="creditsModalLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <!-- Price Table -->
+            <div class="modal-content table-responsive">
+
+                <!-- Package Heading -->
+                <div class="modal-heading text-center heading-font">
+                    <h2 id="creditsModalLabel">Credits</h2>
+                </div>
+                <div class="table-responsive body-font">
+                    <table class="table table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th> This project would not have been possible without the following tools
+                                    and technologies.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://disease.sh/" target="_blank" rel="noreferrer">disease.sh</a> - Open
+                                    Source Disease Data
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.chartjs.org/samples/latest/" target="_blank"
+                                        rel="noreferrer">chart.js</a> - Open Source Graph Library for Javascript
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.vincentbroute.fr/mapael/" target="_blank"
+                                        rel="noreferrer">Mapael</a> - Open Source Map Data Visualisations
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
 
