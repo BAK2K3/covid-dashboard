@@ -251,48 +251,27 @@ header {
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-}
-
-#covidCompare .covid-data-container {
     background-color: #72A3C0;
     border-color: #72A3C0;
-}
-
-#covidVisualise .covid-data-container {
-    background-color: #72A3C0;
-    border-color: #72A3C0;
-}
-
-#covidMap .covid-data-container {
-    background-color: #72A3C0;
-    border-color: #72A3C0;
-    color: #40A4DF;
-}
-
-#covidInfo .covid-info-container {
-    background-color: #72A3C0;
-
 }
 
 .input-section{
-      padding-top: 20px;
-      padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
+/* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
 select {
-
     text-align: center;
     text-align-last: center;
     border: 1px solid #0E0F19;
     box-shadow: 
     8px 8px 8px 0 rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     background-color: #EFF1F3;
-    
 }
 
 select:focus {
@@ -346,6 +325,10 @@ table th, table td{
 /* Mapael - Formatting obtained from git */
 /* view-source:https://rawgit.com/neveldo/jQuery-Mapael/2.2.0/examples/advanced/update_event_for_refreshing_elements.html */
 
+.input-section #statisticSelectMap {
+    min-width: 40%;
+}
+
 .mapael .map {
         position: relative;
           margin: 10px;
@@ -371,9 +354,9 @@ table th, table td{
 
 /* For all zoom buttons */
 .mapael .zoomButton {
-    background-color: #fff;
+    background-color: #EFF1F3;
     border: 1px solid #ccc;
-    color: #000;
+    color: #0E0F19;
     width: 15px;
     height: 15px;
     line-height: 15px;
@@ -461,6 +444,10 @@ table th, table td{
   }
 
   /* Map */
+
+  .input-section #statisticSelectMap {
+    min-width: 70%;
+}
 
   .mapael .mapTooltip {
     font-size: 12px;
