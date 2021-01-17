@@ -44,16 +44,22 @@ function toggleCovidSections(activeElement) {
     // Reset compare section
     $("#covidCompare").addClass("d-none");
     $("#covidTableBody").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
+    $("#firstCountrySelect")[0].selectedIndex = 0;
+    $("#secondCountrySelect")[0].selectedIndex = 0;
 
     // Reset visualise section
     $("#covidVisualise").addClass("d-none");
+    $("#countrySelectVisualise")[0].selectedIndex = 0;
     if (typeof (myLineChart) !== "undefined") {
         // Destroy the graph if it exists
         myLineChart.destroy();
+        // Removes lingering width inline style preventing mobile viewing on page change
+        $("#lineChart").removeAttr("width");
     }
 
     // Reset map section
     $("#covidMap").addClass("d-none");
+    $("#statisticSelectMap")[0].selectedIndex = 0;
     $(".map").html("");
     // Only CSS class with camelcase due to Mapael targeting
     $(".areaLegend").html("");
