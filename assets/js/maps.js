@@ -71,7 +71,7 @@ function generateLegends(statistic) {
         }
     })
 
-    // Access global "mapLegends", and overwrite current legends (tiers)
+    // Access global "mapLegends", and calculate variable thresholds dependent on data
     mapLegends = {
         area: {
             title: statisticDictionary[statistic],
@@ -80,7 +80,7 @@ function generateLegends(statistic) {
                     // No Data
                     sliceValue: -1,
                     attrs: {
-                        fill: "#FFF"
+                        fill: "#EFF1F3"
                     },
                     label: `No data available.`
                 },
@@ -141,23 +141,28 @@ function generateMap() {
         // Use the world_countries map
         map: {
             name: "world_countries",
-            // Basic set up for testing
+            // custom styling
             defaultArea: {
+                // Outline/Fille
                 attrs: {
-                    stroke: "#fff",
-                    "stroke-width": 0.5
+                    stroke: "#EFF1F3",
+                    "stroke-width": 0.35
                 },
                 attrsHover: {
-                    "stroke-width": 1
+                    "stroke-width": 0.6,
+                    "fill": "#D88373"
                 },
             },
+            // Zoom settings
             zoom: {
                 enabled: true,
-                touch: true
+                touch: true,
+                maxLevel: 100,
+                step: 0.5
             },
         },
 
-        // Basic legend for testing
+        // Set generated legends
         legend: mapLegends,
 
         // Assign the "areas" parameter the currently selected statistic
