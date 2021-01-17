@@ -317,16 +317,6 @@ table th, table td{
    vertical-align: middle;
 }
 
-/************************************************************* Footer */
-/* Sticky Footer using Flexbox: https://css-tricks.com/couple-takes-sticky-footer/ */
-#footer {
-  flex-shrink: 0; 
-}
-
-.footer-section {
-    background-color: #72A3C0;
-    height: 30px;
-}
 
 /************************************************************* Covid Visualise */
 
@@ -404,6 +394,44 @@ table th, table td{
     top: 50px;
 }
 
+/************************************************************* Footer */
+/* Sticky Footer using Flexbox: https://css-tricks.com/couple-takes-sticky-footer/ */
+#footer {
+  flex-shrink: 0; 
+}
+
+.footer-section {
+    background-color: #72A3C0;
+    height: 40px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+    inset 0px 7px 3px -3px rgba(0, 0, 0, 0.25);
+}
+
+.footer-section a, .footer-section a:hover  {
+    text-decoration: none;
+    color: #0E0F19;
+}
+
+.footer-github a:hover {
+    text-decoration: none;
+    color: #0E0F19
+}
+
+/************************************************************* Modals */
+
+.modal .modal-content {
+    background-color: #EFF1F3; 
+}
+
+.modal a {
+    text-decoration: none;
+    color: #72A3C0;
+    font-weight: 500;
+}
+
 /************************************************************* Media Queries */
 
 /********** Mobile Devices **********/
@@ -472,22 +500,28 @@ table th, table td{
       min-height: 350px;
   }
 
-  /* Map */
+   /* Map */
 
-  .input-section #statisticSelectMap {
+   .input-section #statisticSelectMap {
     min-width: 70%;
-}
+    }
 
-  .mapael .mapTooltip {
-    font-size: 12px;
-  }
+    .mapael .mapTooltip {
+        font-size: 12px;
+    }
 
-  .map svg {
-    min-height: 250px;
-  }
+    .map svg {
+        min-height: 250px;
+    }
 
-  #covidMap .covid-data-container {
-    padding: 0;
-  }
-  
+    #covidMap .covid-data-container {
+        padding: 0;
+    }
+
+    /* Footer */
+    .footer-section {
+        font-size: 12px;
+        height: 40px;
+    }
+
 }
