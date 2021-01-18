@@ -260,6 +260,25 @@ header {
     padding-bottom: 10px;
 }
 
+.text-container {
+ padding: 10px 20px 20px 20px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.text-decorator {
+    padding: 10px;
+    display: inline-block;
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+   border-radius: 10px;
+
+}
+
+
 /* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
 select {
     text-align: center;
@@ -289,6 +308,11 @@ select:focus {
 .covid-table {
     table-layout:fixed;
     width: 100%;
+    margin-bottom: 0px;
+}
+
+#covidCompare .text-container {
+    padding-top: 0px;
 }
 
 .table-heading {
@@ -298,12 +322,15 @@ select:focus {
 #firstCountrySelect, #secondCountrySelect {
     width: 100%;
     max-width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 16px 0px 10px 0px;
 }
 
 .table>:not(:last-child)>:last-child>* {
-    border-bottom-color: #EFF1F3;
+    border-bottom-color: transparent;
+}
+
+.table>:not(caption)>*>* {
+border-bottom-color: transparent;
 }
 
 tbody, td, tfoot, th, thead, tr {
@@ -473,6 +500,11 @@ table th, table td{
 
   .input-section {
       padding-top:10px;
+      padding-bottom: 0;
+  }
+
+  .text-container {
+      font-size: 12px;
   }
 
   /* Compare */
@@ -482,8 +514,8 @@ table th, table td{
   }
 
   #firstCountrySelect, #secondCountrySelect {
-      margin-bottom: 5px;
-      margin-top: 5px;
+      margin: 6px 0px 5px 0px;
+      
   }
 
   table {
