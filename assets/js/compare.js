@@ -123,14 +123,15 @@ $("#firstCountrySelect").add("#secondCountrySelect").on('change', function () {
 
     // If both values are default
     if ($("#firstCountrySelect").val() == "none" && $("#secondCountrySelect").val() == "none") {
-        // Reset the table
+        // Reset the section
         $("#covidCompare .text-container").removeClass("d-none");
         $("#covidTableBody").html(``);
     } else {
-        // Otherwise, perform search function to update table.
+        // Check if the text-container still exists, if so remove it
         if (!$("#covidCompare .text-container").hasClass("d-none")) {
             $("#covidCompare .text-container").addClass("d-none");
         }
+        // Otherwise, perform search function to update table.
         formatTableData();
     }
 })
