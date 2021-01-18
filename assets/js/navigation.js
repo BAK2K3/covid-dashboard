@@ -44,12 +44,15 @@ function toggleCovidSections(activeElement) {
 
     // Reset compare section
     $("#covidCompare").addClass("d-none");
-    $("#covidTableBody").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
+    $("#covidTableBody").html(``);
+    $("#covidCompare .text-container").removeClass("d-none");
     $("#firstCountrySelect")[0].selectedIndex = 0;
     $("#secondCountrySelect")[0].selectedIndex = 0;
 
     // Reset visualise section
     $("#covidVisualise").addClass("d-none");
+    $("#covidVisualise .chart-container").addClass("d-none");
+    $("#covidVisualise .text-container").removeClass("d-none");
     $("#countrySelectVisualise")[0].selectedIndex = 0;
     if (typeof (myLineChart) !== "undefined") {
         // Destroy the graph if it exists
@@ -60,6 +63,9 @@ function toggleCovidSections(activeElement) {
 
     // Reset map section
     $("#covidMap").addClass("d-none");
+    $("#covidMap .mapContainer").addClass("d-none");
+    $("#covidMap .text-container").removeClass("d-none");
+    $("#covidMap .text-container").removeClass("d-none");
     $("#statisticSelectMap")[0].selectedIndex = 0;
     $(".map").html("");
     // Only CSS class with camelcase due to Mapael targeting
