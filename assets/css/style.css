@@ -322,7 +322,7 @@ select:focus {
 #firstCountrySelect, #secondCountrySelect {
     width: 100%;
     max-width: 100%;
-    margin: 16px 0px 10px 0px;
+    margin: 16px 0px 15px 0px;
 }
 
 .table>:not(:last-child)>:last-child>* {
