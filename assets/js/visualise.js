@@ -127,7 +127,7 @@ function generateGraph() {
 // Function to excecute on selector change
 $("#countrySelectVisualise").change(function () {
 
-    // If the value selected is "Select a country", destroy the graph
+    // If the value selected is "Select a country", destroy the graph and reset the section
     if ($(this).val() == "none") {
         $("#covidVisualise .chart-container").addClass("d-none");
         $("#covidVisualise .text-container").removeClass("d-none");
@@ -136,8 +136,7 @@ $("#countrySelectVisualise").change(function () {
         $("#lineChart").removeAttr("width");
 
     } else {
-
-
+        // Checks to see if the correct containers are in display
         if ($("#covidVisualise .chart-container").hasClass("d-none")) {
             $("#covidVisualise .chart-container").removeClass("d-none");
             $("#covidVisualise .text-container").addClass("d-none");
