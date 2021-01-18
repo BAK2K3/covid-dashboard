@@ -129,11 +129,20 @@ $("#countrySelectVisualise").change(function () {
 
     // If the value selected is "Select a country", destroy the graph
     if ($(this).val() == "none") {
+        $("#covidVisualise .chart-container").addClass("d-none");
+        $("#covidVisualise .text-container").removeClass("d-none");
         myLineChart.destroy();
         // Remove lingering inline style attribute preventing specified width/height
         $("#lineChart").removeAttr("width");
+
     } else {
-        // Elseexecute formateTimeSeries function.
+
+
+        if ($("#covidVisualise .chart-container").hasClass("d-none")) {
+            $("#covidVisualise .chart-container").removeClass("d-none");
+            $("#covidVisualise .text-container").addClass("d-none");
+        }
+        // Else execute formateTimeSeries function.
         formatTimeSeries();
     }
 
