@@ -175,6 +175,8 @@ $("#statisticSelectMap").change(function () {
 
     // If the value selected is the default option, destroy the map
     if ($(this).val() == "none") {
+        $("#covidMap .mapContainer").addClass("d-none");
+        $("#covidMap .text-container").removeClass("d-none");
         $(".map").html("");
         $(".areaLegend").html("");
 
@@ -197,6 +199,10 @@ $("#statisticSelectMap").change(function () {
             animDuration: 300
         }]);
     } else {
+        if ($("#covidMap .mapContainer").hasClass("d-none")) {
+            $("#covidMap .mapContainer").removeClass("d-none");
+            $("#covidMap .text-container").addClass("d-none");
+        }
         // Otherwise, generate map
         formatMapData();
     }
