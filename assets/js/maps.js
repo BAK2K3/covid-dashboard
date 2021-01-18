@@ -173,7 +173,7 @@ function generateMap() {
 // Update the Mapael map to target specific statistic within nested object (mapdata)
 $("#statisticSelectMap").change(function () {
 
-    // If the value selected is the default option, destroy the map
+    // If the value selected is the default option, destroy the map and reset the section
     if ($(this).val() == "none") {
         $("#covidMap .mapContainer").addClass("d-none");
         $("#covidMap .text-container").removeClass("d-none");
@@ -199,6 +199,7 @@ $("#statisticSelectMap").change(function () {
             animDuration: 300
         }]);
     } else {
+        // Check to see whether the correct containers are in view
         if ($("#covidMap .mapContainer").hasClass("d-none")) {
             $("#covidMap .mapContainer").removeClass("d-none");
             $("#covidMap .text-container").addClass("d-none");
