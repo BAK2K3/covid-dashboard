@@ -124,9 +124,13 @@ $("#firstCountrySelect").add("#secondCountrySelect").on('change', function () {
     // If both values are default
     if ($("#firstCountrySelect").val() == "none" && $("#secondCountrySelect").val() == "none") {
         // Reset the table
-        $("#covidTableBody").html(`<tr><td colspan ='3' > Please select two countries to compare statistics.</td></tr>`);
+        $("#covidCompare .text-container").removeClass("d-none");
+        $("#covidTableBody").html(``);
     } else {
         // Otherwise, perform search function to update table.
+        if (!$("#covidCompare .text-container").hasClass("d-none")) {
+            $("#covidCompare .text-container").addClass("d-none");
+        }
         formatTableData();
     }
 })
