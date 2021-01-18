@@ -26,7 +26,7 @@ function formatMapData() {
                 mapData[statistic].areas[fullISO[country.country]] = {
 
                     // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
-                    value: country[statistic], href: "#", tooltip: {
+                    value: country[statistic], tooltip: {
                         content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
                     }
                 };
@@ -42,7 +42,7 @@ function formatMapData() {
 
                 // And provide a generic "No data available" and -1 value for identification on the map
                 mapData[statistic].areas[mapCountry] = {
-                    value: -1, href: "#", tooltip: {
+                    value: -1, href: "", tooltip: {
                         content: `No data available for this country!`
                     }
                 };
@@ -152,6 +152,11 @@ function generateMap() {
                     "stroke-width": 0.6,
                     "fill": "#D88373"
                 },
+                eventHandlers: {
+                    click: function () {
+                    },
+                    dblclick: function () { }
+                }
             },
             // Zoom settings
             zoom: {
