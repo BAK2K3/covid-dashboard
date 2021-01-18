@@ -61,15 +61,27 @@
 
         <!-- COVID Info Section -->
         <section id="covidInfo" class="d-flex justify-content-center covid-data d-none">
-            <div class="container covid-info-container text-center dark-font">
+            <div class="container covid-info-container">
 
-                <h2> Welcome to the Covid Dashboard </h2>
-                <h3> An interactive interface, utilising the most up-to-date COVID-19 statistics available.</h3>
-
-                <p><strong>Compare:</strong> Compare selected country data side by side.</p>
-                <p><strong>Visualise:</strong> View historical infection data for the past 30 days.</p>
-                <p><strong>Map:</strong> View a heatmap of the world for selected statistic.</p>
-
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Welcome to the COVID Dashboard </h2>
+                    <p>
+                        An interactive interface, utilising the most up-to-date COVID-19 statistics available.
+                    </p>
+                    <div class="text-decorator">
+                        <p><span class="underline"><strong>Compare:</strong></span> Compare selected country statistics
+                            side by side.</p>
+                        <p><span class="underline"><strong>Visualise:</strong></span> View historical accumulated
+                            infection data for the past 30 days.
+                        </p>
+                        <p><span class="underline"><strong>Map:</strong></span> View a heatmap of the world for selected
+                            statistics.</p>
+                    </div>
+                    <p>To return to this area, please use the COVID Dadshboard heading.</p>
+                    <p>The available data is updated approximately every 10 minutes; please refresh the page to obtain
+                        the most updated data.</p>
+                </div>
             </div>
         </section>
 
@@ -97,6 +109,20 @@
                     <tbody id="covidTableBody">
                     </tbody>
                 </table>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Compare </h2>
+                    <p>
+                        Compare Worldwide Daily COVID-19 Statistics
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>single country</strong> to obtain its current statistics.</p>
+                        <p>Select a <strong>second country</strong> to compare both countries' statistics.</p>
+                        <p>Select one, or both, of the country selections to the <strong>default entry</strong> to
+                            remove the respective data.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -111,6 +137,25 @@
                     <select name="countrySelectVisualise" id="countrySelectVisualise">
                         <option value="">Country Select</option>
                     </select>
+                </div>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Visualise </h2>
+                    <p>
+                        View Historic Accumulative COVID-19 Statistics Per Country
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>country</strong> to view its total accumulative statistics for the past 30
+                            days.</p>
+                        <p>Hover or click on <strong>any point</strong> on the graph to read the specific value for the
+                            day and statistic.</p>
+                        <p>Click on <strong>any legend</strong> to remove the respective data from the graph.</p>
+                        <p>Select the <strong>default option</strong> from the dropdown to remove the graph.</p>
+                    </div>
+                    <br>
+                    <p><strong>Note:</strong> The historical data for this particular section, especially "Recovered",
+                        may not accurately reflect the given countries statistics.</p>
                 </div>
 
                 <!-- Placeholder chart-containter for Chart.js -->
@@ -131,6 +176,24 @@
                     <select name="statisticSelectMap" id="statisticSelectMap">
                         <option value="">Statistics Select</option>
                     </select>
+                </div>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Map </h2>
+                    <p>
+                        Compare COVID-19 Statistics on a Worldwide Basis
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>statistic</strong> to view a heatmap of the world.</p>
+                        <p>Hover or click on <strong>any country</strong> to view the specific value for that country.
+                        </p>
+                        <p>Use the <strong>Plus or Minus</strong>, your <strong>Mousewheel</strong>, or
+                            <strong>Pinch</strong> to zoom in and out.</p>
+                        <p>Once zoomed in, <strong>drag</strong> across the map to move the perspective.</p>
+                        <p>Click or tap on any <strong>legend item</strong> to filter that particular threshold from the
+                            data.</p>
+                    </div>
                 </div>
 
                 <!-- Placeholder divs (map/arealegend) for Mapael -->
@@ -162,8 +225,6 @@
             </div>
         </div>
     </footer>
-
-
 
     <!--  Donate Modal -->
 
