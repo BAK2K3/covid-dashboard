@@ -315,10 +315,6 @@ select:focus {
     padding-top: 0px;
 }
 
-.table-heading {
-    text-decoration: underline;
-}
-
 #firstCountrySelect, #secondCountrySelect {
     width: 100%;
     max-width: 100%;
