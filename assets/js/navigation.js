@@ -51,6 +51,7 @@ function toggleCovidSections(activeElement) {
 
     // Reset visualise section
     $("#covidVisualise").addClass("d-none");
+    $(".table-heading").html("");
     $("#covidVisualise .chart-container").addClass("d-none");
     $("#covidVisualise .text-container").removeClass("d-none");
     $("#countrySelectVisualise")[0].selectedIndex = 0;
