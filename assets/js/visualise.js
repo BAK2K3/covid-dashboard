@@ -39,13 +39,29 @@ function formatTimeSeries() {
         // Iterate through the datasets contained (cases, recovered, deaths)
         fullData.forEach(function (element) {
 
+
+            // Use switch casing to determine label colours
+            let colour;
+            switch (element[0]) {
+                case "cases":
+                    colour = "#D88373";
+                    break;
+
+                case "deaths":
+                    colour = "#EFF1F3";
+                    break;
+
+                case "recovered":
+                    colour = "#252627";
+                    break;
+            }
+
             // Create a new object
             let obj = {};
             // Format the data appropriately for the graph script.
             obj["data"] = Object.values(element[1]);
             obj["label"] = element[0];
-            // Generate random colour for the line
-            obj["borderColor"] = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            obj["borderColor"] = colour;
             obj["fill"] = false;
             // Push the current object into the dataset array
             datasets.push(obj);
