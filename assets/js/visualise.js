@@ -59,10 +59,10 @@ function formatTimeSeries() {
             // Create a new object
             let obj = {};
             // Format the data appropriately for the graph script.
-            obj["data"] = Object.values(element[1]);
-            obj["label"] = element[0];
-            obj["borderColor"] = colour;
-            obj["fill"] = false;
+            obj.data = Object.values(element[1]);
+            obj.label = element[0];
+            obj.borderColor = colour;
+            obj.fill = false;
             // Push the current object into the dataset array
             datasets.push(obj);
 
@@ -121,7 +121,7 @@ function formatTimeSeries() {
                     }]
                 }
             }
-        }
+        };
 
         // Checks whether graph exists again
         if ((typeof (myLineChart) == "undefined") || (myLineChart.canvas == null)) {
@@ -171,5 +171,4 @@ $("#countrySelectVisualise").change(function () {
         // Else execute formateTimeSeries function.
         formatTimeSeries();
     }
-
-})
+});
