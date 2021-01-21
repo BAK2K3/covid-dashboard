@@ -16,7 +16,7 @@ function formatTimeSeries() {
     });
 
     // Extract chosen country from selector
-    var countryLabel = globalVisualDataset[indexTargetCountry].country;
+    let countryLabel = globalVisualDataset[indexTargetCountry].country;
 
     // Check whether current graph exists, and is also not already displaying country selected
     if ((typeof (myLineChart) == "undefined") || (myLineChart.options.title.text !== countryLabel)) {
@@ -25,7 +25,7 @@ function formatTimeSeries() {
         graphConfig = {};
 
         // Define timescale data labels, 
-        var timescaleLabels = [];
+        let timescaleLabels = [];
 
         // Convert the timescales to date objects
         Object.keys(globalVisualDataset[indexTargetCountry].timeline.cases).forEach(function (date) {
@@ -33,7 +33,7 @@ function formatTimeSeries() {
         });
 
         // Obtain the full historic data object for chosen country
-        var fullData = Object.entries(globalVisualDataset[indexTargetCountry].timeline);
+        let fullData = Object.entries(globalVisualDataset[indexTargetCountry].timeline);
 
         let datasets = [];
         // Iterate through the datasets contained (cases, recovered, deaths)
@@ -139,7 +139,7 @@ function formatTimeSeries() {
 function generateGraph() {
 
     // Create an instance of the line chart, using the labels and datasets formatted previously
-    var ctx = $('#lineChart');
+    let ctx = $('#lineChart');
 
     // Set Chart default font settings
     Chart.defaults.global.defaultColor = "#0E0F19";

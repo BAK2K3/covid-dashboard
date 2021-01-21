@@ -106,19 +106,19 @@ function fetchApiData() {
 function generateHTML() {
 
     // List full set of countries for compare
-    var listItemsCompare = ' <option value = "none" > Select a Country </option> ';
+    let listItemsCompare = ' <option value = "none" > Select a Country </option> ';
     listItemsCompare += globalCompareDataset.map(function (item) {
         return ` <option value = "${item.country}" > ${item.country} </option> `;
     });
 
     // List Condensed Countries (for historical availablity) for Visualise
-    var listItemsVisual = ' <option value = "none" > Select a Country </option> ';
+    let listItemsVisual = ' <option value = "none" > Select a Country </option> ';
     condensedCountryList.forEach(function (item) {
         listItemsVisual += ` <option value = "${item}" > ${item} </option> `;
     });
 
     // List Stats for Map Section
-    var listItemsMap = `<option value = "none" > Select a Statistic </option>`;
+    let listItemsMap = `<option value = "none" > Select a Statistic </option>`;
     Object.keys(globalCompareDataset[0]).forEach(function (item) {
         // Checks that statistic is not null in statisticDictionary, also prevents Update Time/Country Name from being added
         if (statisticDictionary[item] !== null && statisticDictionary[item] !== "Time of Update" && statisticDictionary[item] !== "Name of Country") {

@@ -2,8 +2,8 @@
 function formatTableData() {
 
     // Obtain countries selected from dropdown menus
-    var firstTargetCountry = $("#firstCountrySelect").val();
-    var secondTargetCountry = $("#secondCountrySelect").val();
+    let firstTargetCountry = $("#firstCountrySelect").val();
+    let secondTargetCountry = $("#secondCountrySelect").val();
 
     // If not default value
     if (firstTargetCountry !== "none") {
@@ -21,9 +21,9 @@ function formatTableData() {
     }
 
     // Obtain the list of keys for the compare dataset (statistic names)
-    var statisticsKey = Object.keys(globalCompareDataset[0]);
+    let statisticsKey = Object.keys(globalCompareDataset[0]);
     // Initiate HTML
-    var outputHTML = "";
+    let outputHTML = "";
 
     // For each key, generate given value for each country, and append to HTML
     statisticsKey.forEach(function (el) {
@@ -32,8 +32,8 @@ function formatTableData() {
         if (statisticDictionary[el] !== null) {
 
             // declare the data variables for each country's statistic 
-            var firstCountryData;
-            var secondCountryData;
+            let firstCountryData;
+            let secondCountryData;
 
             // Checks whether the target country is the default, and set the value accordingly
             if (firstTargetCountry == "none") {
