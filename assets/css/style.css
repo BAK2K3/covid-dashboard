@@ -469,14 +469,29 @@ table th, table td{
 
 /************************************************************* Modals */
 
+#donateModalLabel, #creditsModalLabel {
+
+    font-weight: 700;
+    text-decoration: underline;
+    
+}
+
 .modal .modal-content {
     background-color: #EFF1F3; 
+    border-radius: 20px;
+    padding: 15px;
 }
 
 .modal a {
-    text-decoration: none;
-    color: #72A3C0;
-    font-weight: 500;
+    text-decoration: underline;
+    color: rgb(50, 94, 119);
+    font-weight: 600;
+}
+
+.modal .modal-footer {
+    border-top: none;
+    padding: 0;
+
 }
 
 /************************************************************* Media Queries */
@@ -489,7 +504,7 @@ table th, table td{
     /* Headings */
 
     header {
-        margin-top:35px; 
+        margin-top:25px; 
     }
    
     .main-heading {
@@ -527,6 +542,10 @@ table th, table td{
       font-size: 12px;
   }
 
+  .text-decorator {
+      padding-top: 0;
+      padding-bottom: 0;
+  }
   /* Compare */
 
   #covidCompare .covid-data-container {
