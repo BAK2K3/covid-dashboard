@@ -44,15 +44,15 @@ function formatTimeSeries() {
             let colour;
             switch (element[0]) {
                 case "cases":
-                    colour = "#D88373";
-                    break;
-
-                case "deaths":
                     colour = "#EFF1F3";
                     break;
 
-                case "recovered":
+                case "deaths":
                     colour = "#252627";
+                    break;
+
+                case "recovered":
+                    colour = "#7fd34d";
                     break;
             }
 
@@ -101,6 +101,11 @@ function formatTimeSeries() {
                         scaleLabel: {
                             display: true,
                             labelString: 'Date'
+                        },
+                        gridLines: {
+                            color: "rgba(15, 16, 26, 0.25)",
+                            zeroLineColor: "rgba(15, 16, 26, 0.25)"
+
                         }
                     }],
                     yAxes: [{
@@ -108,6 +113,10 @@ function formatTimeSeries() {
                         scaleLabel: {
                             display: true,
                             labelString: 'Total'
+                        },
+                        gridLines: {
+                            color: "rgba(15, 16, 26, 0.25)",
+                            zeroLineColor: "rgba(15, 16, 26, 0.25)"
                         }
                     }]
                 }
@@ -133,7 +142,8 @@ function generateGraph() {
     var ctx = $('#lineChart');
 
     // Set Chart default font settings
-    Chart.defaults.global.defaultFontColor = "#212529";
+    Chart.defaults.global.defaultColor = "#0E0F19";
+    Chart.defaults.global.defaultFontColor = "#0E0F19";
     Chart.defaults.global.defaultFontFamily = "'Raleway', 'sans-serif'";
 
     myLineChart = new Chart(ctx, graphConfig);
