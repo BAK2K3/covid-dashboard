@@ -44,7 +44,7 @@ const condensedCountryList = ["Afghanistan", "Albania", "Algeria", "Andorra", "A
 // Full list of countries on World_Countries.js, displayed in ISO2 format. 
 const worldCountriesISOList = ["PE", "BF", "FR", "LY", "BY", "PK", "ID", "YE", "MG", "BO", "CI", "DZ", "CH", "CM", "MK", "BW", "UA", "KE", "TW", "JO", "MX", "AE", "BZ", "BR", "SL", "ML", "CD", "IT", "SO", "AF", "BD", "DO", "GW", "GH",
     "AT", "SE", "TR", "UG", "MZ", "JP", "NZ", "CU", "VE", "PT", "CO", "MR", "AO", "DE", "SD", "TH", "AU", "PG", "IQ", "HR", "GL", "NE", "DK", "LV", "RO", "ZM", "IR", "MM", "ET", "GT", "SR", "EH", "CZ", "TD", "AL", "FI", "SY", "KG", "SB", "OM",
-    , "PA", "AR", "GB", "CR", "PY", "GN", "IE", "NG", "TN", "PL", "NA", "ZA", "EG", "TZ", "GE", "SA", "VN", "RU", "HT", "BA", "IN", "CN", "CA", "SV", "GY", "BE", "GQ", "LS", "BG", "BI", "DJ", "AZ", "MY", "PH", "UY", "CG", "RS", "ME", "EE", "RW",
+    "PA", "AR", "GB", "CR", "PY", "GN", "IE", "NG", "TN", "PL", "NA", "ZA", "EG", "TZ", "GE", "SA", "VN", "RU", "HT", "BA", "IN", "CN", "CA", "SV", "GY", "BE", "GQ", "LS", "BG", "BI", "DJ", "AZ", "MY", "PH", "UY", "CG", "RS", "ME", "EE", "RW",
     "AM", "SN", "TG", "ES", "GA", "HU", "MW", "TJ", "KH", "KR", "HN", "IS", "NI", "CL", "MA", "LR", "NL", "CF", "SK", "LT", "ZW", "LK", "IL", "LA", "KP", "GR", "TM", "EC", "BJ", "SI", "NO", "MD", "LB", "NP", "ER", "US", "KZ", "SZ", "UZ", "MN",
     "BT", "NC", "FJ", "KW", "TL", "BS", "VU", "FK", "GM", "QA", "JM", "CY", "PR", "PS", "BN", "TT", "PF", "WS", "LU", "KM", "FO", "SS", "BH"];
 
@@ -75,7 +75,7 @@ const statisticDictionary = {
     activePerOneMillion: null,
     recoveredPerOneMillion: null,
     criticalPerOneMillion: null
-}
+};
 
 
 // Function for obtaining key from specified value
@@ -104,8 +104,7 @@ function fetchApiData(callback = $.noop, argument = "all") {
                 if (typeof callback === 'function') {
                     callback();
                 }
-            }
-        )
+            });
     }
 
     // If only compare data is required
@@ -126,7 +125,7 @@ function fetchApiData(callback = $.noop, argument = "all") {
                 // Catch errors
             }, function (errorResponse) {
                 console.log(errorResponse);
-            })
+            });
     }
 
     // If only visual data is required
@@ -147,7 +146,7 @@ function fetchApiData(callback = $.noop, argument = "all") {
                 // Catch errors
             }, function (errorResponse) {
                 console.log(errorResponse);
-            })
+            });
 
     }
 
@@ -160,14 +159,13 @@ function generateHTML() {
     var listItemsCompare = ' <option value = "none" > Select a Country </option> ';
     listItemsCompare += globalCompareDataset.map(function (item) {
         return ` <option value = "${item.country}" > ${item.country} </option> `;
-    })
+    });
 
     // List Condensed Countries (for historical availablity) for Visualise
     var listItemsVisual = ' <option value = "none" > Select a Country </option> ';
     condensedCountryList.forEach(function (item) {
         listItemsVisual += ` <option value = "${item}" > ${item} </option> `;
-
-    })
+    });
 
     // List Stats for Map Section
     var listItemsMap = `<option value = "none" > Select a Statistic </option>`;
@@ -176,7 +174,7 @@ function generateHTML() {
         if (statisticDictionary[item] !== null && statisticDictionary[item] !== "Time of Update" && statisticDictionary[item] !== "Name of Country") {
             listItemsMap += ` <option value = "${statisticDictionary[item]}" > ${statisticDictionary[item]} </option> `;
         }
-    })
+    });
 
     // Insert the generated lists into the relevant Country Select Drop downs
     $("#firstCountrySelect").html(listItemsCompare);
