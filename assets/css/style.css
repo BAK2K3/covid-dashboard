@@ -16,6 +16,7 @@ body {
     /* https://css-tricks.com/perfect-full-page-background-image/ */
     background: url(../images/background.png) no-repeat center center fixed;
     background-size: cover;
+    background-color: #72A3C0;
     font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
@@ -284,13 +285,18 @@ header {
 }
 
 .text-decorator {
-    padding: 10px;
+    padding: 10px 25px 10px 25px;
     display: inline-block;
    -moz-box-shadow:    inset 0 0 10px #000000;
    -webkit-box-shadow: inset 0 0 10px #000000;
    box-shadow:         inset 0 0 10px #000000;
    border-radius: 10px;
 
+}
+
+p {
+    margin-top: 16px;
+    font-weight: 500;
 }
 
 /* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
@@ -326,7 +332,7 @@ select:focus {
 .covid-table {
     table-layout:fixed;
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 #covidCompare .text-container {
