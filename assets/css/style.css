@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 /************************************************************* Google Font Imports */
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -6,7 +13,8 @@
 
 body,
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     height: 100%;
 }
 
@@ -18,13 +26,21 @@ body {
     background-size: cover;
     background-color: #72A3C0;
     font-family: 'Raleway', sans-serif;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .content-wrapper {
-    flex: 1 0 auto; 
-    flex-wrap: wrap;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto; 
+    -ms-flex-wrap: wrap; 
+        flex-wrap: wrap;
     padding: 20px;
 }
 
@@ -76,7 +92,10 @@ header {
 .logo-background {
     border: 2px solid #0E0F19;
     border-radius: 15px;
-    box-shadow: 
+    -webkit-box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
     background-color: #72A3C0;
@@ -100,8 +119,12 @@ header {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: rotate(45deg);
-  transform-origin: 40px 40px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 40px 40px;
+      -ms-transform-origin: 40px 40px;
+          transform-origin: 40px 40px;
 }
 .lds-heart div {
   top: 32px;
@@ -110,7 +133,8 @@ header {
   width: 32px;
   height: 32px;
   background: #0E0F19;
-  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+          animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:after,
 .lds-heart div:before {
@@ -129,24 +153,56 @@ header {
   top: -24px;
   border-radius: 50% 50% 0 0;
 }
-@keyframes lds-heart {
+@-webkit-keyframes lds-heart {
   0% {
-    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
   }
   5% {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   39% {
-    transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
   }
   45% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   60% {
-    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
   }
   100% {
-    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+}
+@keyframes lds-heart {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  5% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  39% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  60% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
 }
 
@@ -155,8 +211,12 @@ header {
 #covidToggler {
     margin-top:10px;
     margin-bottom: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 #covidToggler .btn {
@@ -174,7 +234,8 @@ header {
 }
 
 #covidToggler .btn:focus {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #covidToggler .btn-active {
@@ -193,9 +254,11 @@ header {
   transform: perspective(1px) translateZ(0);
   position: relative;
   -webkit-transition-property: color;
+  -o-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+     transition-duration: 0.3s;
   /* Removed border from downwards fill */
   border: none;
 }
@@ -208,7 +271,8 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
   /* Removed default background color, amended borders */
   border-bottom-left-radius: 0;
@@ -218,15 +282,23 @@ header {
   /**/
   
   -webkit-transform: scaleY(0);
-  transform: scaleY(0);
+  -ms-transform: scaleY(0);
+      transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
   -webkit-transition-property: transform;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  -o-transition-property: transform;
   transition-property: transform;
+  transition-property: transform, -webkit-transform;
   -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+     transition-duration: 0.3s;
   -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+     transition-timing-function: ease-out;
 }
 
 .hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
@@ -237,7 +309,8 @@ header {
 
 .hvr-sweep-to-top:hover:before, .hvr-sweep-to-top:focus:before, .hvr-sweep-to-top:active:before {
   -webkit-transform: scaleY(1);
-  transform: scaleY(1);
+  -ms-transform: scaleY(1);
+      transform: scaleY(1);
 }
 
 /* Targetted Customisation for the sweep effect */
@@ -265,7 +338,10 @@ header {
 .covid-data-container, .covid-info-container {
     border: 1.2px solid #0E0F19;
     border-radius: 15px;
-    box-shadow: 
+    -webkit-box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
     background-color: #72A3C0;
@@ -287,7 +363,6 @@ header {
 .text-decorator {
     padding: 10px 25px 10px 25px;
     display: inline-block;
-   -moz-box-shadow:    inset 0 0 10px #000000;
    -webkit-box-shadow: inset 0 0 10px #000000;
    box-shadow:         inset 0 0 10px #000000;
    border-radius: 10px;
@@ -302,9 +377,12 @@ p {
 /* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
 select {
     text-align: center;
-    text-align-last: center;
+    -moz-text-align-last: center;
+         text-align-last: center;
     border: 1px solid #0E0F19;
-    box-shadow: 
+    -webkit-box-shadow: 
+    8px 8px 8px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 
     8px 8px 8px 0 rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     -moz-appearance: none;
@@ -312,7 +390,8 @@ select {
     appearance: none;
     background-color: #EFF1F3;
     cursor: pointer;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     padding-left: 6px;
     padding-right: 6px;
 }
@@ -382,15 +461,15 @@ table th, table td{
 .mapael .mapTooltip {
     position: absolute;
     background-color: #EFF1F3;
-    moz-opacity: 0.70;
-    opacity: 0.70;
+    moz-opacity: 0.80;
+    opacity: 0.80;
     filter: alpha(opacity=70);
     border-radius: 10px;
     padding: 10px;
     z-index: 1000;
     max-width: 200px;
     display: none;
-    color: #212529;
+    color: #0E0F19;
 }
 
 .mapael .areaLegend svg text {
@@ -414,10 +493,10 @@ table th, table td{
     left: 10px;
 
     -webkit-user-select: none;
-    -khtml-user-select : none;
     -moz-user-select: none;
     -o-user-select : none;
-    user-select: none;
+    -ms-user-select: none;
+        user-select: none;
 }
 
 /* Reset Zoom button first */
@@ -438,16 +517,25 @@ table th, table td{
 /************************************************************* Footer */
 /* Sticky Footer using Flexbox: https://css-tricks.com/couple-takes-sticky-footer/ */
 #footer {
-  flex-shrink: 0; 
+  -ms-flex-negative: 0;
+      flex-shrink: 0; 
 }
 
 .footer-section {
     background-color: #72A3C0;
     height: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex; 
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
+    -webkit-box-align: center; 
+        -ms-flex-align: center; 
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-shadow: 
+    inset 0px 7px 3px -3px rgba(0, 0, 0, 0.25);
+            box-shadow: 
     inset 0px 7px 3px -3px rgba(0, 0, 0, 0.25);
 }
 
@@ -507,63 +595,65 @@ table th, table td{
     }
 
 
-  /* Covid Toggler */
-  #covidToggler {
-    justify-content: space-between; 
-  }
+    /* Covid Toggler */
+    #covidToggler {
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between; 
+    }
 
-  #covidToggler .btn {
-    max-width: 90px;
-    padding: 5px 0 5px 0;
-    font-size: 15px;
-  }
+    #covidToggler .btn {
+        max-width: 90px;
+        padding: 5px 0 5px 0;
+        font-size: 15px;
+    }
 
-  /* Data Containers */
-  .covid-data  {
-    margin-top: -1px;
-  }
+    /* Data Containers */
+    .covid-data  {
+        margin-top: -1px;
+    }
 
-  select {
-      font-size: 11px;
-  }
+    select {
+        font-size: 11px;
+    }
 
-  .input-section {
-      padding-top:10px;
-      padding-bottom: 0;
-  }
+    .input-section {
+        padding-top:10px;
+        padding-bottom: 0;
+    }
 
-  .text-container {
-      font-size: 12px;
-  }
+    .text-container {
+        font-size: 12px;
+    }
 
-  .text-decorator {
-      padding-top: 0;
-      padding-bottom: 0;
-  }
-  /* Compare */
+    .text-decorator {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /* Compare */
 
-  #covidCompare .covid-data-container {
-    padding: 0px 5px 0 5px;
-  }
+    #covidCompare .covid-data-container {
+        padding: 0px 5px 0 5px;
+    }
 
-  #firstCountrySelect, #secondCountrySelect {
-      margin: 6px 0px 5px 0px;
-      
-  }
+    #firstCountrySelect, #secondCountrySelect {
+        margin: 6px 0px 5px 0px;
+        
+    }
 
-  table {
-      font-size: 12px;
-  }
+    table {
+        font-size: 12px;
+    }
 
-  /* Visualise */
+    /* Visualise */
 
-  #covidVisualise .covid-data-container {
-      padding: 0;
-  }
+    #covidVisualise .covid-data-container {
+        padding: 0;
+    }
 
-  .chart-container {
-      min-height: 350px;
-  }
+    .chart-container {
+        min-height: 350px;
+    }
 
    /* Map */
 
