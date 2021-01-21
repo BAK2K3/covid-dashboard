@@ -83,7 +83,7 @@
                     </div>
                     <p>To return to this area, please use the COVID Dashboard heading.</p>
                     <p>The available data is updated approximately every 10 minutes; please refresh the page to obtain
-                        the most updated data.</p>
+                        the most up-to-date information.</p>
                 </div>
             </div>
         </section>
@@ -100,8 +100,10 @@
                             <th scope="col" class="col"><select name="firstCountrySelect" id="firstCountrySelect">
                                     <option value="">Country Select</option>
                                 </select></th>
-                            <!-- Stats Heading -->
-                            <th scope="col" class="col-3"><span class="table-heading">Statistic</span></th>
+                            <!-- Stats Heading & Interaction -->
+                            <th scope="col" class="col-3">
+                                <span class="table-heading">Statistic</span>
+                            </th>
                             <!-- Country Select 2 -->
                             <th scope="col" class="col"><select name="secondCountrySelect" id="secondCountrySelect">
                                     <option value="">Country Select</option>
@@ -122,8 +124,8 @@
                     <div class="text-decorator">
                         <p>Select a <strong>single country</strong> to obtain its current statistics.</p>
                         <p>Select a <strong>second country</strong> to compare both countries' statistics.</p>
-                        <p>Select one, or both, of the country selections to the <strong>default entry</strong> to
-                            remove the respective data.</p>
+                        <p>Set one, or both, of the country selections to the <strong>Select a Country</strong>
+                            option to remove the respective data.</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +156,8 @@
                         <p>Hover or click on <strong>any point</strong> on the graph to read the specific value for the
                             day and statistic.</p>
                         <p>Click on <strong>any legend</strong> to remove the respective data from the graph.</p>
-                        <p>Select the <strong>default option</strong> from the dropdown to remove the graph.</p>
+                        <p>Select the <strong> Select a Country</strong> option from the dropdown to remove the graph.
+                        </p>
                     </div>
                     <br>
                     <p><strong>Note:</strong> The historical data for this particular section, especially "Recovered",
@@ -196,6 +199,8 @@
                         <p>Once zoomed in, <strong>drag</strong> across the map to move the perspective.</p>
                         <p>Click or tap on any <strong>legend item</strong> to filter that particular threshold from the
                             data.</p>
+                        <p>Select the <strong>Select a Statistic</strong> option from the dropdown to remove the map.
+                        </p>
                     </div>
                 </div>
 
@@ -234,10 +239,9 @@
     <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true"
         role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <!-- Price Table -->
-            <div class="modal-content table-responsive">
-
-                <!-- Package Heading -->
+            <!-- Modal Content -->
+            <div class="modal-content dark-font">
+                <!-- Modal Heading -->
                 <div class="modal-heading text-center heading-font">
                     <h2 id="donateModalLabel">Donate</h2>
                 </div>
@@ -283,6 +287,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Modal Footer -->
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn" data-bs-dismiss="modal">
                         Close
@@ -297,13 +302,13 @@
     <div class="modal fade" id="creditsModal" tabindex="-1" aria-labelledby="creditsModalLabel" aria-hidden="true"
         role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <!-- Price Table -->
-            <div class="modal-content table-responsive">
-
-                <!-- Package Heading -->
+            <!-- Modal content -->
+            <div class="modal-content dark-font">
+                <!-- Heading -->
                 <div class="modal-heading text-center heading-font">
                     <h2 id="creditsModalLabel">Credits</h2>
                 </div>
+                <!-- Body -->
                 <div class="table-responsive body-font">
                     <table class="table table-borderless text-center">
                         <thead>
@@ -335,6 +340,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Footer -->
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn" data-bs-dismiss="modal">
                         Close
