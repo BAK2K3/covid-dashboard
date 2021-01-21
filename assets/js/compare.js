@@ -9,14 +9,14 @@ function formatTableData() {
     if (firstTargetCountry !== "none") {
         // Find the index position of each country within the global compare dataset
         var firstTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
-            return entry.country == firstTargetCountry
+            return entry.country == firstTargetCountry;
         });
     }
 
     // If not default value
     if (secondTargetCountry !== "none") {
         var secondTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
-            return entry.country == secondTargetCountry
+            return entry.country == secondTargetCountry;
         });
     }
 
@@ -47,11 +47,11 @@ function formatTableData() {
 
                 if (firstTargetCountry !== "none") {
                     firstCountryData = new Date(globalCompareDataset[firstTargetCountryIndex][el]);
-                    firstCountryData = firstCountryData.toDateString() + " " + firstCountryData.getHours() + ":" + firstCountryData.getMinutes();
+                    firstCountryData = firstCountryData.toDateString() + " " + firstCountryData.getHours() + ":" + (("0" + firstCountryData.getMinutes()).slice(-2));
                 }
                 if (secondTargetCountry !== "none") {
                     secondCountryData = new Date(globalCompareDataset[secondTargetCountryIndex][el]);
-                    secondCountryData = secondCountryData.toDateString() + " " + secondCountryData.getHours() + ":" + secondCountryData.getMinutes();
+                    secondCountryData = secondCountryData.toDateString() + " " + secondCountryData.getHours() + ":" + (("0" + secondCountryData.getMinutes()).slice(-2));
                 }
 
                 // Checks whether the statistic is "country", and if so returns raw string.
@@ -93,13 +93,13 @@ function formatTableData() {
 
                         // Style for if first Country number is larger
                         firstCountryData = '<i class="fas fa-long-arrow-alt-up"></i> ' + firstCountryData;
-                        secondCountryData = secondCountryData + ' <i class="fas fa-long-arrow-alt-down"></i>'
+                        secondCountryData = secondCountryData + ' <i class="fas fa-long-arrow-alt-down"></i>';
 
                     } else if (firstCountryNumber < secondCountryNumber) {
 
                         // Style for if second Country number is larger
                         firstCountryData = '<i class="fas fa-long-arrow-alt-down"></i> ' + firstCountryData;
-                        secondCountryData = secondCountryData + ' <i class="fas fa-long-arrow-alt-up"></i>'
+                        secondCountryData = secondCountryData + ' <i class="fas fa-long-arrow-alt-up"></i>';
                     } else if (firstCountryNumber == secondCountryNumber) {
 
                         // Style for if numbers are the same
@@ -110,9 +110,9 @@ function formatTableData() {
             }
 
             // Add the Data variables for first and second countries to a table row, obtain relevant string from dictionairy, and add to existing html output
-            outputHTML += ` <tr><td>${firstCountryData}</td><td><strong>${statisticDictionary[el]}</strong></td><td>${secondCountryData}</td></tr >`
+            outputHTML += ` <tr><td>${firstCountryData}</td><td><strong>${statisticDictionary[el]}</strong></td><td>${secondCountryData}</td></tr >`;
         }
-    })
+    });
 
     // Set Output field to "output HTML" as generated above.
     $("#covidTableBody").html(outputHTML);
@@ -136,4 +136,4 @@ $("#firstCountrySelect").add("#secondCountrySelect").on('change', function () {
         // Otherwise, perform search function to update table.
         formatTableData();
     }
-})
+});
