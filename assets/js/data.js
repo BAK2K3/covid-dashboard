@@ -84,72 +84,22 @@ function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
 }
 
-// Function for API request for all countries
-function fetchApiData(callback = $.noop, argument = "all") {
+// Function for API request for both datasets
+function fetchApiData() {
+    $.when(
+        // Query all required datasets
+        $.getJSON("https://disease.sh/v3/covid-19/countries"),
+        $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
+    ).then(
 
-    // If all data is required
-    if (argument === "all") {
-        $.when(
-            // Query all required datasets
-            $.getJSON("https://disease.sh/v3/covid-19/countries"),
-            $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
-        ).then(
+        function (compareDataset, visualDataset) {
+            // Assign the response to the relevant global variable
+            globalCompareDataset = compareDataset[0];
+            globalVisualDataset = visualDataset[0];
 
-            function (compareDataset, visualDataset) {
-                // Assign the response to the relevant global variable
-                globalCompareDataset = compareDataset[0];
-                globalVisualDataset = visualDataset[0];
+            generateHTML();
 
-                // If a callback is input, execute (deferred)
-                if (typeof callback === 'function') {
-                    callback();
-                }
-            });
-    }
-
-    // If only compare data is required
-    if (argument === "compare") {
-
-        // Query API for Worldometer (Compare table) 
-        $.when(
-            $.getJSON("https://disease.sh/v3/covid-19/countries")
-        ).then(
-            function (compareDataset) {
-                // Assign the response to the relevant global variable
-                globalCompareDataset = compareDataset;
-
-                // If a callback is input, execute (deferred)
-                if (typeof callback === 'function') {
-                    callback();
-                }
-                // Catch errors
-            }, function (errorResponse) {
-                console.log(errorResponse);
-            });
-    }
-
-    // If only visual data is required
-    if (argument === "visual") {
-
-        // Query the historical endpoint using condensed country list
-        $.when(
-            $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
-        ).then(
-            function (visualDataset) {
-                // Assign the response to the relevant global variable
-                globalVisualDataset = visualDataset;
-
-                // If a callback is input, execute (deferred)
-                if (typeof callback === 'function') {
-                    callback();
-                }
-                // Catch errors
-            }, function (errorResponse) {
-                console.log(errorResponse);
-            });
-
-    }
-
+        });
 }
 
 // Map the global data to appropriate HTML strings for selectors
@@ -188,6 +138,6 @@ function generateHTML() {
 
 // On document load, fetch datasets then generate required HTML elements
 $(document).ready(
-    fetchApiData(generateHTML, "all")
+    fetchApiData()
 );
 
