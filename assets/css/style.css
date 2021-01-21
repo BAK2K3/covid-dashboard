@@ -323,12 +323,6 @@ select:focus {
 
 /************************************************************* Covid Compare*/
 
-.btn-table {
-    color: #EFF1F3;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
 .covid-table {
     table-layout:fixed;
     width: 100%;
