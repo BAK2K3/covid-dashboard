@@ -146,6 +146,7 @@ function generateGraph() {
     Chart.defaults.global.defaultFontColor = "#0E0F19";
     Chart.defaults.global.defaultFontFamily = "'Raleway', 'sans-serif'";
 
+    // Generate line chart with defined configuration
     myLineChart = new Chart(ctx, graphConfig);
 
 }

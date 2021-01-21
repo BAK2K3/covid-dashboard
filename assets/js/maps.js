@@ -32,7 +32,7 @@ function formatMapData() {
                 };
             }
 
-        })
+        });
 
         // For each statistic, iterate through the whole list of countries contained within world_countries.js
         worldCountriesISOList.forEach(function (mapCountry) {
@@ -47,8 +47,8 @@ function formatMapData() {
                     }
                 };
             }
-        })
-    })
+        });
+    });
 
     // Once all data preperation is complete, generate the map
     generateMap();
@@ -69,7 +69,7 @@ function generateLegends(statistic) {
             // if so, overrite the maxValue
             maxValue = mapData[statistic].areas[country].value;
         }
-    })
+    });
 
     // Access global "mapLegends", and calculate variable thresholds dependent on data
     mapLegends = {
@@ -121,7 +121,7 @@ function generateLegends(statistic) {
 
             ]
         }
-    }
+    };
 }
 
 // Function for generating the map
@@ -171,7 +171,7 @@ function generateMap() {
         legend: mapLegends,
 
         // Assign the "areas" parameter the currently selected statistic
-        areas: mapData[statisticChoice]["areas"]
+        areas: mapData[statisticChoice].areas
     });
 }
 
@@ -197,7 +197,7 @@ $("#statisticSelectMap").change(function () {
 
             mapOptions: {
                 // Set the mapOptions "areas" to the currently selected statistic
-                'areas': mapData[newStatistic]["areas"],
+                'areas': mapData[newStatistic].areas,
                 // Set the mapOptions "legend" to the newly generated legend
                 'legend': mapLegends
             },
