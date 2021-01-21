@@ -589,6 +589,29 @@ table th, table td{
         padding: 0;
     }
 
+
+    /* Change Zoom buttons to bottom of container on mobile view */
+    /* For all zoom buttons */
+    .mapael .zoomButton {
+        bottom: 0;
+        top: auto;
+    }
+
+    .mapael .zoomReset {
+        bottom: 50px;
+        top: auto;
+    }
+
+    .mapael .zoomIn {
+        bottom: 30px;
+        top: auto;
+    }
+
+    .mapael .zoomOut {
+        bottom: 10px;
+        top: auto;
+    }
+
     /* Footer */
     .footer-section {
         font-size: 12px;
