@@ -145,12 +145,12 @@ function generateMap() {
             defaultArea: {
                 // Outline/Fille
                 attrs: {
-                    stroke: "#EFF1F3",
-                    "stroke-width": 0.35
+                    stroke: "#252627",
+                    "stroke-width": 0.2
                 },
                 attrsHover: {
-                    "stroke-width": 0.6,
-                    "fill": "#D88373"
+                    "stroke-width": 0.4,
+                    "fill": "#D78170"
                 },
                 eventHandlers: {
                     click: function () {
