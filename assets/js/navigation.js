@@ -8,13 +8,26 @@ $(document).ready(function () {
             $(".btn").removeClass("btn-active");
             $(this).addClass("btn-active");
 
-            // Checks which button has been pressed, and adds/removes classes respectively. 
+            // Checks which button has been pressed, and adds/removes classes respectively, and intiates refresh. 
             if ($(this).hasClass("btn-compare")) {
                 toggleCovidSections("#covidCompare");
             } else if ($(this).hasClass("btn-visualise")) {
                 toggleCovidSections("#covidVisualise");
             } else if ($(this).hasClass("btn-map")) {
                 toggleCovidSections("#covidMap");
+            }
+
+        } else {
+            // Checks which button has been pressed, and refreshes that individual page. 
+            if ($(this).hasClass("btn-compare")) {
+                resetCompareSection();
+                $("#covidCompare").removeClass("d-none");
+            } else if ($(this).hasClass("btn-visualise")) {
+                resetVisualiseSection();
+                $("#covidVisualise").removeClass("d-none");
+            } else if ($(this).hasClass("btn-map")) {
+                resetMapSection();
+                $("#covidMap").removeClass("d-none");
             }
         }
     });
@@ -33,7 +46,7 @@ $(document).ready(function () {
 // Function for removing all sections from view, and removing the d-none bootstrap class from the section chosen
 function toggleCovidSections(activeElement) {
 
-    // Check if toggler exists, and if so, remove it.
+    // Check if splash exists, and if so, remove it.
     if (!$("#covidSplash").hasClass("d-none")) {
         $("#covidSplash").addClass("d-none");
         $("#covidToggler").removeClass("d-none");
@@ -42,12 +55,39 @@ function toggleCovidSections(activeElement) {
     // Reset info section
     $("#covidInfo").addClass("d-none");
 
+    // Call all reset functions
+    resetCompareSection();
+    resetVisualiseSection();
+    resetMapSection();
+
+    // Add active element to view
+    $(activeElement).removeClass("d-none");
+
+}
+
+function resetMapSection() {
+
+    // Reset map section
+    $("#covidMap").addClass("d-none");
+    $("#covidMap .mapContainer").addClass("d-none");
+    $("#covidMap .text-container").removeClass("d-none");
+    $("#covidMap .text-container").removeClass("d-none");
+    $("#statisticSelectMap")[0].selectedIndex = 0;
+    $(".map").html("");
+    $(".areaLegend").html("");
+}
+
+function resetCompareSection() {
+
     // Reset compare section
     $("#covidCompare").addClass("d-none");
     $("#covidTableBody").html(``);
     $("#covidCompare .text-container").removeClass("d-none");
     $("#firstCountrySelect")[0].selectedIndex = 0;
     $("#secondCountrySelect")[0].selectedIndex = 0;
+}
+
+function resetVisualiseSection() {
 
     // Reset visualise section
     $("#covidVisualise").addClass("d-none");
@@ -61,16 +101,4 @@ function toggleCovidSections(activeElement) {
         // Removes lingering width inline style preventing mobile viewing on page change
         $("#lineChart").removeAttr("width");
     }
-
-    // Reset map section
-    $("#covidMap").addClass("d-none");
-    $("#covidMap .mapContainer").addClass("d-none");
-    $("#covidMap .text-container").removeClass("d-none");
-    $("#covidMap .text-container").removeClass("d-none");
-    $("#statisticSelectMap")[0].selectedIndex = 0;
-    $(".map").html("");
-    // Only CSS class with camelcase due to Mapael targeting
-    $(".areaLegend").html("");
-    $(activeElement).removeClass("d-none");
-
 }
