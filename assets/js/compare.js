@@ -5,17 +5,20 @@ function formatTableData() {
     let firstTargetCountry = $("#firstCountrySelect").val();
     let secondTargetCountry = $("#secondCountrySelect").val();
 
+
+    let firstTargetCountryIndex;
     // If not default value
     if (firstTargetCountry !== "none") {
         // Find the index position of each country within the global compare dataset
-        var firstTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
+        firstTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
             return entry.country == firstTargetCountry;
         });
     }
 
+    let secondTargetCountryIndex;
     // If not default value
     if (secondTargetCountry !== "none") {
-        var secondTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
+        secondTargetCountryIndex = globalCompareDataset.findIndex(function (entry) {
             return entry.country == secondTargetCountry;
         });
     }
