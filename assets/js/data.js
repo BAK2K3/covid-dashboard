@@ -1,6 +1,6 @@
 //Global Variable to store datasets
-var globalCompareDataset;
-var globalVisualDataset;
+let globalCompareDataset;
+let globalVisualDataset;
 
 // Full dictionary of ISO2 country codes for Map data, testing, and querying API endpoints
 const fullISO = {
