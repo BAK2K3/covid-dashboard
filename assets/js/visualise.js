@@ -8,7 +8,7 @@ var graphConfig = {};
 function formatTimeSeries() {
 
     // Obtain value of selector
-    selectValue = $('#countrySelectVisualise').val();
+    let selectValue = $('#countrySelectVisualise').val();
 
     // Find the index position of the country within the visual compare dataset
     let indexTargetCountry = globalVisualDataset.findIndex(function (entry) {
