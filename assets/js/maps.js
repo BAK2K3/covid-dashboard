@@ -10,48 +10,49 @@ function formatMapData() {
     // Obtains the possible stastics for each country, and iterate through them 
     Object.keys(globalCompareDataset[0]).forEach(function (statistic) {
 
-        // Initialise the parent object for the given statistic
-        mapData[statistic] = {};
+        // Checks that statistic is not null in statisticDictionary, also prevents Update Time/Country Name from being added to mapData
+        if (statisticDictionary[statistic] !== null && statisticDictionary[statistic] !== "Time of Update" && statisticDictionary[statistic] !== "Name of Country") {
 
-        // Initialise the "areas" field (required for Mapael) for each statistic
-        mapData[statistic].areas = {};
+            // Initialise the parent object for the given statistic
+            mapData[statistic] = {};
 
-        // For each statistic, iterate through each country in the globalCompareDataset
-        globalCompareDataset.forEach(function (country) {
+            // Initialise the "areas" field (required for Mapael) for each statistic
+            mapData[statistic].areas = {};
 
-            // If the list of "world_countries.js" countries contains the current country 
-            if (Object.values(worldCountriesISOList).includes(fullISO[country.country])) {
+            // For each statistic, iterate through each country in the globalCompareDataset
+            globalCompareDataset.forEach(function (country) {
 
-                // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
-                mapData[statistic].areas[fullISO[country.country]] = {
+                // If the list of "world_countries.js" countries contains the current country 
+                if (Object.values(worldCountriesISOList).includes(fullISO[country.country])) {
 
-                    // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
-                    value: country[statistic], tooltip: {
-                        content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
-                    }
-                };
-            }
+                    // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
+                    mapData[statistic].areas[fullISO[country.country]] = {
 
-        });
+                        // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
+                        value: country[statistic], tooltip: {
+                            content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
+                        }
+                    };
+                }
 
-        // For each statistic, iterate through the whole list of countries contained within world_countries.js
-        worldCountriesISOList.forEach(function (mapCountry) {
+            });
 
-            //  Find any countries within this list, which hasn't been populated within mapData.statistic.areas
-            if (!(Object.keys(mapData[statistic].areas).includes(mapCountry))) {
+            // For each statistic, iterate through the whole list of countries contained within world_countries.js
+            worldCountriesISOList.forEach(function (mapCountry) {
 
-                // And provide a generic "No data available" and -1 value for identification on the map
-                mapData[statistic].areas[mapCountry] = {
-                    value: -1, href: "", tooltip: {
-                        content: `No data available for this country!`
-                    }
-                };
-            }
-        });
+                //  Find any countries within this list, which hasn't been populated within mapData.statistic.areas
+                if (!(Object.keys(mapData[statistic].areas).includes(mapCountry))) {
+
+                    // And provide a generic "No data available" and -1 value for identification on the map
+                    mapData[statistic].areas[mapCountry] = {
+                        value: -1, href: "", tooltip: {
+                            content: `No data available for this country!`
+                        }
+                    };
+                }
+            });
+        }
     });
-
-    // Once all data preperation is complete, generate the map
-    generateMap();
 }
 
 // Function for generating the Legends (tier for colours)
@@ -125,15 +126,7 @@ function generateLegends(statistic) {
 }
 
 // Function for generating the map
-function generateMap() {
-
-    // Assign the current value within the Stat selector
-    let statisticChoice = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
-
-    // Generate legends (tiers) for current statistic if  legends have yet to be generated
-    if ($.isEmptyObject(mapLegends)) {
-        generateLegends(statisticChoice);
-    }
+function generateMap(statisticChoice) {
 
     // Call the mapael jquery function
     $(".mapContainer").mapael({
@@ -175,7 +168,7 @@ function generateMap() {
     });
 }
 
-// Update the Mapael map to target specific statistic within nested object (mapdata)
+// On Selector change, destroy - update - or create map.
 $("#statisticSelectMap").change(function () {
 
     // If the value selected is the default option, destroy the map and reset the section
@@ -185,32 +178,41 @@ $("#statisticSelectMap").change(function () {
         $(".map").html("");
         $(".areaLegend").html("");
 
-    } else if (!($.isEmptyObject(mapData)) && ($(".areaLegend").html() !== "")) {
-        // If mapData is not empty, and if areaLegend is not empty
-
-        // Generate new legend data from given statistic
-        let newStatistic = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
-        generateLegends(newStatistic);
-
-        // Trigger mapael update
-        $(".mapContainer").trigger('update', [{
-
-            mapOptions: {
-                // Set the mapOptions "areas" to the currently selected statistic
-                'areas': mapData[newStatistic].areas,
-                // Set the mapOptions "legend" to the newly generated legend
-                'legend': mapLegends
-            },
-            animDuration: 300
-        }]);
     } else {
+
+        // Obtain the statistic chosen
+        let statisticChoice = getKeyByValue(statisticDictionary, $("#statisticSelectMap").val());
+
+        // Check to see whether mapData exists 
+        if ($.isEmptyObject(mapData)) {
+            // If not, create it
+            formatMapData();
+        }
+
+        // Generate new legends for the statistic chosen
+        generateLegends(statisticChoice);
+
         // Check to see whether the correct containers are in view
         if ($("#covidMap .mapContainer").hasClass("d-none")) {
             $("#covidMap .mapContainer").removeClass("d-none");
             $("#covidMap .text-container").addClass("d-none");
         }
-        // Otherwise, generate map
-        formatMapData();
-    }
 
+        // If the map exists, update it (could also check the .map container)
+        if ($(".areaLegend").html() !== "") {
+            // Trigger mapael update
+            $(".mapContainer").trigger('update', [{
+                mapOptions: {
+                    // Set the mapOptions "areas" to the currently selected statistic
+                    'areas': mapData[statisticChoice].areas,
+                    // Set the mapOptions "legend" to the newly generated legend
+                    'legend': mapLegends
+                },
+                animDuration: 300
+            }]);
+        } else {
+            // Otherwise Create it
+            generateMap(statisticChoice);
+        }
+    }
 });
