@@ -179,6 +179,68 @@ Testing documentation, processes, and outcomes can be found under [TESTING.md](T
 
 # Deployment
 
+This project has a dev (Development) and master (Live Code) branch. All development was completed on the dev branch, and merged with the Master Branch when new functionality had been implemented and tested. 
+The live site is deployed from the master branch.
+
+## How this Project was Deployed
+
+This project was deployed to GitHub pages via the following steps:
+
+1. Log into [GitHub](https://GitHub.com/).
+2. From the list of Repositories, select [covid-dashboard](https://github.com/BAK2K3/covid-dashboard/).
+3. From the Repository's sub-headings, select "Settings".
+4. Under "Options", the first category of settings, scroll down to the GitHub Pages section.
+5. From the dropdown list under the "Source" heading, select "master".
+6. A second drop-down menu that appears should remain as the default value, `/root`.
+7. Press Save. 
+8. On Page refresh, scroll back down to the GitHub Pages section, and the link to the deployed site will be available in a green sub-section with a tick icon next to it.
+
+<!-- As this project was developed on the master branch, all changes made to the repository are immediately reflected in the deployed project. -->
+
+## How to Run this Project in your Browser
+
+1. Install the [Google Chrome](https://www.google.co.uk/chrome/) or [Firefox](https://www.mozilla.org/en-GB/exp/firefox/new/) browser.
+2. Install the applicable [GitPod](https://www.gitpod.io/docs/browser-extension/) Browser Extensions for your chosen browser.
+4. Create a [GitHub](https://GitHub.com/join) account. 
+3. Log in to [Gitpod](https://gitpod.io/login/) using your GitHub account.
+4. Visit COVID Dashboard's [GitHub Repository](https://github.com/BAK2K3/covid-dashboard/).
+5. To run the master branch, ensure the master branch is selected next to the "branches" and "tags" subheadings. To run the dev branch, please select dev branch. 
+    * Please note that any features that exist purely in the dev branch are in testing and may not be fully functional. 
+6. Open the repository in Gitpod:
+    * Click the green "Gitpod" icon at the top of the Repository, or
+    * Open the [master branch](https://gitpod.io/#https://github.com/BAK2K3/covid-dashboard/tree/master) or [dev branch](https://gitpod.io/#https://github.com/BAK2K3/covid-dashboard/tree/dev) directly in Gitpod via these links.
+7. A new workspace will open with the current state of the requested branch. Any changes made to the requested branch after this point will not be automatically updated in your Gitpod Workspace.
+
+## How to Run this Project Locally
+
+### Cloning the Repository
+
+1. Visit COVID Dashboard's [GitHub Repository](https://github.com/BAK2K3/covid-dashboard/).
+2. Click the "Code" dropdown box above the repository's file explorer. 
+3. Under the "Clone" heading, click the "HTTPS" sub-heading.
+4. Click the clipboard icon, or manually copy the text presented: `https://github.com/BAK2K3/covid-dashboard.git`
+5. Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+6. Ensure your IDE has support for Git, or has the relevant Git extension.
+7. Open the terminal, and create a directory where you would like the Repository to be stored.
+8. Type `git clone` and paste the previously copied text (`https://github.com/BAK2K3/covid-dashboard.git`) and press enter.
+    * If you would like to clone only the dev branch, please type `git clone -b dev` before the previously copied link to the repository.
+9. The Repository will then be cloned to your selected directory. 
+
+### Manually Downloading the Repository
+
+1. Visit COVID Dashboard's [GitHub Repository](https://github.com/BAK2K3/covid-dashboard/).
+    * Ensure you have selected the appropriate branch, as previously discussed.
+2. Click the "Code" dropdown box above the repository's file explorer. 
+3. Click the "Download ZIP" option; this will download a copy of the selected branch's repository as a zip file.
+4. Locate the ZIP file downloaded to your computer, and extract the ZIP to a designated folder which you would like the repository to be stored.
+
+### Opening the Repository 
+
+1. Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+2. Navigate to the chosen directory where the Repository was Cloned/Extracted.
+3. You will now have offline access to the contents of the project.
+    * **Note**: Due to the nature of the project, internet access is required to obtain full functionality of the website.
+
 ---
 
 # Credits
@@ -197,7 +259,7 @@ Testing documentation, processes, and outcomes can be found under [TESTING.md](T
 * Thank you to my wife, for her relentless patience and support.
 * Thank you to my mentor, Dick Vlaanderen, for his encouragement and guidance.   
 * Thank you to Jim Morel, the current Slack Channel Lead for the User Centric Frontend Development, and Bim Williams, a CI Alumni, for the time they've taken throughout the development process to discuss and brainstorm with me.
-* Thank you to Daisy McGirr for the time she took to discuss the practical application of unit testing.
+* Thank you to Daisy McGirr for the time she took to discuss the practical application of unit testing with me.
 * Thank you to the active Slack users who take part in the regular group calls. 
 
 ---
