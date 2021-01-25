@@ -195,8 +195,6 @@ This project was deployed to GitHub pages via the following steps:
 7. Press Save. 
 8. On Page refresh, scroll back down to the GitHub Pages section, and the link to the deployed site will be available in a green sub-section with a tick icon next to it.
 
-<!-- As this project was developed on the master branch, all changes made to the repository are immediately reflected in the deployed project. -->
-
 ## How to Run this Project in your Browser
 
 1. Install the [Google Chrome](https://www.google.co.uk/chrome/) or [Firefox](https://www.mozilla.org/en-GB/exp/firefox/new/) browser.
@@ -247,9 +245,45 @@ This project was deployed to GitHub pages via the following steps:
 
 ## Content
 
+* All instructional text used throughout the site was written by me.
+* The data used for the Map, Visualise, and Map Features was obtained from [disease.sh](https://disease.sh/). Specifically:
+    * The data used for the Global Compare Dataset (Compare and Map Features) is from the [Worldometers](https://www.worldometers.info/coronavirus/) dataset.
+    * The data used for the Global Visual Dataset (Visualise Feature) is from the [John Hopkins](https://coronavirus.jhu.edu/) dataset.
+
 ## Media
 
+* I designed the background graphic in [GIMP](https://www.gimp.org/) myself.
+* I designed the Favicon icon in [GIMP](https://www.gimp.org/) myself, and converted it to appropriate format using [favicon.io](https://favicon.io/).
+
 ## Code
+
+* HTML/CSS: Implementation and utilisation of Flexbox was assisted by [CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+* HTML/CSS: The concept, model and structure for Modals were inspired by my previous project, [Hard Drivers](https://github.com/BAK2K3/hard-drivers/blob/master/about.html). 
+* HTML/CSS: Guidance on Bootstrap, Tooltips, Modals and general Bootstrap integration and usage was obtained from the [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/).  
+* HTML/CSS: Guidance on general HTML/CSS usage was obtained from [Mozilla's Web Documentation](https://developer.mozilla.org/en-US/docs/Web/Reference).
+* CSS: Code snippet taken from [CSS-Tricks](https://css-tricks.com/the-current-state-of-styling-selects-in-2019/) and modified to style Selector elements.
+* CSS: Code snippet taken from [Hover.css](https://ianlunn.GitHub.io/Hover/) and modified for Fill Effect on the COVID Toggler.
+* CSS: Code snippet taken from [loading.io](https://loading.io/css/) and modified for the Beating Heart loading icon.
+* CSS: Code snippets taken from CSS-Tricks pages on [Neumorphism](https://css-tricks.com/neumorphism-and-css/) and [Box Shadow](https://css-tricks.com/snippets/css/css-box-shadow/) and modified to achieve the desired elevated effect on certain HTML elements.  
+* JavaScript: The disease.sh [documentation](https://disease.sh/docs/#/COVID-19%3A%20JHUCSSE/get_v3_covid_19_historical__countries_) was used extensively to understand the correct formatting for API requests.
+* JavaScript: The Chart.js [documentation](https://www.chartjs.org/docs/latest/) was used extensively to understand the installation, configuration, and data structures required for fully interactive dynamic graphs.
+* JavaScript: The Mapael [documentation](https://www.vincentbroute.fr/mapael/) was used extensively to understand the installation, configuration, and data structures required for fully interactive dynamic maps.
+* JavaScript: The Mapael [World Countries](https://github.com/neveldo/mapael-maps/blob/master/world/world_countries.js) JavaScript file was taken directly from the developer's GitHub repo of pre-made maps. 
+* JavaScript: Inspiration was taken from [StackOverflow](https://stackoverflow.com/questions/57445562/chart-js-timeseries-chart-formatting-and-missing-data-values) when creating a function to dynamically structure time series data. 
+* JavaScript: Guidance on converting JSON date strings to Date() objects was obtained from [David Sekar](https://davidsekar.com/javascript/converting-json-date-string-date-to-date-object).
+* JavaScript: Inspiration was taken from the example Chart.js graphs demonstrated on [Tobia Sahlin's blog](https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/).
+* JavaScript: Solutions were explored from these two StackOverflow posts ([one](https://stackoverflow.com/questions/24815851/how-to-clear-a-chart-from-a-canvas-so-that-hover-events-cannot-be-triggered), 
+[two](https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas)) as to how to resolve Graphs stacking on re-draw. 
+* JavaScript: Inspiration was taken [Mastering JS](https://masteringjs.io/tutorials/fundamentals/foreach) as to how to best utilise the ForEach function for iterating through an array.
+* JavaScript: Code snippet taken from [StackOverflow](https://stackoverflow.com/questions/1484506/random-color-generator) for dynamically generation hex colours for when initially testing the Visualise Feature.  
+* JavaScript: Code snippet taken from [GitHub Gist](https://gist.github.com/maephisto/9228207) for a Country Name to ISO Code dictionary, and amended to reflect required explicit country names (as per datasets).
+* JavaScript: Code snippet taken from [StackOverflow](https://stackoverflow.com/questions/11258077/how-to-find-index-of-an-object-by-key-and-value-in-an-javascript-array) for finding the index of an object in a key value pair.
+* JavaScript: Inspiration taken from [StackOverflow](https://stackoverflow.com/questions/6792663/javascript-style-for-optional-callbacks) for implementing functions with optional callbacks. 
+    * **Note**: This was originally implemented in the Fetch API Data function, but subsequently removed when refactoring the code to remove this aspect of the functionality. 
+* JavaScript: Code snippet taken from [StackOverflow](https://stackoverflow.com/questions/6792663/javascript-style-for-optional-callbacks) for targetting multiple elements for a single event in JQuery.
+* JavaScript: Code snippet taken from [StackOverflow](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript) and modified to appropriately convert numbers to their relative locale strings.
+* JavaScript: Code snippet taken from [StackOverflow](https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers) to achieve a two digit representation of single digit minutes using splicing (i.e 10:1am -> 10:01am).
+* CSS/HTML/JavaScript: Multiple code snippets taken from [StackOverflow](https://stackoverflow.com/questions/38874529/chart-js-adjust-height-in-mobile-view) and modified to allow for dynamic resizing of Chart.js graphs.
 
 ---
 
