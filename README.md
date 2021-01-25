@@ -1,4 +1,4 @@
-![COVID Dashboard Logo](https://res.cloudinary.com/bak2k3/image/upload/v1609599348/covid-dashboard/logo-mockup_ylnewv.jpg)
+![COVID Dashboard Logo](https://res.cloudinary.com/bak2k3/image/upload/v1611429573/covid-dashboard/Logo_iy23uj.jpg)
 
 **COVID Dashboard** is an interactive platform which allows users to compare and visualise up to date COVID-19 Statistics. 
 
@@ -90,7 +90,7 @@ The graphs do, however, provide over 300 days of data and gives a broad explorat
 [CSSE JHU Covid-19 Dashboard](https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
 
 The CSSE JHU Covid-19 Dashboard has an impressive design; however, with that comes a sense of overwhelm, with the user being presented with a huge amount of 
-information without it being instinctively clear what each aspect of the dashboard represents, and how it can be interacted with (such as tabs names Admin01, Admin02, Admin03). 
+information without it being instinctively clear what each aspect of the dashboard represents, and how it can be interacted with (such as tab names Admin01, Admin02, Admin03). 
 The map utilises the scroll wheel, and the dashboard as a whole presents tables, maps, and graphs.
 
 **Mobile Friendly?** No
@@ -142,9 +142,38 @@ presenting the information in a user friendly and understandable manner, whilst 
 
 # Technologies Used
 
+* The project was written in HTML  CSS, and JavaScript.
+* The project was written and tested in the [Gitpod](https://gitpod.io/) IDE.
+* The project was debugged using [Google Chrome](https://www.google.com/intl/en_uk/chrome/) [Dev Tools](https://developers.google.com/web/tools/chrome-devtools).
+* The project uses [GitHub](https://GitHub.com/) for hosting source code, for utilising git version control, and for hosting the site on GitHub pages.  
+* The project's template was generated from [Code Institute's Gitpod Template](https://GitHub.com/Code-Institute-Org/gitpod-full-template).
+* The project uses [Boostrap](https://getbootstrap.com/) 5.0.0-Beta 1, a 'Mobile First' HTML/CSS Framework for simple and intuitive responsive web design.
+* The project uses [Popper.js](https://popper.js.org/) v2.5.4 (bundled with Bootstrap), a Tooltip and Popover Positioning Engine, for Tooltips.
+* The project uses [jQuery](https://jquery.com/) v3.5.1, a JavaScript library, for DOM Traversal, HTML Maniuplation, and Event Handling.
+* The project uses [jQuery Mousewheel](https://github.com/jquery/jquery-mousewheel), a cross-browser mouse-wheel support library, which the Map Feature utilises.
+* The project uses [jsDelivr](https://www.jsdelivr.com/), [Cloudflare](https://www.cloudflare.com/en-gb/), [PageCDN](https://pagecdn.com/) as various Content Delivery Networks for packages and libraries.
+* The project uses [FontAwesome](https://fontawesome.com/) v5.15.1, a free icon-set/toolkit for web development.
+* The project uses [Chart.js](https://www.chartjs.org/) for the time-series Line Chart implementation.
+* The project uses [Raphael](http://dmitrybaranovskiy.github.io/raphael/), a Javascript Vector Library, and [Mapael](https://www.vincentbroute.fr/mapael/) a jQuery and Rapahel Extension, for the Interactive Choropleth Map.
+* The project uses [disease.sh](https://disease.sh/), an Open Source Disease Data Repository, for obtaining up to date COVID-19 Statistics.
+* The project uses [Google Fonts](https://fonts.google.com/) for typography.
+* The project's images were compressed via [tinyjpg](https://tinyjpg.com/) to be appropriately sized for web content.
+* The project utlised [favicon.io](https://favicon.io/favicon-converter/) to convert the Favicon to the appropriate format.
+* The project's accessibility was assesed via WebAim's [W.A.V.E](https://wave.webaim.org/) and [Contrast Checker](https://webaim.org/resources/contrastchecker/) and Google Chrome's [Lighthouse](https://developers.google.com/web/tools/lighthouse).
+* The project's screen-reader accessibility was tested using [Screen Reader for Google Chrome](https://chrome.google.com/webstore/detail/screen-reader-for-google/nddfhonnmhcldcbmhbdldfpkbfpgjoeh/related?hl=en).
+* The project used Toptal's [Colorfilter](https://www.toptal.com/designers/colorfilter/) to assess how colour-blind-friendly the site was.
+* The project's cross-browser compatibility was enhanced using [Autoprefixer.io](https://autoprefixer.GitHub.io).
+* The project's HTML was validated using [W3C HTML Markup Validator](https://validator.w3.org/).
+* The project's CSS was validated using [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
+* The project's wireframes were designed in [Balsamiq](https://balsamiq.com/wireframes/).
+* The project's background was designed using [GIMP](https://www.gimp.org/).
+* The images used in the project's README and TESTING documentation were hosted and served through [Cloudinary](https://cloudinary.com/console).
+
 ---
 
 # Testing
+
+Testing documentation, processes, and outcomes can be found under [TESTING.md](TESTING.md).
 
 ---
 
@@ -164,8 +193,17 @@ presenting the information in a user friendly and understandable manner, whilst 
 
 # Acknowledgements
 
+* The concept for this project was devised from my love for all things data related; the ultimate goal was to produce an application that I would want to use myself.
+* Thank you to my wife, for her relentless patience and support.
+* Thank you to my mentor, Dick Vlaanderen, for his encouragement and guidance.   
+* Thank you to Jim Morel, the current Slack Channel Lead for the User Centric Frontend Development, and Bim Williams, a CI Alumni, for the time they've taken throughout the development process to discuss and brainstorm with me.
+* Thank you to Daisy McGirr for the time she took to discuss the practical application of unit testing.
+* Thank you to the active Slack users who take part in the regular group calls. 
+
 ---
 
 # Disclaimer
+
+This website is for educational purposes only.
 
 ---
