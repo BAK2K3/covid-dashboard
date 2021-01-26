@@ -98,9 +98,10 @@ The map utilises the scroll wheel, and the dashboard as a whole presents tables,
 ### User Stories
 
 1. `“As a visitor to the website, I want to know what the website does, so that I can decide whether I’m interested in engaging with it.”`
-2. `“As an engaged user, I want to be given a choice of data visualisations, so that I can choose how the statistics are presented to me.”`
-3. `“As an engaged user, I want to be able to interact with the visualisations, so that I get to control the data that I’m engaging with.”`
-4. `“As a mobile user, I want to be able to utilise all aspects of the site, so that I can interact with the website on the go”.`
+2. `"As an interested user, I want the interface to be simple and intuitive, so that I can easily navigate and interact with the website."`
+3. `“As an engaged user, I want to be given a choice of data visualisations, so that I can choose how the statistics are presented to me.”`
+4. `“As an engaged user, I want to be able to interact with the visualisations, so that I get to control the data that I’m engaging with.”`
+5. `“As a mobile user, I want to be able to utilise all aspects of the site, so that I can interact with the website on the go.”`
 
 ### Project Strategy Summary
 
