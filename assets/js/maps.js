@@ -25,14 +25,27 @@ function formatMapData() {
                 // If the list of "world_countries.js" countries contains the current country 
                 if (Object.values(worldCountriesISOList).includes(fullISO[country.country])) {
 
-                    // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
-                    mapData[statistic].areas[fullISO[country.country]] = {
+                    // If the entry is Null, state there is no data for this particular statistic
+                    if (country[statistic] == null) {
 
-                        // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
-                        value: country[statistic], tooltip: {
-                            content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
-                        }
-                    };
+                        // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
+                        mapData[statistic].areas[fullISO[country.country]] = {
+                            // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
+                            value: -1, href: "", tooltip: {
+                                content: `No data available for this statistic!`
+                            }
+                        };
+
+                    } else {
+
+                        // Add an entry into the current dictionairy (which would be mapData.statistic.areas) 
+                        mapData[statistic].areas[fullISO[country.country]] = {
+                            // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
+                            value: country[statistic], tooltip: {
+                                content: `<strong>${country.country}</strong>: ${Number(country[statistic]).toLocaleString()}`
+                            }
+                        };
+                    }
                 }
 
             });
@@ -80,10 +93,11 @@ function generateLegends(statistic) {
                 {
                     // No Data
                     sliceValue: -1,
+                    label: `No data available`,
+                    clicked: true,
                     attrs: {
                         fill: "#EFF1F3"
-                    },
-                    label: `No data available`
+                    }
                 },
                 {
                     // Lower Eight
@@ -160,11 +174,11 @@ function generateMap(statisticChoice) {
             },
         },
 
-        // Set generated legends
-        legend: mapLegends,
-
         // Assign the "areas" parameter the currently selected statistic
-        areas: mapData[statisticChoice].areas
+        areas: mapData[statisticChoice].areas,
+        // Set generated legends
+        legend: mapLegends
+
     });
 }
 
@@ -203,13 +217,17 @@ $("#statisticSelectMap").change(function () {
             // Trigger mapael update
             $(".mapContainer").trigger('update', [{
                 mapOptions: {
-                    // Set the mapOptions "areas" to the currently selected statistic
-                    'areas': mapData[statisticChoice].areas,
                     // Set the mapOptions "legend" to the newly generated legend
-                    'legend': mapLegends
+                    'legend': mapLegends,
+                    // Set the mapOptions "areas" to the currently selected statistic
+                    'areas': mapData[statisticChoice].areas
                 },
                 animDuration: 300
             }]);
+
+            // https://github.com/neveldo/jQuery-Mapael/blob/7f38564085eed2445ccecf30bbf7d267984de0cf/js/jquery.mapael.js#L953
+            $("[data-type='legend-elem']").first().trigger("click", [false, 300]);
+
         } else {
             // Otherwise Create it
             generateMap(statisticChoice);
