@@ -603,7 +603,7 @@ table th, table td{
     }
 
     #covidToggler .btn {
-        max-width: 90px;
+        max-width: 80px;
         padding: 5px 0 5px 0;
         font-size: 15px;
     }
