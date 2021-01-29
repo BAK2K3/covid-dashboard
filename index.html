@@ -38,9 +38,9 @@
         </div>
     </header>
 
+    <!-- Main Body  -->
     <div class="content-wrapper">
 
-        <!-- Main Body  -->
         <!-- COVID Toggler -->
         <section id="covidToggler" class="d-flex justify-content-center d-none">
             <div class="btn-group btn-group-lg" role="group" aria-label="Data Toggler for COVID Data Visualisation">
@@ -59,6 +59,27 @@
                     <div></div>
                 </div>
                 <div><span>Loading data...</span></div>
+            </div>
+        </section>
+
+
+        <!-- COVID Info Section -->
+        <section id="covidError" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-info-container">
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Oops!</h2>
+                    <p>
+                        Looks like we couldn't get the required data!
+                    </p>
+                    <div class="text-decorator">
+                        <p><span><strong>Please ensure you are using Chrome, Firefox, or Edge.</strong></span></p>
+
+                        <p>Alternatively, please refresh the page and try again!</p>
+                    </div>
+                    <p>If the error persists, please contact the developer at benjamin.a.kavanagh@gmail.com.</p>
+                </div>
             </div>
         </section>
 
@@ -161,12 +182,12 @@
                     </div>
                     <br>
                     <p><strong>Note:</strong> The historical data for this particular section, especially "Recovered",
-                        may not accurately reflect the given countries statistics.</p>
+                        may not accurately reflect the given country's statistics.</p>
                 </div>
 
                 <!-- Placeholder chart-containter for Chart.js -->
                 <div class="chart-container table-responsive">
-                    <canvas id="lineChart" class="table"></canvas>
+                    <canvas id="lineChart" class="table">Time-Series Line Graph</canvas>
                 </div>
             </div>
         </section>
@@ -206,9 +227,9 @@
 
                 <!-- Placeholder divs (map/arealegend) for Mapael -->
                 <div class="mapContainer">
-                    <div class="map"></div>
+                    <div class="map">Choropleth Map</div>
                     <!-- areaLegend is the only CSS class used with camelCase due to the targeting of Mapael -->
-                    <div class="areaLegend"></div>
+                    <div class="areaLegend">Legend for Choropleth Map</div>
                 </div>
             </div>
         </section>
