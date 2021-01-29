@@ -62,7 +62,6 @@
             </div>
         </section>
 
-
         <!-- COVID Info Section -->
         <section id="covidError" class="d-flex justify-content-center covid-data d-none">
             <div class="container covid-info-container">
@@ -94,16 +93,17 @@
                         An interactive interface, utilising the most up-to-date COVID-19 statistics available.
                     </p>
                     <div class="text-decorator">
-                        <p><span><strong>Compare:</strong></span> Compare selected country statistics
-                            side by side.</p>
-                        <p><span><strong>Visualise:</strong></span> View historical accumulated
-                            infection data for the past 30 days.
+                        <p><span><strong>Compare:</strong></span> Directly Compare Countries' Daily COVID-19 Statistics.
                         </p>
-                        <p><span><strong>Map:</strong></span> View a heatmap of the world for selected
-                            statistics.</p>
+                        <p><span><strong>Visualise:</strong></span> View Historic Accumulative COVID-19 Statistics Per
+                            Country.
+                        </p>
+                        <p><span><strong>Map:</strong></span> Compare Individual COVID-19 Statistics on a Worldwide
+                            Basis.</p>
                     </div>
                     <p>To return to this area, please use the COVID Dashboard heading.</p>
-                    <p>The available data is updated approximately every 10 minutes; please refresh the page to obtain
+                    <p>The available data is updated approximately every 10 minutes. <br> Please refresh the page to
+                        obtain
                         the most up-to-date information.</p>
                 </div>
             </div>
@@ -140,13 +140,24 @@
                 <div class="text-container text-center dark-font">
                     <h2 class="underline"> Compare </h2>
                     <p>
-                        Compare Worldwide Daily COVID-19 Statistics
+                        Directly Compare Countries' Daily COVID-19 Statistics
                     </p>
                     <div class="text-decorator">
                         <p>Select a <strong>single country</strong> to obtain its current statistics.</p>
                         <p>Select a <strong>second country</strong> to compare both countries' statistics.</p>
                         <p>Set one, or both, of the country selections to the <strong>Select a Country</strong>
                             option to remove the respective data.</p>
+                        <p>Comparative indicators will appear where a statistic is available for <strong>both
+                                countries</strong>:</p>
+                        <p>
+                            <i class="fas fa-long-arrow-alt-up"></i> indicates the given statistic is higher than that
+                            being compared against. <br>
+                            <i class="fas fa-long-arrow-alt-down"></i> indicates the given statistic is lower than that
+                            being compared against.<br>
+                            <i class="fas fa-equals"></i> indicates the given statistic is equal to that being compared
+                            against.
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -172,12 +183,20 @@
                         View Historic Accumulative COVID-19 Statistics Per Country
                     </p>
                     <div class="text-decorator">
-                        <p>Select a <strong>country</strong> to view its total accumulative statistics for the past 30
-                            days.</p>
+                        <p>Select a <strong>country</strong> to view a Time-Series Graph of the following accumulative
+                            statistics:</p>
+
+                        <p>
+                            <strong>Cases:</strong> Total Diagnosed Cases<br>
+                            <strong>Deaths:</strong> Total Confirmed Deaths<br>
+                            <strong>Recovered:</strong> Total Recovered Cases<br>
+                        </p>
+
                         <p>Hover or click on <strong>any point</strong> on the graph to read the specific value for the
                             day and statistic.</p>
                         <p>Click on <strong>any legend</strong> to remove the respective data from the graph.</p>
-                        <p>Select the <strong> Select a Country</strong> option from the dropdown to remove the graph.
+                        <p>Select the <strong> Select a Country</strong> option from the dropdown to return to this
+                            screen.
                         </p>
                     </div>
                     <br>
@@ -209,10 +228,11 @@
                 <div class="text-container text-center dark-font">
                     <h2 class="underline"> Map </h2>
                     <p>
-                        Compare COVID-19 Statistics on a Worldwide Basis
+                        Compare Individual COVID-19 Statistics on a Worldwide Basis
                     </p>
                     <div class="text-decorator">
-                        <p>Select a <strong>statistic</strong> to view a heatmap of the world.</p>
+                        <p>Select a <strong>statistic</strong> to compare the world's statistics on a Choropleth Map.
+                        </p>
                         <p>Hover or click on <strong>any country</strong> to view the specific value for that country.
                         </p>
                         <p>Use the <strong>Plus or Minus</strong>, your <strong>Mousewheel</strong>, or
@@ -220,9 +240,13 @@
                         <p>Once zoomed in, <strong>drag</strong> across the map to move the perspective.</p>
                         <p>Click or tap on any <strong>legend item</strong> to filter that particular threshold from the
                             data.</p>
-                        <p>Select the <strong>Select a Statistic</strong> option from the dropdown to remove the map.
+                        <p>Select the <strong>Select a Statistic</strong> option from the dropdown to return to this
+                            screen.
                         </p>
+
                     </div>
+                    <p><strong>Note:</strong> Countries that have not recorded data for a particular
+                        statistic today will be filtered out by default.</p>
                 </div>
 
                 <!-- Placeholder divs (map/arealegend) for Mapael -->
