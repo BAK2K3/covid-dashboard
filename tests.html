@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <meta name="description" content="Unit Testing for COVID Dashboard">
+    <!-- Title  -->
+    <title>COVID Dashboard - Testing</title>
+
+    <!-- Jasmine Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.js"
+        integrity="sha512-dqL4nYnbiMiNNy/V2zRK55QXSRVyu26KCuGoL8Zf5lDfKRRf8pBFW8RXe8at36QlB8s8bnOjKP6b5YTalHO6wQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine-html.js"
+        integrity="sha512-bqig44hBpNuvBzxsqbHiqwRximGm4UfJAvOeNQHjB7++0D2u/3bcw4ZwmVsqrooii2UJ91oDI/6aANdp3BwcQQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/boot.js"
+        integrity="sha512-igPP1Xd0hsvXVZGyfIYeUD779NLEA1Sj/5ts2C/e/22zeUqR6ehA7M/nNLuONalznkHQkGPBESNwzGpwBQD60g=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.css"
+        integrity="sha512-XKXP02aeSNI5HsDB3+4MM0tSDXJTBFZpt99xL7PvMz3+A3aRy0F0Ne/CATK+Z72ckE/4Ev9OiosWQr5LtU284Q=="
+        crossorigin="anonymous" />
+
+    <!-- Bootstrap 5.0.0-Beta 1 CSS Only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Font Awesome 5.15.1 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <!-- Local style.css -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo d-flex justify-content-center text-center">
+            <div class="logo-background">
+                <a id="headingAnchor" href="#">
+                    <h1 class="heading-font dark-font main-heading">COVID <span class="span-italic">Dashboard</span>
+                    </h1>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Body  -->
+    <div class="content-wrapper">
+
+        <!-- COVID Toggler -->
+        <section id="covidToggler" class="d-flex justify-content-center d-none">
+            <div class="btn-group btn-group-lg" role="group" aria-label="Data Toggler for COVID Data Visualisation">
+                <button type="button" class="btn btn-compare dark-font hvr-sweep-to-top">Compare</button>
+                <button type="button" class="btn btn-visualise dark-font hvr-sweep-to-top">Visualise</button>
+                <button type="button" class="btn btn-map dark-font hvr-sweep-to-top">Map</button>
+            </div>
+        </section>
+
+        <!-- COVID Loading Splash -->
+        <section id="covidSplash" class="d-flex justify-content-center covid-data">
+            <div class="container covid-splash-container text-center">
+
+                <!-- Pure CSS Optimised Loader Icon - https://loading.io/css/ - .lds-heart  -->
+                <div class="lds-heart">
+                    <div></div>
+                </div>
+                <div><span>Loading data...</span></div>
+            </div>
+        </section>
+
+        <!-- COVID Info Section -->
+        <section id="covidError" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-info-container">
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Oops!</h2>
+                    <p>
+                        Looks like we couldn't get the required data!
+                    </p>
+                    <div class="text-decorator">
+                        <p><span><strong>Please ensure you are using Chrome, Firefox, or Edge.</strong></span></p>
+
+                        <p>Alternatively, please refresh the page and try again!</p>
+                    </div>
+                    <p>If the error persists, please contact the developer at benjamin.a.kavanagh@gmail.com.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COVID Info Section -->
+        <section id="covidInfo" class="d-flex justify-content-center covid-data d-none">
+            <div class="container covid-info-container">
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Welcome to the COVID Dashboard </h2>
+                    <p>
+                        An interactive interface, utilising the most up-to-date COVID-19 statistics available.
+                    </p>
+                    <div class="text-decorator">
+                        <p><span><strong>Compare:</strong></span> Directly Compare Countries' Daily COVID-19 Statistics.
+                        </p>
+                        <p><span><strong>Visualise:</strong></span> View Historic Accumulative COVID-19 Statistics Per
+                            Country.
+                        </p>
+                        <p><span><strong>Map:</strong></span> Compare Individual COVID-19 Statistics on a Worldwide
+                            Basis.</p>
+                    </div>
+                    <p>To return to this area, please use the COVID Dashboard heading.</p>
+                    <p>The available data is updated approximately every 10 minutes. <br> Please refresh the page to
+                        obtain
+                        the most up-to-date information.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COVID Compare Section -->
+        <section id="covidCompare" class="d-flex justify-content-center covid-data d-none">
+            <!-- Container for Table -->
+            <div class="container table-responsive covid-data-container">
+                <!-- Table  -->
+                <table class="col table table-sm table-striped text-center covid-table dark-font">
+                    <thead>
+                        <tr>
+                            <!-- Country Select 1 -->
+                            <th scope="col" class="col"><select name="firstCountrySelect" id="firstCountrySelect">
+                                    <option value="">Country Select</option>
+                                </select></th>
+                            <!-- Stats Heading & Interaction -->
+                            <th scope="col" class="col-3">
+                                <span class="table-heading">Statistic</span>
+                            </th>
+                            <!-- Country Select 2 -->
+                            <th scope="col" class="col"><select name="secondCountrySelect" id="secondCountrySelect">
+                                    <option value="">Country Select</option>
+                                </select></th>
+                        </tr>
+                    </thead>
+                    <!-- Empty table body for dynamic html generation -->
+                    <tbody id="covidTableBody">
+                    </tbody>
+                </table>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Compare </h2>
+                    <p>
+                        Directly Compare Countries' Daily COVID-19 Statistics
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>single country</strong> to obtain its current statistics.</p>
+                        <p>Select a <strong>second country</strong> to compare both countries' statistics.</p>
+                        <p>Set one, or both, of the country selections to the <strong>Select a Country</strong>
+                            option to remove the respective data.</p>
+                        <p>Comparative indicators will appear where a statistic is available for <strong>both
+                                countries</strong>:</p>
+                        <p>
+                            <i class="fas fa-long-arrow-alt-up"></i> indicates the given statistic is higher than that
+                            being compared against. <br>
+                            <i class="fas fa-long-arrow-alt-down"></i> indicates the given statistic is lower than that
+                            being compared against.<br>
+                            <i class="fas fa-equals"></i> indicates the given statistic is equal to that being compared
+                            against.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COVID Visualise Section -->
+        <section id="covidVisualise" class="d-flex justify-content-center covid-data d-none">
+            <!-- Container for Visualisation section -->
+            <div class="container covid-data-container">
+
+                <!-- Container for Selector -->
+                <div class="input-section d-flex justify-content-center">
+                    <!-- Selector for Country  -->
+                    <select name="countrySelectVisualise" id="countrySelectVisualise">
+                        <option value="">Country Select</option>
+                    </select>
+                </div>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Visualise </h2>
+                    <p>
+                        View Historic Accumulative COVID-19 Statistics Per Country
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>country</strong> to view a Time-Series Graph of the following accumulative
+                            statistics:</p>
+
+                        <p>
+                            <strong>Cases:</strong> Total Diagnosed Cases<br>
+                            <strong>Deaths:</strong> Total Confirmed Deaths<br>
+                            <strong>Recovered:</strong> Total Recovered Cases<br>
+                        </p>
+
+                        <p>Hover or click on <strong>any point</strong> on the graph to read the specific value for the
+                            day and statistic.</p>
+                        <p>Click on <strong>any legend</strong> to remove the respective data from the graph.</p>
+                        <p>Select the <strong> Select a Country</strong> option from the dropdown to return to this
+                            screen.
+                        </p>
+                    </div>
+                    <br>
+                    <p><strong>Note:</strong> The historical data for this particular section, especially "Recovered",
+                        may not accurately reflect the given country's statistics.</p>
+                </div>
+
+                <!-- Placeholder chart-containter for Chart.js -->
+                <div class="chart-container table-responsive">
+                    <canvas id="lineChart" class="table">Time-Series Line Graph</canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- COVID Map Section -->
+        <section id="covidMap" class="d-flex justify-content-center covid-data d-none">
+            <!-- Container for Map -->
+            <div class="container covid-data-container">
+
+                <!-- Container for Selector -->
+                <div class="input-section d-flex justify-content-center">
+                    <!-- Statistic Selector -->
+                    <select name="statisticSelectMap" id="statisticSelectMap">
+                        <option value="">Statistics Select</option>
+                    </select>
+                </div>
+
+                <!-- Text Container -->
+                <div class="text-container text-center dark-font">
+                    <h2 class="underline"> Map </h2>
+                    <p>
+                        Compare Individual COVID-19 Statistics on a Worldwide Basis
+                    </p>
+                    <div class="text-decorator">
+                        <p>Select a <strong>statistic</strong> to compare the world's statistics on a Choropleth Map.
+                        </p>
+                        <p>Hover or click on <strong>any country</strong> to view the specific value for that country.
+                        </p>
+                        <p>Use the <strong>Plus or Minus</strong>, your <strong>Mousewheel</strong>, or
+                            <strong>Pinch</strong> to zoom in and out.</p>
+                        <p>Once zoomed in, <strong>drag</strong> across the map to move the perspective.</p>
+                        <p>Click or tap on any <strong>legend item</strong> to filter that particular threshold from the
+                            data.</p>
+                        <p>Select the <strong>Select a Statistic</strong> option from the dropdown to return to this
+                            screen.
+                        </p>
+
+                    </div>
+                    <p><strong>Note:</strong> Countries that have not recorded data for a particular
+                        statistic today will be filtered out by default.</p>
+                </div>
+
+                <!-- Placeholder divs (map/arealegend) for Mapael -->
+                <div class="mapContainer">
+                    <div class="map">Choropleth Map</div>
+                    <!-- areaLegend is the only CSS class used with camelCase due to the targeting of Mapael -->
+                    <div class="areaLegend">Legend for Choropleth Map</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Github Link -->
+                <div class="col-4 text-center footer-section footer-github">
+                    <a href="https://github.com/BAK2K3" target="_blank" rel="noreferrer"><i class="fas fa-laptop-code"
+                            aria-hidden="true"></i> BAK2K3<span class="sr-only">Github</span></a>
+                </div>
+                <!-- Donate Modal Link -->
+                <div class="col-4 text-center footer-section footer-donate"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#donateModal" class="">Donate</a></div>
+                <!-- Credits Modal Link -->
+                <div class="col-4 text-center footer-section footer-credits"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#creditsModal" class="">Credits</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!--  Donate Modal -->
+
+    <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <!-- Modal Content -->
+            <div class="modal-content dark-font">
+                <!-- Modal Heading -->
+                <div class="modal-heading text-center heading-font">
+                    <h2 id="donateModalLabel">Donate</h2>
+                </div>
+                <div class="table-responsive body-font">
+                    <table class="table table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th> This project was developed from the safety and comfort of my own
+                                    home, surrounded by a healthy family. I'm lucky to be in this position,
+                                    but others may not be. Please consider donating to a worthy cause during this time;
+                                    be it supporting those who work tirelessly to allow this country to keep
+                                    functioning, those who are on the brink of scientific breakthroughs,
+                                    or those who are currently in a less fortunate position.
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://www.nhscharitiestogether.co.uk/donate/" target="_blank"
+                                        rel="noreferrer">NHS Charities Together</a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.crisis.org.uk/get-involved/donate/" target="_blank"
+                                        rel="noreferrer">Crisis</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.mind.org.uk/donate/donation-appeal-2020/" target="_blank"
+                                        rel="noreferrer">Mind</a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://safelives.org.uk/" target="_blank" rel="noreferrer">Safe Lives</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Credits Modal -->
+
+    <div class="modal fade" id="creditsModal" tabindex="-1" aria-labelledby="creditsModalLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <!-- Modal content -->
+            <div class="modal-content dark-font">
+                <!-- Heading -->
+                <div class="modal-heading text-center heading-font">
+                    <h2 id="creditsModalLabel">Credits</h2>
+                </div>
+                <!-- Body -->
+                <div class="table-responsive body-font">
+                    <table class="table table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th> This project would not have been possible without the following tools
+                                    and technologies.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://disease.sh/" target="_blank" rel="noreferrer">disease.sh</a> - Open
+                                    Source Disease Data
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.chartjs.org/samples/latest/" target="_blank"
+                                        rel="noreferrer">chart.js</a> - Open Source Graph Library for Javascript
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.vincentbroute.fr/mapael/" target="_blank"
+                                        rel="noreferrer">Mapael</a> - Open Source Map Data Visualisations
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Footer -->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+    <!-- Bootstrap 5.0.0-Beta 1 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"
+        charset="utf-8"></script>
+
+    <!-- Chart.JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"
+        integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA=="
+        crossorigin="anonymous"></script>
+
+    <!-- jquery Mapael -->
+    <script src="https://pagecdn.io/lib/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>
+    <script src="assets/js/world_countries.js"></script>
+
+    <!-- Internal Scripts -->
+
+    <script type="text/javascript" src="assets/js/data.js"></script>
+    <script type="text/javascript" src="assets/js/compare.js"></script>
+    <script type="text/javascript" src="assets/js/visualise.js"></script>
+    <script type="text/javascript" src="assets/js/maps.js"></script>
+    <script type="text/javascript" src="assets/js/navigation.js"></script>
+
+    <!-- Testing Spec -->
+    <script type="text/javascript" src="assets/js/spec/dataSpec.js"></script>
+
+</body>
+
+</html>
