@@ -513,6 +513,11 @@ table th, table td{
 .mapael .zoomOut {
     top: 50px;
 }
+svg tspan {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
 
 /************************************************************* Footer */
 /* Sticky Footer using Flexbox: https://css-tricks.com/couple-takes-sticky-footer/ */
@@ -672,7 +677,10 @@ table th, table td{
     #covidMap .covid-data-container {
         padding: 0;
     }
-
+   
+    svg tspan {
+        font-size: 12px;
+    }
 
     /* Change Zoom buttons to bottom of container on mobile view */
     /* For all zoom buttons */
