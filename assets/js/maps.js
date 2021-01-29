@@ -83,7 +83,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#EFF1F3"
                     },
-                    label: `No data available.`
+                    label: `No data available`
                 },
                 {
                     // Lower Eight
@@ -91,7 +91,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#97e766"
                     },
-                    label: `Less than ${Number(Math.round(maxValue / 8)).toLocaleString()}.`
+                    label: `Less than ${Number(Math.round(maxValue / 8)).toLocaleString()}`
                 },
                 {
                     // Lower Sixth
@@ -100,7 +100,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#7fd34d"
                     },
-                    label: `More than ${Number(Math.round(maxValue / 8)).toLocaleString()}, but Less than ${Number(Math.round(maxValue / 6)).toLocaleString()}.`
+                    label: `Between ${Number(Math.round(maxValue / 8)).toLocaleString()} and ${Number(Math.round(maxValue / 6)).toLocaleString()}`
                 },
                 {
                     // Lower Quarter
@@ -109,7 +109,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#5faa32"
                     },
-                    label: `More than ${Number(Math.round(maxValue / 6)).toLocaleString()}, but Less than ${Number(Math.round(maxValue / 4)).toLocaleString()}.`
+                    label: `Between ${Number(Math.round(maxValue / 6)).toLocaleString()} and ${Number(Math.round(maxValue / 4)).toLocaleString()}`
                 },
                 {
                     // Max Value
@@ -117,7 +117,7 @@ function generateLegends(statistic) {
                     attrs: {
                         fill: "#3f7d1a"
                     },
-                    label: `More than ${Number(Math.round(maxValue / 4)).toLocaleString()}.`
+                    label: `More than ${Number(Math.round(maxValue / 4)).toLocaleString()}`
                 }
 
             ]
