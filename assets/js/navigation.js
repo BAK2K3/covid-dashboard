@@ -35,8 +35,8 @@ $(document).ready(function () {
     // On heading click
     $("#headingAnchor").on("click", function () {
 
-        // If the Splash Screen isn't active or if the information container isn't active.
-        if ($("#covidSplash").hasClass("d-none") && ($("#covidInfo").hasClass("d-none"))) {
+        // If the Splash Screen isn't active and if the information container isn't active.
+        if ($("#covidSplash").hasClass("d-none") && ($("#covidInfo").hasClass("d-none")) && (!$("#covidToggler").hasClass("d-none"))) {
             // Removes all active classes from togglers
             $(".btn").removeClass("btn-active");
             // Calls the toggleCovidSections with the exception
