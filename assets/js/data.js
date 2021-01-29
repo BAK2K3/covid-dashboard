@@ -88,7 +88,7 @@ function getKeyByValue(object, value) {
 function fetchApiData() {
     $.when(
         // Query all required datasets
-        $.getJSON("https://disease.sh/v3/covid-19/countries"),
+        $.getJSON("https://disease.sh/v3/covid-19/countries?allowNull=true"),
         $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
     ).then(
 
