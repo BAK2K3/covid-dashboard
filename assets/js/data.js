@@ -108,13 +108,13 @@ function generateHTML() {
     // List full set of countries for compare
     let listItemsCompare = ' <option value = "none" >Select a Country</option> ';
     listItemsCompare += globalCompareDataset.map(function (item) {
-        return ` <option value = "${item.country}" > ${item.country} </option> `;
+        return ` <option value = "${item.country}" >${item.country}</option> `;
     });
 
     // List Condensed Countries (for historical availablity) for Visualise
     let listItemsVisual = ' <option value = "none" >Select a Country</option> ';
     condensedCountryList.forEach(function (item) {
-        listItemsVisual += ` <option value = "${item}" > ${item} </option> `;
+        listItemsVisual += ` <option value = "${item}" >${item}</option> `;
     });
 
     // List Stats for Map Section
@@ -122,7 +122,7 @@ function generateHTML() {
     Object.keys(globalCompareDataset[0]).forEach(function (item) {
         // Checks that statistic is not null in statisticDictionary, also prevents Update Time/Country Name from being added
         if (statisticDictionary[item] !== null && statisticDictionary[item] !== "Time of Update" && statisticDictionary[item] !== "Name of Country") {
-            listItemsMap += ` <option value = "${statisticDictionary[item]}" > ${statisticDictionary[item]} </option> `;
+            listItemsMap += ` <option value = "${statisticDictionary[item]}" >${statisticDictionary[item]}</option> `;
         }
     });
 
