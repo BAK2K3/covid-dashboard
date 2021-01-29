@@ -169,6 +169,7 @@ presenting the information in a user friendly and understandable manner, whilst 
 * The project's wireframes were designed in [Balsamiq](https://balsamiq.com/wireframes/).
 * The project's background was designed using [GIMP](https://www.gimp.org/).
 * The images used in the project's README and TESTING documentation were hosted and served through [Cloudinary](https://cloudinary.com/console).
+* This project uses [Jasmine](https://jasmine.github.io/) for unit testing.
 
 ---
 
