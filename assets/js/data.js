@@ -89,7 +89,7 @@ function fetchApiData() {
     $.when(
         // Query all required datasets
         $.getJSON("https://disease.sh/v3/covid-19/countries?allowNull=true"),
-        $.getJSON(`https://disease.sh/v3/covid-19/historicsedCountryList}`)
+        $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
     ).then(
 
         function (compareDataset, visualDataset) {
