@@ -540,6 +540,56 @@ to allow a full and interactive display on smaller resolution devices, without l
 
 ## Future Feature Considerations
 
+### Data Refresh
+
+Currently, a user is unable to "Refresh" or obtain updated data from the disease.sh repository without refreshing the page. Ideally, a user should be able to achieve this without having to cease engagement or without having to navigate 
+away from the website.
+
+When initially implementing the `Fetch API Data` function, it was given two optional parameters for a callback and a string. The callback was for execution when the data had been fetched, and the string was to instruct the 
+function which of the two Datasets to refresh. This could allow a "Refresh" to be performed based on what Feature the user was currently engaged with when the "Refresh" action was performed.
+
+`$(document).ready(fetchApiData(generateHTML, &quot;all&quot;)`
+
+Due to time restraints, it was decided to refactor this function and remove the optional parameters, instructing the `Fetch API Data` function instead to be called a single time on page load. 
+Additionally, once the design choices had been finalised, difficulties were faced placing an additional interactive feature, which would allow a user to request the data, without obfuscated the rest of the user interface and experience.
+
+As the concept for this feature had previously been developed, had I had more time I would consider how to incorporate this function and how to implement it into the user experience.
+
+### Map Auto-Zoom for mobile view
+
+Currently, on mobile devices, when the Map is initially generated it is located at the top of its hosting container. Whilst this is the default functionality when over-riding the Mapael container's default width and height, 
+in order to provide a more personal and interactive user experience I would consider adding an Auto Zoom into the user's current location on first load of the map.
+
+### Implement a user-friendly Clear option on the compare screen
+
+On the Compare Feature, when a user selects a country from the Selector, the current functionality allows the user to "Reset" the respective column data by either selecting the Selector's default value (`Select a Country`), 
+or by interacting with the `Compare Toggler` to reset the whole section.
+
+Consideration was given as to how to implement a `Clear` button or interface, to allow a user to simply reset the specified column data without having to perform such arbitrary tasks to do so.
+
+One implementation for this was tested using `X` symbols next to each of the Selectors, however upon testing this in mobile view it was clear that it provided a sub-optimal user experience; 
+both due to the crammed nature of the aesthetic, and due to the small size of the interactable icon.
+
+![Example of Table with X's](https://res.cloudinary.com/bak2k3/image/upload/v1612028666/covid-dashboard/X-tags_on_table_example_wzqtet.jpg)
+
+Whilst this concept has since been removed, one solution to this would be to add an additional row underneath the Selectors with respective `Clear` buttons.
+
+### Ability to add multiple countries to Visualise
+
+To aid the understanding and comparative nature of the data presented within the Visualise Feature, it is entirely possible to add additional datasets from other countries to the graph. 
+Consideration must be given as to whether or not to allow all three sets of statistics per country, but this addition would complement the user's goal to both have more control over the data, and choose how the data is presented to them.
+
+### Add a full country data table
+
+Similar to one of the websites discussed in the Competitor Review, a table could be implemented in the project which provides a list of all countries, allowing the user to dynamically control which data is be added to the table, 
+and the ability to filter and sort the data on the table.
+
+### Backup Data
+
+Given the project relies solely on a single API, and internet access, a future feature implementation could see the storage of a local backup of the required datasets. 
+This would allow users to continue to interact with the site as intended, in the event the API goes down or the request fails, despite the data being out of date. In its current state, 
+the website presents the user with an error message when the API fails to load, and functionality is disabled.
+
 ---
 
 # Technologies Used
