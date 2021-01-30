@@ -101,7 +101,7 @@ function fetchApiData() {
 
         }, function () {
             toggleCovidSections('#covidError');
-            $('#covidToggler').addClass("d-none")
+            $('#covidToggler').addClass("d-none");
         });
 }
 
