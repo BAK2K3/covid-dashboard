@@ -105,25 +105,79 @@ The map utilises the scroll wheel, and the dashboard as a whole presents tables,
 
 ### Project Strategy Summary
 
-**Ideal User**: Any individual interested in COVID-19 Statistics.
+#### Ideal User 
+Any individual interested in COVID-19 Statistics.
 
-**Project Goal**: Provide a platform on which users are able to not only obtain up to date COVID-19 statistics, but to do so dynamically, 
+#### Project Goal
+Provide a platform on which users are able to not only obtain up to date COVID-19 statistics, but to do so dynamically, 
 presenting the information in a user friendly and understandable manner, whilst providing users control over how the data is presented.
 
-**User Needs**: 
-* To be able to navigate the site with ease.
-* To be able to choose how the data is presented.
-* To be able to control the data visualisations.
-* To be able to understand the statistics.
+#### User Needs 
+- To be able to navigate the site with ease.
+- To be able to choose how the data is presented.
+- To be able to control the data visualisations.
+- To be able to understand the statistics.
 
-**Project Objectives**: 
-* To create an “all in one” solution to providing statistics surrounding the COVID-19 Pandemic. 
-* Give users a reason to use this site, over multiple other individual sites. 
-* Engage the user.
-* Allow the user to navigate and control the application with ease. 
-
+#### Project Objectives 
+- To create an “all in one” solution to providing statistics surrounding the COVID-19 Pandemic. 
+- Give users a reason to use this site, over multiple other individual sites. 
+- Engage the user.
+- Allow the user to navigate and control the application with ease. 
 
 ## Scope
+
+### Functional Requirements
+
+#### Simplistic User Interface and Interactivity
+
+- Allow the user to navigate, and interact with, the site with ease.
+  - Implement an intuitive navigation system which is consistent in style and structure.
+- Take a minimalistic approach to layout and structure, whilst presenting sufficient information at all times.
+  - This should allow instinctive and self-explanatory usage and interaction.
+- Ensure the layout, structure, and visualisations are native to mobile.
+
+#### Data Visualisations
+
+- Allow the user to choose how the data is visualised.
+- Implement various methods of data visualisation
+  - **Compare** (To compare 2 countries' full data side by side via table)
+  - **Visualise** (To see time-series data for a single country via graph)
+  - **Map** (To compare a single statistic across all countries via choropleth)
+
+#### User Control
+
+- Let the user decide how the data is presented to them.
+  - Present the choice of visualisation, rather than presenting all available visualisations at once, so as to not overwhelm, and to instil the user with control.
+- Allow the user to choose what data is visualised.
+  - Allow the user to select the country/statistics they want to look at and/or compare.
+- Allow the user to have a degree of control over the data being visualised.
+  - Allow the user to filter aspects of the data where applicable.
+
+#### Data Extraction, Cleaning and Formatting
+
+- Extract the necessary data from an API (See Content Requirements).
+- Clean the data, to remove any aspects of the data that are not required.
+- Pre-process the data for their respective visualisations.
+- Format the data, where applicable, for easy user interpretation.
+
+### Content Requirements
+
+#### Global Daily COVID-19 Statistics
+
+- Obtain bulk daily COVID-19 statistics for as many countries as possible.
+- Ideally, the data should be:
+  - updated regularly.
+  - consistent in content across the countries.
+- This data can be utilised for comparing (via table), and mapping (via choropleth).
+
+#### Global Historic COVID-19 Statistics
+
+- Obtain time-series COVID-19 data for as many countries as possible.
+- Obtain more than one statistic per country, where possible.
+- Ideally, the data should be:
+  - updated regularly.
+  - consistent in content across the countries.
+- This data can be utilised for time-series visualisation (via graph).
 
 ## Structure
 
