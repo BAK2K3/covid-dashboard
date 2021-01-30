@@ -269,6 +269,91 @@ Map Wireframe: [Link](./assets/wireframes/map-wireframe.pdf)
 
 ## Surface
 
+The project's aesthetic design is intended to be simple, yet informative and engaging.
+
+### Colour Scheme
+
+> **Please note:** Some screenshots throughout the documentation may contain colours that differ from those documented below. Throughout the development and documentation process, 
+strong, vivid, and bold colours were used for the separate Section Containers to allow for differentiation when developing and testing. Once the navigational development had been completed, the colour scheme discussed below was implemented.
+
+![Primary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1611426025/covid-dashboard/Colour_Scheme_Primary_j9z5er.jpg)
+
+#### Blue
+
+The colour scheme for this project centres around a light pastel shade of blue (#72A3C0), due to its symbolism of [wisdom, inspiration, and calmness](https://en.wikipedia.org/wiki/Color_symbolism). 
+This colour was ultimately implemented into the Logo, the Section Containers, and the Navigation Toggler. The shade of blue chosen also closely resembles the "water" shade of blue commonly used in map diagrams, 
+which allowed the Map Feature to synergise with its hosting container.
+
+#### White
+
+An off shade of white (#EFF1F3) was initially chosen as the background colour, and as the background colour for interactive containers (such as selectors, unselected togglers for navigation, and modals). 
+After preliminary user testing and feedback, the background colour of the project was changed substantially; this has been discussed in the "Visual Effects" section.
+
+#### Black
+
+In order to comply with WCAG 2.0, a Rich Black colour (#0E0F19) was chosen for primary text throughout the website. This resulted in a 7:1 ratio for Black on Blue, and a 16.84:1 ratio for Black on White.
+
+#### Orange and Dark Grey
+
+Two colours complimentary to those preceding were also used throughout the project. A pastel orange/pink (#D78170) was used for stark visual contrast when highlighting or selecting a country on the Map Feature. 
+A dark shade of Grey (#252627) was also used for certain shading and lines throughout the project as a subtle yet effective alternative to the primary shade of black.
+
+![Secondary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1611426025/covid-dashboard/Colour_Scheme_Secondary_yklj3i.jpg)
+
+#### Green Scale
+
+Four shades of green (#97E766, #7FD34D, #5FAA32, #3F7D1A) were implemented into the Map Feature, so as to prescribe thresholds to statistics, in a relevant shade and colour, 
+given they represented land areas on a map. One of these shades of grey was also incorporated into the Visualise Feature, to represent "Recovered" cases, due to the positive connotations of the colour.
+
+### Typography
+
+- **Logo Font:** [Crimson Text](https://fonts.google.com/specimen/Crimson+Text) was chosen for the Logo. This is a sharp and poignant font, with historic undertones, 
+intended to stand out and isolate itself from the rest of the text on the page, especially given the Logo is present throughout the site.
+- **Body Font:** [Raleway](https://fonts.google.com/specimen/Raleway) was chosen as the body font due to its softer and curvier aesthetic, and easier to read in bulks of text.
+
+### Logo
+
+The logo was initially designed in GIMP, and implemented into the project using CSS. Its intention is to be simplistic, relatable, yet identifiable through the use of underlining and isolated italics, combined with the chosen font.
+
+### Visual Effects
+
+#### Background Image
+
+After preliminary user testing and feedback, it was concluded that a "plain white" background, against a primary blue coloured container, resulted in a particularly monotonous and dull user experience. 
+As such, a graphic was designed using GIMP as the background for the website.
+
+This background focuses on the primary blue colour chosen, with a circular gradient, progressively transitioning to the rich black colour chosen on the outer edges, producing a focusing effect on the centre of the page. 
+In addition to this, the graphic was overlayed with a bump mapped mosaic, to create depth and texture to the overall aesthetic.
+
+The mosaic design was chosen due its random yet cohesive nature; its symbolism resonates with the data of the project, given the interconnectivity of people, things, place and statistics that all appear unique in isolation, 
+yet are influenced and derived from their surroundings.
+
+#### Navigation Toggler
+
+The Navigation toggler is the primary method of navigating throughout the site, and as such is implemented with a feedback based visual effect, designed to communicate interactivity without explicitly instructing the user to do so.
+
+![Navigation Toggler](https://res.cloudinary.com/bak2k3/image/upload/v1611478771/covid-dashboard/Functioning_Toggler_p7lk98.jpg)
+
+Each buttons' idle state is a white background. When a user hovers over the icon, the pointer changes, and a fill effect (from bottom to top) commences, filling the button with the primary blue colour.
+
+When the user clicks or interacts with one of the buttons, the respective text underlines, the fill colour remains, and any previously active button returns to its inactive state. 
+The resultant effect, while subtle, effectively portrays the user's current *location* within the project.
+
+#### Border Shadows
+
+Border shadows are used consistently throughout the project. Whilst varying in implementation, the intended effect is to create visual depth to the layers of information present at any given time.
+
+External border shadows are used on the following elements:
+
+- Logo
+- Section Containers
+- Selectors
+
+Inset border shadows are used on the following elements:
+
+- Text Decorators within Sections
+- Footer
+
 ---
 
 # Features
