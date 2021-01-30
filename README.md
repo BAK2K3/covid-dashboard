@@ -217,11 +217,9 @@ The Information Section is essentially the *Landing Page*, providing a project o
 When a user selects a visualisation method from the Toggler, the relevant How-To Content is presented. Upon engaging with the section (by either selecting a country or a statistic, where applicable), the appropriate Visualisation Content
 replaces the How-To Content.
 
-**How-To Content**  
-The How-To Content provides a simple set of instructions, explaining how the user can interact with the requested visualisation method.
+- **How-To Content**: The How-To Content provides a simple set of instructions, explaining how the user can interact with the requested visualisation method.
 
-**Visualisation Content**  
-The Visualisation Content presents the user with the requested data (either country or statistic) in the requested visualisation method.
+- **Visualisation Content**: The Visualisation Content presents the user with the requested data (either country or statistic) in the requested visualisation method.
 
 #### Footer
 
