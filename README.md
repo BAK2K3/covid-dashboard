@@ -360,6 +360,184 @@ Inset border shadows are used on the following elements:
 
 ## Existing Features
 
+### Fetching API Data
+
+The core functionality of the project is dependent on obtaining large amounts of data, to be accessed from various functions. As such, on page load, the disease.sh API is queried for the following data repositories:
+
+>[https://disease.sh/v3/covid-19/countries](https://disease.sh/v3/covid-19/countries)
+
+This returns the daily statistics for all available countries, which is then stored in a global variable (`Global Compare Data`).
+
+>[https://disease.sh/v3/covid-19/historical/{countries}?lastdays=30](https://disease.sh/v3/covid-19/historical/%7Bcountries%7D?lastdays=30)
+
+This returns time-series data, over a 30-day period, for the countries specified within the `{countries}` variable, for accumulative data for Total Cases, Total Recovered, and Total Deaths. 
+The available endpoints for this API were hard-coded as a list (`Condensed Country List`), and passed into the API request. **See Testing.MD for further details on this topic.** 
+The data returned from this API request is then stored in a global variable (`Global Visual Data`).
+
+Whilst this data is being obtained, the splash screen is displayed to the user and interaction with the website's navigation system is disabled. 
+Once the data has been obtained, interactivity is unlocked and the Information Section is displayed to the user, along with the Navigation Toggler. If the API returns an error, 
+the user is presented with an error message requesting they refresh the page, use the correct browser, or contact the developer.
+
+### The Navigation Effect
+
+As discussed in the **Structure** section, under **Information Architecture** , the website utilises a single HTML file, with all content either being hidden, shown, or generated as and when needed. 
+Elements that are *static* (i.e do not change between interaction and navigation) are hard coded into the HTML, with Bootstrap's `d-none` class being utilised to hide the Section Containers not being interacted with. 
+All other content, that which is contained within the Section Containers, are dynamically created, adjusted, or reset when the user navigates through the sections.
+
+When the user interacts with the Navigation Toggler, all Section Containers are hidden, their respective content "Reset", and the requested Feature has its respective Section Container's `d-none` class removed. 
+Initially, JQuery was intended to be used to `.hide()` and `.show()` the aforementioned containers, but due to the inclusion of the Bootstrap Framework, dynamic class management had to be implemented instead.
+
+The "Reset" functionality was initially incorporated into the navigation function (`Toggle Covid Sections`), and was designed to be called each time the user navigated to a different Section Container. 
+However, upon testing the user experience, it was clear that a user may want to reset the currently active Content Container by interacting with the currently active Feature's toggler. 
+While re-calling this function would have achieved the intended result, it would also run a superfluous amount of script in order to achieve it. As such, the `Toggle Covid Sections` function was refactored, 
+and split into three separate "Reset" functions; one for each Feature. As a result of this, the respective "Reset" function would be called when the user re-interacted with the currently active element, 
+and when the user navigated to a different feature, all three reset functions were called in conjunction with the navigational aspect of the original function.
+
+The result of the Navigation Effect produces smooth transitions between content, and with near instantaneous response to the JavaScript, 
+allows the user to navigate through the different contents as if moving through different HTML files.
+
+### Dynamic HTML Generation
+
+Each Visualisation Feature contains one or more Selector; the elements of which are dynamically generated through JavaScript on page load, through the Generate HTML function. 
+Once loaded into the Selector elements, they remain static until the page itself is reloaded.
+
+#### Compare
+
+Two Selector elements are present within the Compare Feature; the contents of which are obtained from the country keys within the Global Compare Dataset. 
+Given these elements are pulled directly from the raw Global Compare Dataset, users will be able to view any new countries that are added as and when the dataset is updated. 
+This also allows the Selector's explicit value to be used find the respective country's index position within the dataset to obtain the relevant data.
+
+#### Visualise
+
+One Selector element is present within the Visualise Feature; the contents of which are generated from the aforementioned hard coded Condensed Country List. 
+As such, until the API endpoints for this data repository are provided programmatically by the Disease.sh API, users will currently only be able to view the time-series data for the countries identified 
+within the dataset at the time of deployment.
+
+As the entries in this Selector reference explicit country names contained within the Global Visual Dataset, when the user selects a country from this Selector, 
+its explicit value is used to find the index position within the dataset to obtain the relevant data.
+
+#### Map
+
+One Selector element is present on the Map Feature; the contents of which are obtained from the available statistics present for a given country within the Global Compare Dataset.
+
+The available statistics are filtered to remove `Name of Country` and `Time of Update` (as these are not statistical values which can be represented on a Choropleth Map), 
+and then filtered through a Statistics Dictionary, hard-coded to return either `null` for statistics which may not be entirely *layman* friendly, or a string which provides a verbose representation of the 
+statistic (ie. ` active: "Currently Active Cases"`). By filtering the possible statistics the user can select, it removes the possibility of selecting a statistic which would not produce expected results.
+
+As the options within the selector are string representations of the statistic keys, when the user selects a statistic from the Map Visualisation Selector, 
+a reverse lookup (`getKeyByValue`) is performed on the dictionary to identify the required key within the Global Compare Dataset.
+
+### Compare
+
+The Compare Feature allows users to see individual country statistics in isolation, or compare two countries' respective statistics side by side. This Feature utilises Bootstrap, JQuery, and Font Awesome; the data pre-processing, 
+formatting, and HTML generation is self-written.
+
+When a user first selects a country from either Selector, the How-To Content is replaced with a generated table, providing the requested country's statistics. The table contains a central column containing the Statistic definition, 
+and within the column in which the user selected the country, the respective statistics are appropriately displayed and formatted. If there is no data for a particular statistic, this will be communicated to the user.
+
+If a user chooses a second country from the Selector, the respective column is populated with the second country's data, and all numerical statistics (on both sides of the table) are affixed with a relevant symbol to represent 
+whether the figure is higher, lower, or equal to the figure being compared against. If either country has no data for a given statistic, no comparative indicator will be presented on that row.
+
+If a user returns either Selector to its default value, the respective column will be emptied, and the column which retains data will have its affixed icons removed.
+
+Once a Selector has been engaged with, the user can use their keyboard arrows to traverse to country list.
+
+If a user returns both Selectors to their default value ("Select a Country"), the table will be removed, and the How-To Content will be displayed.
+
+The statistics presented to the user are formatting depending on their data type:
+
+- **Country Name:** Raw String
+- **Date:** Converted to Date Object, and reconstructed for coherent date format.
+- **Statistic:** Converted to Locale Numerical Format (eg. `3000` would be presented as `3,000` for UK and `3.000` for IT)
+
+### Visualise
+
+The Visualise Feature allows users to see accumulative statistics for Total Cases, Total Recovered, and Total Deaths for the requested country, over a 30-day period, on a time-series line graph. 
+This Feature utilises Chart.js for the graph generation, and jQuery for HTML targeting.
+
+When a user first selects a country from the Selector, the How-To Content is replaced with the requested country's time-series graph. 
+Every time the Selector is changed, the graph is updated to present the new country's time-series data.
+
+The Line Chart contains a Legend, which defines each line's representative statistic. This legend is interactive, and allows users to remove/re-add statistics from/to the chart. 
+As data is removed/added to the chart, the Y axis scales dynamically to adjust to the data range being displayed.
+
+Each point on the Chart is interactive, allowing users to **hover** or **click** on them to see a tooltip describing the selected datapoint's value, the statistic it represents, and the date the datapoint represents. 
+In its current state, the value represented in the tooltip is not converted to locale string (as seen in the Compare and Map Features), and the date is represented in a full Date format (including `HH:MM:SS`).
+
+In order for Chart.js to recognise, read, and display the data as intended, the Global Visual Dataset had to be formatted appropriately. The self-written function `Format Time Series` performs the required pre-processing and 
+formatting **each time a new country is selected**. Due to the amount of data that would need to be processed and stored (30 data points for each 3 statistics, for 185 countries), this solution appeared to present an 
+optimal balance between processing time and memory and storage management.
+
+See below for a visualisation of how the raw data is retrieved and stored, for the Global Visual Dataset, against the format required for Chart.js:
+
+![Chart.js Data Conversion](https://res.cloudinary.com/bak2k3/image/upload/v1612028101/covid-dashboard/Visual_to_Chartjs_acae25.jpg)
+
+When the user selects the default option in the selector ("Select a Country"), or uses the Navigation Toggler (either re-selecting Visualise or navigating to a different section), 
+the graph is destroyed. Given the approach taken to format the data as described above, this allows the browser to not retain too much data in memory that is not being utilised by the user, whilst still producing optimal speeds.
+
+After initial user testing, the question was raised as to whether a logarithmic scale would be more appropriate for the Y Axis on the time-series graph. Given the "Death" figure is comparatively lower than other figures, 
+a normal scale on this axis sometimes results in a substantial gap between the "Cases" / "Recovered" lines, and the "Death" line, causing the "Deaths" line to even sometimes appear to stagnate on the 0 threshold. As a result of this, 
+a Logarithmic scale was implemented and tested, but was subsequently reverted back to a normal scale. This was due to both the Y Axis Labels overlapping, and due to the less structured view it produced, making it more difficult to be 
+interpreted from the standpoint of users who may not be mathematical experts. A future update to the project may see the ability for users to select which type of graph is presented.
+
+**Example Graph of Italy using a Linear Scale**
+
+![Italy Linear Graph](https://res.cloudinary.com/bak2k3/image/upload/v1612028194/covid-dashboard/Italy_Linear_jvbzbt.jpg)
+
+
+**Example Graph of Italy using a Log Scale**
+
+![Italy Log Graph](https://res.cloudinary.com/bak2k3/image/upload/v1612028194/covid-dashboard/Italy_Log_dckv5v.jpg)
+
+
+### Map
+
+The Map Feature allows users to visualise and compare a single statistic on a global scale, via a Choropleth Map. Using self-implemented dynamic thresholds for the legend, the countries are shaded dependent on their current statistic 
+(on a comparative basis). This Feature uses Mapael, a jQuery extension of Rapael, for the interactive map, and jQuery for HTML targeting. **The Map Feature was originally going to be implemented with [DataMaps](https://datamaps.github.io/),** 
+however this library is now over 5 years old, and due to certain aspects of the code being outdated, in was not innately compatible with other packages I intended to use.
+
+When a user first selects a statistic from the Selector, the How-To Content is replaced with a map of the world, with each country colour coded based on the respective countries' statistic, with the shading determined by the 
+Legend thresholds. Any country that has no data for that particular statistic will be de-selected by default. The user can zoom in and out using a mouseweel, with the provided icons, or through pinching on a mobile device. 
+Navigation when zoomed in works through clicking and dragging, and swiping with a finger.
+
+Each country on the Map is interactive, allowing users to "hover" or "click" on them to see a tooltip containing the name of the country, and the given country's statistic. This action feels responsive, as interacting with each 
+country changes the shading to a contrasting pastel orange colour. The tooltip contains dynamically generated HTML, allowing for `<strong>` country names, and numerical values converted to locale strings.
+
+The first time a user selects a statistic from the Selector on this Feature, the data from the Global Compare Dataset is processed and formatted into a global variable using the self-written `Format Map Data` function. 
+Unlike the Visualise Feature, this operation **is only performed once.** Given there is a fraction of the data to be processed (13 statistics across 177 countries), the solution in this instance appeared to produce optimal 
+results when considering the trade-off between processing speed and memory and storage management. There is an occasional delay when first interacting with the map, but subsequent interactions appear to result in very quick responses.
+
+See below for a visualisation of how the raw data is retrieved and stored, for the Global Compare Dataset, against the format required for Mapael:
+
+![Mapael data conversion](https://res.cloudinary.com/bak2k3/image/upload/v1612028101/covid-dashboard/Compare_to_Mapael_ydf6d3.jpg)
+
+The Map contains an interactive Legend, positioned underneath the map, which not only describes the colour coded thresholds, but allows users to hide/show specified thresholds. **Each time a statistic is selected** from the Selector, 
+a calculation is performed to determine the highest value within the requested statistic data, and splits the Legend into the following thresholds:
+
+- No Data
+- Between 0 and 1/8 of the maximum value.
+- Between 1/8 to 1/6
+- Between 1/6 to ¼
+- Higher than ¼ of maximum value.
+
+Various thresholds were tested, and given the variance of the data, some cases resulted in the *clustering* of data points, where values were only falling within the top or bottom threshold. 
+One solution to this was include more thresholds, but the above implementation both produced the most aesthetically pleasing results, and avoided additional processing requirement and overbearing the user with too many options.
+
+### Modals
+
+Modals are implemented into the site, using Bootstrap, to provide an additional degree of interactivity, and to layer content depending on its importance. 
+The modals either contain information relating to Donating to charities, or citations to the primary packages used throughout the project. Both of these can be interacted with through the footer.
+
+### Responsive Layout and Design
+
+Using a combination of Bootstrap and CSS's Flexbox, the project is designed to be fully compatible and interactive on all screen types and sizes, ensuring maximum functionality down to 320px width screen sizes. 
+This limit was chosen due to the interactive nature of the website, and given that [99%](https://screensiz.es/) of the mobile devices used today are above this width in pixels. Other than the default Bootstrap breakpoints, 
+a single custom breakpoint differentiates the implemented layout design between "full" and "compact"; both of which contain the same degree of interactivity and information. This allows a user to have the same experience regardless 
+of how they choose to visit the site.
+
+Given Chart.js and Mapael both require pre-determined container width and height on page load to generate their respective graphics, attention was given to allocating sufficient space to their relative containers for mobile devices 
+to allow a full and interactive display on smaller resolution devices, without limiting interactivity, visibility or capabilities on these resolutions.
+
 ## Future Feature Considerations
 
 ---
