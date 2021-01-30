@@ -181,6 +181,82 @@ presenting the information in a user friendly and understandable manner, whilst 
 
 ## Structure
 
+### Information Architecture
+
+The website uses a single page, with the content being constructed/deconstructed via JavaScript as the user navigates through the website.
+
+- Consideration was given to having a separate HTML file for each data visualisation. While this would reduce the dependency on JavaScript for the sole purpose of navigation, 
+and would reduce the possibility of running into basic navigational bugs, it was decided that this would be a good opportunity to demonstrate additional JavaScript capabilities. 
+Furthermore, given the majority of the HTML is static, with only the content being dynamic, it seemed like the most appropriate solution.
+
+#### Logo
+
+The "Logo" (the page's primary heading) is presented centrally at the top of the page at all times. It is isolated in its own container for consistent visibility. 
+It establishes the theme of the project, and is consistent with the rest of the website's design choices.
+
+#### Splash Screen
+
+A Splash Screen is presented to the user while the data initially loads; while this is present, only the "Logo" is visible.
+
+#### Navigation Toggler
+
+Once the data is loaded, a Navigation Toggler appears, with a Section Container attached underneath. All tabs are initially deselected, and the Section Container contains a website overview (Information Section).
+
+Once the user selects a tab from the toggler, the Information Section is removed from view, and the relevant HTML is generated, hidden, and/or displayed for the requested visualisation section.
+
+#### Section Container
+
+The Section Container is attached to the Navigation Toggler, and dynamically presents the required Section; be it the project overview, visualisation specific instructions, or the visualisations themselves.
+
+#### Information Section
+
+The Information Section is essentially the *Landing Page*, providing a project overview and basic instructions.
+
+#### Visualisation Section
+
+When a user selects a visualisation method from the Toggler, the relevant How-To Content is presented. Upon engaging with the section (by either selecting a country or a statistic, where applicable), the appropriate Visualisation Content
+replaces the How-To Content.
+
+**How-To Content**  
+The How-To Content provides a simple set of instructions, explaining how the user can interact with the requested visualisation method.
+
+**Visualisation Content**  
+The Visualisation Content presents the user with the requested data (either country or statistic) in the requested visualisation method.
+
+#### Footer
+
+The Footer is attached to the bottom of the page, and is **not** designed to remain in the viewport at all times, so as to not obfuscate the viewport. The footer is split into three sections: 
+a GitHub Link, a link to a Donation modal, and a link to a Credits modal.
+
+#### Modal
+
+The Donation and Credits sections are contained within modals, and linked to at the bottom of the page, due to their low informational and user priority. These sections are not integral to the project's functionality, 
+however, are available if users are interested in either supporting relevant charities, or are interested in the packages used to develop the project.
+
+### Interaction Design
+
+The overall goal of the interaction design is to allow users to retrieve statistics, or their representative visualisations, with the least amount of interaction possible, and to be intuitive in doing so.
+
+#### Splash Screen
+
+On page load, all content but the Logo is hidden. While the logo is visible, you cannot interact with it until the data has loaded. This prevents un-interactable elements being present when the data is loading, 
+and prevents the user interaction before the data is pre-processed.
+
+#### Navigation Toggler
+
+The Navigation Toggler is designed to aesthetically represent the section the user is currently engaged with. *Hover* effects are implemented to show potential navigation, and *Fill* effects are implemented to represent current engagement. 
+This interaction is responsive, reflective of its intentions, and intends to provide a positive user experience.
+
+#### Visualisation Sections
+
+Each Visualisation Section contains (and retains) the relevant Selectors at the top of each container. Their default value is representative of their instructions (i.e "Select a Country" for the country Selector, and "Select a Statistic"
+ for the statistic Selector).
+
+Upon a user engaging with this selector, the How-To Content is removed, and the visualisation process immediately commences; be it via Table, Graph, or Map generation. This also applies to when the user changes the selector'ss value, 
+and when the default value is reselected. When the user changes the requested data (i.e from Italy to France, or Total Deaths to Total Cases), the relevant data is immediately prepared, formatted, and represented on the requested 
+method of visualisation, in order to reflect the users intentions. When the default value is re-selected, the How-To Content repopulates the respective container. These concepts were implemented to achieve an intuitive sense of interaction, 
+attempting to pre-empt and reduce the required user inputs, ultimately producing a user-friendly interface.
+
 ## Skeleton
 
 ## Surface
