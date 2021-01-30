@@ -461,7 +461,7 @@ table th, table td{
 .mapael .mapTooltip {
     position: absolute;
     background-color: #EFF1F3;
-    moz-opacity: 0.80;
+    -moz-opacity: 0.80;
     opacity: 0.80;
     filter: alpha(opacity=70);
     border-radius: 10px;
