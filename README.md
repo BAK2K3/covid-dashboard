@@ -257,6 +257,16 @@ attempting to pre-empt and reduce the required user inputs, ultimately producing
 
 ## Skeleton
 
+> **Note:** Due to the resolution of the wireframe documents, it is recommended that these PDFs are downloaded to be viewed in the browser, rather than using GitHub's native PDF viewer.
+
+Header and Footer Wireframe: [Link](./assets/wireframes/header-footer-wireframe.pdf)
+
+Compare Wireframe: [Link](./assets/wireframes/compare-wireframe.pdf)
+
+Visualise Wireframe: [Link](./assets/wireframes/visualise-wireframe.pdf)
+
+Map Wireframe: [Link](./assets/wireframes/map-wireframe.pdf)
+
 ## Surface
 
 ---
