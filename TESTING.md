@@ -299,6 +299,21 @@ to ensure all resolutions performed as expected.
 
 # Browser Testing
 
+Cross-Browser compatibility was tested via applying the methodology described above within each browser detailed below.
+
+## Chrome/Firefox/Edge
+
+All functionality worked as intended.
+
+## Internet Explorer 11
+
+As COVID Dashboard uses JavaScript ES6, support for Internet Explorer 11 has not been considered or tested.
+
+## Safari
+
+All functionality worked as intended, other than one aesthetic bug with regard to the Selectors, whereby text was not centrally aligned. However, despite multiple various implementation attempts, 
+according to [WebKit's](https://bugs.webkit.org/show_bug.cgi?id=40216) bug reports: *"We are not going to center or justify menu items on Mac OS X"*. As such, this bug remains as it would require 
+a [significant CSS overhaul](https://stackoverflow.com/questions/11182559/text-align-is-not-working-on-safari-select) in order to overcome.
 
 # Code Validation
 
