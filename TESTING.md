@@ -317,6 +317,33 @@ a [significant CSS overhaul](https://stackoverflow.com/questions/11182559/text-a
 
 # Code Validation
 
+Code Validation was completed via third party applications, in order to assess the markdown syntax and logical application of the languages used.
+
+1. [**W3 Markup Validation**](https://validator.w3.org/) – HTML Validation
+
+  - The project's HTML was validated using the automated W3 Markup Validator at intervals throughout the development process.
+  - At no point were Errors presented.
+  - At final deployment, no Errors or Warnings are present.
+
+1. [**W3 Jigsaw**](https://jigsaw.w3.org/css-validator/) – CSS Validation
+
+  - The project's CSS was validated using the automated W3 Jigsaw Validator at intervals throughout the development process.
+  - One Error was identified, regarding the pre-written CSS rule for .mapael .mapTooltip, as `moz-opacity` was defined incorrectly. This was easily resolved by adding the appropriate `-` to the beginning of the rule.
+  - Warnings are present in the final deployed website, due to unknown vendor extensions and certain borders/backgrounds being the same colour, however I'm aware of these warnings and am satisfied these can be dismissed.
+
+1. [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse) - Accessibility, Performance, and Best Practices Audit:
+
+  - **Desktop**
+
+![Lighthouse Desktop Results](https://res.cloudinary.com/bak2k3/image/upload/v1612113928/covid-dashboard/Lighthouse_vjgt5h.jpg)
+
+  - **Mobile**
+
+![Lighthouse Mobile Results](https://res.cloudinary.com/bak2k3/image/upload/v1612113928/covid-dashboard/Lighthouse-mobile_kmjbqj.jpg)
+
+  - It appears the Mobile Performance was reduced due to the throttling imposed on the mobile testing for the Lighthouse assessment. Additionally, the background file could have been converted to a jpeg for greater compression. 
+  However, this was tested and resulted in a substantial difference in quality; artifacts were present, and the colours were not as pure. As such, given the background image consists of graphics, I'm satisfied with the performance 
+  of the site and maintained the filetype of PNG for the background.
 
 # Significant Bugs
 
