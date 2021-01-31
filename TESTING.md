@@ -513,6 +513,31 @@ However, due to time restraints, and as this did not prevent any unexpected beha
 
 # Other Technical Difficulties
 
+## Inaccurate Statistics for Graph Data
+
+When testing the data being presented on the Visualise Feature, I noticed that the data for the **Recovered** statistic for some countries did not accurately reflected the data being presented on the Compare and Map Features. 
+I examined the raw data being obtained from the API, and discovered that the anomalies were in fact directly from the API, rather than from the data handling.
+
+I visited the John Hopkins User Interface to discover that the same statistics were being presented on their dashboard:
+
+**John Hopkins UK Recovered Statistics**
+
+![John Hopkins Recovered](https://res.cloudinary.com/bak2k3/image/upload/v1612115066/covid-dashboard/John_Hopkins_Recovered_cjvyji.jpg)
+
+**Worldometers UK Recovered Statistics**
+
+![Worldometers Recovered](https://res.cloudinary.com/bak2k3/image/upload/v1612115066/covid-dashboard/Worldometers_Recovered_uvq4vj.jpg)
+
+I subsequently contacted the developers of the John Hopkins Dashboard to enquire about the anomalies. Whilst the developer returned my email, they responded quite far into the development of the project. 
+They explained that the data may be more accurate being obtained directly from their GitHub Repository, and referred me to their [README](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/README.md), 
+which discusses the anomalies in their data:
+
+>**Recovered** : Recovered cases are estimates based on local media reports, and state and local reporting when available, and therefore may be substantially lower than the true number.
+
+If I had more time, I would have restructured my `Fetch API Data` function to obtain the data from their GitHub repository to ensure accuracy of the figures being presented.
+
+![John Hopkins Email](https://res.cloudinary.com/bak2k3/image/upload/v1612115149/covid-dashboard/John_Hopkins_Email_cium6j.jpg)
+
 ---
 
 [Click here](README.md) to return to the main README.md.
