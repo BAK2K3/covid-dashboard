@@ -347,6 +347,169 @@ Code Validation was completed via third party applications, in order to assess t
 
 # Significant Bugs
 
+## Unable to obtain full list of endpoints for the Global Visual Dataset API
+
+The Visualise Feature (Time Series graph) utilises the John Hopkins University Dataset, while the Compare and Map Features (Table and Choropleth, respectively), utilise the Worldometers Dataset. 
+When querying the API for the Compare and Map Features (to be stored in the `Global Compare Dataset`), a full list of available countries is returned from a single query. However, when querying the API for the Visualise Feature 
+(to be stored in the `Global Visual Dataset`), explicit country names need to be provided in order to receive the required countries' data.
+
+The initial implementation saw the John Hopkins API being queried with a list of all countries returned from the Worldometers API request. However, when reviewing the subsequently retrieved data, it became apparent that 
+multiple countries returned `404` statuses for their requests, resulting in `null` values in the `Global Visual Dataset`. After extensive research into the disease.sh documentation, it was clear there was no explicit list of endpoints 
+for this particular API request. Therefore, as opposed to giving the user an option to select a country for visualisation, to only be informed no data was available for the requested country, 
+the decision was made to attempt to **brute force** the possible endpoints, and hard code a list of countries which successfully returned data.
+
+A full ISO2 to Country Name dictionary was obtained externally, and the keys from this dictionary were passed as a list into the query as possible endpoints.
+
+```
+$.getJSON(`https://disease.sh/v3/covid-19/historical/${Object.values(fullISO)}`)
+```
+
+From this, I retrieved a list of all countries and their responses; those that returned valid data were valid endpoints, and those that returned `null` or `404` responses were invalid endpoints. 
+I subsequently wrote a script that iterated through the returned object, and appended any country that contained valid data to a list called `condensedCountryList`.
+
+```
+// For each item in the returned object
+response.forEach(function (item) {
+    // If the item is not null
+    if (item != null) {
+    // Append the name of the country to a list
+      condensedCountryList.push(item.country);
+    }
+});
+
+// Print the list to console
+console.log(condensedCountryList);
+```
+
+I then printed the `condensedCountryList` to console, and hard-coded the output as a `const` variable into the `data.js` script, which would then be passed straight into the API on page load to obtain a full and 
+valid list of all available endpoints for the John Hopkins dataset.
+
+This solved two problems:
+
+1. Ensured only valid endpoints were queried for this API, and as such ensured users were only able to request data for valid countries, and;
+2. Prevented countries **not** in the Worldometers Dataset, but were available endpoints for the John Hopkins Dataset, from being excluded from the query.
+
+![API Endpoints](https://res.cloudinary.com/bak2k3/image/upload/v1612114426/covid-dashboard/API_Endpoints_q6j6pu.png)
+
+## Map Feature not functioning when testing the code locally offline
+
+When hosting the website via Gitpod, or via GitHub Pages, the Map Feature worked as intended. However, when downloading the code as a .zip file from GitHub and running the index.html directly from the file directory, 
+the Map Feature would not appear when choosing a country from the relevant Selector.
+
+Upon inspecting the console in Chrome Dev Tools, an `ERR_FILE_NOT_FOUND` was returned for the `jquery.mapael.min.js` file.
+
+Upon reviewing the imports in the index.html file, it appeared the link provided from the CDN (Cloudflare) for this particular js file was formatted incorrectly:
+
+`<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>`
+
+I amended the import by adding `https` to the beginning of the script `src`, as follows:
+
+`<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>`
+
+Following this amendment, full functionality returned to the local offline deployment of the site, while maintaining functionality for online deployment.
+
+## Map Feature Bugs
+
+The following two bugs were found during a single testing session. Due to their interlinked nature, their solution was combined as they related to the same function:
+
+### Map Legend displayed the incorrect title and thresholds after navigating away and returning
+
+When testing the Map Feature, it was identified that in the following circumstances, the Legend would present the thresholds for the previously requested statistics:
+
+- User initialises the Map Feature by choosing a statistic.
+- User navigates away from the Map Feature.
+- User returns to the Map Feature, and re-initialises by selecting a **different** statistic.
+
+![Map Incorrect Legend](https://res.cloudinary.com/bak2k3/image/upload/v1612114563/covid-dashboard/Incorrect_Legend_lluq6n.jpg)
+
+### MapData was being prepared every time the map was re-initialised
+
+Due to the vast amount of data requiring pre-processing prior to generation of the map, it was intended for the Map Data to be executed **once** per user session. In order to test this, a breakpoint was set on 
+the `Format Map Data` function, and was tested in conjunction with the previous test (which identified the Legend bug).
+
+![Format Map Data Breakpoint](https://res.cloudinary.com/bak2k3/image/upload/v1612114587/covid-dashboard/Breakpoint_lqs5p0.png)
+
+It was identified that the `Format Map Data` function was being called on first initialisation of the Map, **every time** the user navigated away from this feature and returned.
+
+### Solution
+
+When reviewing the relevant code for the function tied to the above functionality, it became apparent that the anonymous function tied to the Selector state change was unnecessarily complicated. As such, 
+I found it difficult to isolate the aspects of the function which caused these two errors. As a result of this, it was decided to refactor this functionality in its entirety, splitting each core functionality into independent functions, 
+allowing the logic for the _on state change_ to be more concise, and their resultant actions more verbose, due to calling appropriately named functions.
+
+Once refactored, and re-implemented, the first bug discussed was resolved. This can be attributed to the fact that the re-implementation of intended functionality was simpler when the logic was clearer. 
+Furthermore, the second bug was identified from the following condition during the refactoring process:
+
+```
+    if ($.isEmptyObject(mapLegends)) {
+        generateLegends(statisticChoice);
+    }
+```
+The anonymous function was only updating the Legends when the `mapLegends` object was empty, and the `mapLegends` object was being reset each time a user navigated away from the Feature. As such, as part of the refactoring process, 
+this was corrected to always update the Legend on state change.
+
+## The Graph's height would be incorrect after navigating away and returning when using a mobile device
+
+When testing the Visualise Feature on mobile devices, it was identified that in the following circumstances, the Map's `height` would display incorrectly:
+
+- User initialises the Visualise Feature by choosing a country.
+- User navigates away from the Visualise Feature.
+- User returns to the Visualise Feature, and re-initialises by selecting **any** country.
+
+**First Initialisation**
+
+![Graph Destroy Example 1](https://res.cloudinary.com/bak2k3/image/upload/v1612114662/covid-dashboard/Graph-destroy-1_luj9kl.jpg)
+
+**Second Initialisation**
+
+![Graph Destroy Example 2](https://res.cloudinary.com/bak2k3/image/upload/v1612114662/covid-dashboard/graph-destroy-2_t1cd8n.jpg)
+
+In order to force Chart.js to function as intended on mobile devices, the `height` of the graph's container had to be specified in CSS on lower screen-width media queries. However, when reviewing the in-line styling of the 
+graph's `canvas` in Chrome Development Tools on second initialisation, it appeared that by specifying an explicit `height`, `width` in-line styling lingered on the canvas when the `.destroy()` method was called 
+(which is a function of the Chart.js library).
+
+![Graph Destroy Example 3](https://res.cloudinary.com/bak2k3/image/upload/v1612114662/covid-dashboard/graph-destroy-3_agf6tb.jpg)
+
+In order to resolve this, the `width` attribute was targeted and removed each time the graph was destroyed, which fixed the issue and allowed the user to re-initialise the map on navigation with the correct `height`.
+
+![Graph Destroy Example 4](https://res.cloudinary.com/bak2k3/image/upload/v1612114662/covid-dashboard/Graph-destroy-4_hdyrdq.jpg)
+
+## Map Legend re-activating "No Data Available" threshold on statistic change
+
+When a user chooses a statistic on the Map Feature, they should be presented with only the countries on the map which have valid data for the given statistic. Options for the Mapael package were set to do this within 
+the `Generate Legends` function, by setting this particular Legend threshold's option property as: `clicked: true`.
+
+Whilst this would work for the first initialisation of the Map, every time the selector was changed to cycle through the statistics, all Legend states would be reset, including the one for `No Data Available`.
+
+A solution to this was found by navigating to the [GitHub repository](https://github.com/neveldo/jQuery-Mapael/blob/7f38564085eed2445ccecf30bbf7d267984de0cf/js/jquery.mapael.js#L953) for Mapael, and understanding 
+whether this was a **Feature** or a **Bug**.
+
+```
+// IF we update areas, plots or legend, then reset all legend state to "show"
+if (opt.mapOptions.areas !== undefined || opt.mapOptions.plots !== undefined || opt.mapOptions.legend !== undefined) {
+    $("[data-type='elem']", self.$container).each(function (id, elem) {
+        if ($(elem).attr('data-hidden') === "1") {
+            // Toggle state of element by clicking
+            $(elem).trigger("click", [false, animDuration]);
+        }
+    });
+}
+```
+Understanding that this was a Feature of Mapael, I targeted the specific code that was causing the reset, and essentially reversed it for the first element of the Legend to *re-hide* it after the Map had been updated.
+
+```
+$("[data-type='legend-elem']").first().trigger("click", [false, 300]);
+```
+
+## Mapael throwing an "Uncaught TypeError"
+
+Mapael occasionally throws an `Uncaught TypeError`. It must be noted, however, that I have not been successful in consistently re-creating this error, and as such have found it difficult to isolate what is causing the particular bug. 
+Regardless, from what I have identified this does not prevent any form of functionality.
+
+![Mapael Error](https://res.cloudinary.com/bak2k3/image/upload/v1612114877/covid-dashboard/Mapael-resizing_pcwesh.jpg)
+
+[Similar](https://stackoverflow.com/questions/22967790/uncaught-typeerror-cannot-read-property-offsetwidth-of-null) bugs have been reported when using the Google Maps API, when the order in which data is loaded is incorrect. 
+However, due to time restraints, and as this did not prevent any unexpected behaviour, this bug still exists.
 
 # Other Technical Difficulties
 
