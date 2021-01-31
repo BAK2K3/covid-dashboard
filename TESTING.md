@@ -99,6 +99,203 @@ either **mouse** or **touch** input.
 
 # Feature Testing
 
+Other than the testing performed on the **HTML Generation**, all testing was completed manually, as described accordingly.
+
+## Fetching API Data
+
+- On page load, open Chrome Dev Tools and locate the `Global Compare Dataset` by typing `globalCompareDataset` into the console.
+  - Ensure the object contains 221 entries.
+  - Ensure each object contains a country name, and the required 13 statistics (those not defined as `null`within the `statisticDictionary`).
+- On page load, open Chrome Dev Tools and locate the `Global Visual Dataset` by typing `globalVisualDataset`.
+  - Ensure the object contains 185 entries.
+  - Ensure each object contains a country name, and a Timeline key containing 3 datasets (`cases`, `recovered`, and `deaths`).
+- Open Chrome Dev Tools, and throttle network to prolong the page's first load time.
+  - Ensure the Splash Screen is presented to the user while the API data is loading.
+  - Ensure the user is unable to interact with the Logo during this time.
+  - Ensure the user can still interact with the footer elements during this time.
+  - Ensure the Splash Screen is replaced with the Information Section when loading is complete.
+- Intentionally break the API request, in order to force the Error Message being presented to the user, to ensure it functions as intended.
+  - Ensure that the Navbar Toggler is not presented to the user when the Error Message is present.
+  - Ensure the Logo is not interactable when the Error Message is present.
+
+## The Navigation Effect
+
+- Ensure the Toggler is not visible while the page is loading.
+- Ensure the Logo cannot be interacted with while the page is loading.
+- Once the website has loaded, ensure the Splash Screen is replaced with the Information Container and the Toggler appears.
+- Once the website has fully loaded, navigate through all aspects of the page in every possible order to ensure they are functional and route correctly:
+  - Logo -> Compare // Logo -> Visualise // Logo -> Map
+  - Compare -> Logo // Compare -> Visualise // Compare -> Map
+  - Visualise -> Logo // Visualise -> Compare // Visualise -> Map
+  - Map -> Logo // Map -> Compare // Map -> Visualise
+- Ensure that each aspect of the site (Logo/Compare/Visualise/Map) only displays its relevant content:
+  - Interacting with the **Logo** displays the Information Section.
+  - Interacting with the **Compare** tab of the Toggler only displays the How-To Content for this visualisation.
+    - Interacting with either Selector on this Feature replaces the How-To Content with the Table Visualisation.
+    - Reverting back to the default value (*Select a Country*) for both Selectors, or interacting with the **Compare** tab of the Toggler while on the visualisation, removes the Table Visualisation and displays the correct How-To Content.
+  - Interacting with the **Visualise** tab of the Toggler only displays the How-To Content for this visualisation.
+    - Interacting with this Feature's Selector replaces the How-To Content with the Graph Visualisation.
+    - Reverting back to the default value (*Select a Country*), or interacting with the Visualise tab of the Toggler while on the visualisation, removes the Graph Visualisation and displays the correct How-To Content.
+  - Interacting with the **Map** tab of the Toggler only displays the How-To Content for this visualisation.
+    - Interacting with this page's Selector replaces the How-To Content with the Map Visualisation.
+    - Reverting back to the default value (*Select a Statistic*), or interacting with the Map tab of the Toggler while on the visualisation, removes the Map Visualisation and displays the correct How-To Content.
+  - Ensure each tab of the Toggler presents the correct **Hover** and **Fill** effects, and revert to their inactive state when inactive.
+
+## Dynamic HTML Generation
+
+This aspect of the testing was implemented via Unit Testing, using Jasmine.
+
+See below for an overview of the tests and their respective results, via the Jasmine UI.
+
+![Jasmine Unit Test Results](https://res.cloudinary.com/bak2k3/image/upload/v1612113441/covid-dashboard/Jasmine_Test_Results_drl08l.jpg)
+
+To see the Spec for these tests, please see: [dataSpec.js](assets/js/spec/dataSpec.js)
+
+To see a live demonstration of the testing, please visit: [tests.html](https://bak2k3.github.io/covid-dashboard/tests.html)
+
+## Compare
+
+- Ensure that when a user selects the Compare tab of the Toggler, the user is presented with the correct How-To Content.
+- Ensure that two Selectors are always visible at the top of the container while the user is engaged with this section.
+- Ensure that selecting **any** country, from either Selector, initialises the Table.
+- For both Selectors, ensure the following:
+  - The full country name fits comfortably within the Selector once selected.
+  - Where the full country name is too long for the Selector, an ellipsis is present at the end of the country name, and the full string fits comfortably within the Selector.
+- Ensure that when a country is selected, on either one or both of the Selectors, the following statistics appear in the respective column of the Table, and in the following format:
+  - **Time of Update:** FormattedDate Object
+  - **Name of Country:** Raw Text
+  - **Total Amount of Cases:** Numerical Locale String
+  - **Amount of Cases Diagnosed Today:** Numerical Locale String
+  - **Total Cases of Deaths:** Numerical Locale String
+  - **Amount of Deaths Today:** Numerical Locale String
+  - **Total Cases Recovered:** Numerical Locale String
+  - **Amount Recovered Today:** Numerical Locale String
+  - **Currently Active Cases:** Numerical Locale String
+  - **Currently Critical Cases:** Numerical Locale String
+  - **Cases Per One Million:** Numerical Locale String
+  - **Deaths Per One Million:** Numerical Locale String
+  - **Total Amount of Tests:** Numerical Locale String
+  - **Tests Per One Million:** Numerical Locale String
+  - **Population of Country: :** Numerical Locale String
+- Ensure that when a user selects a country from either Selector, the correct column of the table is populated depending on which Selector is interacted with.
+- Ensure that when a single country's statistics are present on the Table, and the user selects a country from the alternative Selector:
+  - The new statistics requested are presented on the correct column.
+  - All Numerical Locale Strings are concatenated with comparative indicators.
+  - All null values are presented as `-`.
+  - Comparative indicators on the left column appear before the value.
+  - Comparative indicators on the right column appear after the value.
+  - No comparative indicators appear where a row has a `-` entry.
+- Ensure that each comparative indicator correctly represents whether its representative figure is higher or lower than that being compared against.
+  - For example, if the first column's Total Deaths is 3,105, and the Second Column's Total Deaths is 67, the 3,105 should have an **UP** arrow before it, and the 67 should have a **DOWN** arrow after it.
+- Ensure that when the user changes either country, when two countries are selected, that all comparative indicators are updated to reflect the new figures being compared against.
+- Ensure the user can navigate through the currently selected Selector using the up or down keys on a keyboard.
+- Ensure that a user can search for a country by typing when a Selector is active.
+- Ensure that when both Selectors are reverted to their default value (*Select a Country*), the Table is replaced with the How-To Content.
+- Ensure that when the Table is present, and the user selects the **Compare** tab of the Toggler, the section is *reset* and the How-To Content replaces the Table.
+- Ensure that any time the user navigates away from the Table, the section is *reset*, and the Selector is *reset* to its default value.
+- Ensure that all text on the Table is legible.
+
+## Visualise
+
+- Ensure that when a user selects the Visualise tab of the Toggler, the user is presented with the correct How-To Content.
+- Ensure that a Selector is always visible at the top of the container while the user is engaged with this section.
+- Ensure that selecting **any** country from the Selector initialises the Graph.
+- For the Selector, ensure the following:
+  - The full country name fits comfortably within the Selector once selected.
+  - Where the full country name is too long for the Selector, an ellipsis is present at the end of the country name, and the full string fits comfortably within the Selector.
+- Ensure that when the Graph is initialised:
+  - A Time Series graph is presented to the user.
+  - The X-Axis is labelled *Date*, and all labels are clear and legible.
+  - The Y-Axis is labelled *Total*, and all labels are clear and legible.
+  - Ensure that 3 sets of data are presented to the user:
+    - **Cases** (White Line)
+    - **Deaths** (Black Line)
+    - **Recovered** (Green Line)
+- Ensure that for each country's graph, the Legend is interactive, and the graph updates accordingly:
+  - Interacting with either of the three statistics at the top of the graph (either the block colour or the representative text) removes the respective data from the graph.
+  - The scale of the Y-Axis dynamically adapts to the new ranges of data being displayed.
+- Ensure that for each country's graph, each data point is interactive, and displays the following information legibly in a tooltip when interacted with:
+  - **Statistic Value**
+  - **Statistic Name**
+  - **Date of Statistic**
+- Ensure that when the Graph is currently displaying a country's data, and the user changes the country, the Graph is updated to reflect the newly selected country's data.
+- Ensure the user can navigate through the Selector, once active, using the up or down keys on the keyboard.
+- Ensure that a user can search for a country by typing on a keyboard when the Selector is active.
+- Ensure that when the Selector is reverted to its default value (*Select a Country*), the Graph is replaced with the How-To Content.
+- Ensure that when the Graph is present, and the user selects the **Visualise** tab of the Toggler, the section is *reset* and the How-To Content replaces the Graph.
+- Ensure that any time the user navigates away from the Graph, the section is reset, and the Selector is reset to its default value.
+- Ensure the `formatTimeSeries` function is performed each time a new country is selected.
+
+## Map
+
+- Ensure that when a user selects the Map tab of the Toggler, the user is presented with the correct How-To Content.
+- Ensure that a Selector is always visible at the top of the container while the user is engaged with this section.
+- Ensure that selecting **any** statistic from the Selector initiates the Map.
+- Ensure that the full string of each statistic fits comfortably within the Selector.
+- Ensure that when the Graph Visualisation is initiated:
+  - A Choropleth Map is presented to the user.
+  - The outline of each country is clearly differentiated.
+  - Manual *Zoom* buttons are displayed on the top left-hand corner of the map for desktop, and bottom left for mobile.
+  - A Legend is presented to the user underneath the map.
+  - The Legend's title is clear, the colour of each category is easily differentiated, and the representative text is legible.
+- For each statistic, ensure that all interactive features are functional:
+  - **Hovering** over/ **Interacting** with a single country changes the colour of the country to a contrasting pastel pink colour.
+  - A **tooltip** appears displaying the country name and a numerical representation of the statistic displayed in locale string format.
+  - Each threshold within the Legend can **be interacted with** to either add or remove countries, contained within the selected threshold, from the Map.
+- Ensure that when the Map is currently displaying a statistic, and the user changes the statistic from the Selector, the Map is updated to reflect the newly selected statistical data.
+  - Each country should contain its updated figure on interaction.
+  - Each country's colour should change depending on the Legend thresholds.
+  - All countries that contain no data for the statistic are de-selected by default.
+- Ensure the user can *Zoom* in and out of the map, and subsequently navigate the map:
+  - The user should be able to *Zoom* in and out with the relevant **buttons** , the **mouse-wheel** , or by **pinching** on a touchscreen device.
+  - The user should be able to **click and drag** , or **swipe** on a touchscreen device, to navigate once zoomed it.
+  - All features must be functional when zoomed in.
+- Ensure the user can navigate through the Selector, once active, using the up or down keys on the keyboard.
+- Ensure that a user can search for a statistic by typing on a keyboard when the Selector is active.
+- Ensure that when the Selector is reverted to its default value (*Select a Statistic*), the Map is replaced with the How-To Information.
+- Ensure that when the Map is present, and the user selects the **Map** tab of the Toggler, the section is *reset* and the How-To Section replaces the Map.
+- Ensure that any time the user navigates away from the Map, the section is *reset*, and the Selector is reset to its default value.
+- Ensure the `formatMapData` function is **only** executed **the first time** the user engages with this Feature.
+
+## Modals
+
+These tests were applied to both the **Donate** and **Credits** Modals.
+
+- Ensure the Modal works no matter where the user is on the website.
+- Ensure the Modal is displayed centrally, and the background is appropriately dimmed.
+- Ensure the Modal has a header, body text, and a close button.
+- Ensure the Modal can be dismissed by interacting with the screen outside the modal area.
+- Ensure pressing the escape key closes the Modal.
+- Ensure the close button closes the Modal.
+- Ensure all links work, and open in a separate browser window.
+- Ensure all content in the Modal fits appropriately within the Modal, and is legible.
+
+## Responsive Layout and Design
+
+The testing detailed above, specifically those relating to visual aspects of the website, was re-tested for its responsive layout and design using Chome Development tools, either via the pre-set mobile 
+device resolutions or via the manual responsive tool (using `Toggle Device Toolbar`).
+
+- Using Chrome Development Tools, and select `Toggle Device Toolbar`.
+- Cycle through each available device, and perform the tests as detailed above:
+  - Moto G4
+  - Galaxy S5
+  - Pixel 2
+  - Pixel 2XL
+  - iPhone 5/SE
+  - iPhone 6/7/8 (and plus)
+  - iPhone X
+  - iPad
+  - iPad Pro
+  - Surface Duo
+  - Galaxy Fold
+- Ensure all Features function correctly from at least 320px wide.
+- Due to how both the Graph and Map Features were implemented for native mobile viewing, extensive testing was performed on navigating to and from these visualisations, and interacting with these visualisations, 
+to ensure all resolutions performed as expected.
+- Ensure Modals are presented appropriately on all viewports:
+  - Interaction is enabled.
+  - The Modal fits on device's screen.
+  - The content is legible.
+  - The user can dismiss the modal.
 
 # Browser Testing
 
