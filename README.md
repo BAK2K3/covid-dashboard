@@ -619,6 +619,7 @@ the website presents the user with an error message when the API fails to load, 
 * The project's cross-browser compatibility was enhanced using [Autoprefixer.io](https://autoprefixer.GitHub.io).
 * The project's HTML was validated using [W3C HTML Markup Validator](https://validator.w3.org/).
 * The project's CSS was validated using [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
+* The project's JS was validated using [JSHint](https://jshint.com/).
 * The project's wireframes were designed in [Balsamiq](https://balsamiq.com/wireframes/).
 * The project's background was designed using [GIMP](https://www.gimp.org/).
 * The images used in the project's README and TESTING documentation were hosted and served through [Cloudinary](https://cloudinary.com/console).
