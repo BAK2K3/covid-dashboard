@@ -39,7 +39,6 @@ function formatTimeSeries() {
         // Iterate through the datasets contained (cases, recovered, deaths)
         fullData.forEach(function (element) {
 
-
             // Use switch casing to determine label colours
             let colour;
             switch (element[0]) {
@@ -65,7 +64,6 @@ function formatTimeSeries() {
             obj.fill = false;
             // Push the current object into the dataset array
             datasets.push(obj);
-
         });
 
         // Graph configuration
@@ -105,7 +103,6 @@ function formatTimeSeries() {
                         gridLines: {
                             color: "rgba(15, 16, 26, 0.25)",
                             zeroLineColor: "rgba(15, 16, 26, 0.25)"
-
                         }
                     }],
                     yAxes: [{
@@ -148,7 +145,6 @@ function generateGraph() {
 
     // Generate line chart with defined configuration
     myLineChart = new Chart(ctx, graphConfig);
-
 }
 
 // Function to excecute on selector change
