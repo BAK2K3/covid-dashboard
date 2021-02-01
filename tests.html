@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <!-- COVID Info Section -->
+        <!-- COVID Error Section -->
         <section id="covidError" class="d-flex justify-content-center covid-data d-none">
             <div class="container covid-info-container">
                 <!-- Text Container -->
@@ -113,8 +113,8 @@
                             Basis.</p>
                     </div>
                     <p>To return to this area, please use the COVID Dashboard heading.</p>
-                    <p>The available data is updated approximately every 10 minutes. <br> Please refresh the page to
-                        obtain
+                    <p class="last-p">The available data is updated approximately every 10 minutes. Please refresh the
+                        page to obtain
                         the most up-to-date information.</p>
                 </div>
             </div>
@@ -124,7 +124,6 @@
         <section id="covidCompare" class="d-flex justify-content-center covid-data d-none">
             <!-- Container for Table -->
             <div class="container table-responsive covid-data-container">
-
                 <!-- Table  -->
                 <table class="col table table-sm table-striped text-center covid-table dark-font">
                     <thead>
@@ -147,7 +146,6 @@
                     <tbody id="covidTableBody">
                     </tbody>
                 </table>
-
                 <!-- Text Container -->
                 <div class="text-container text-center dark-font">
                     <h2 class="underline"> Compare </h2>
@@ -178,7 +176,6 @@
         <section id="covidVisualise" class="d-flex justify-content-center covid-data d-none">
             <!-- Container for Visualisation section -->
             <div class="container covid-data-container">
-
                 <!-- Container for Selector -->
                 <div class="input-section d-flex justify-content-center">
                     <!-- Selector for Country  -->
@@ -186,7 +183,6 @@
                         <option value="">Country Select</option>
                     </select>
                 </div>
-
                 <!-- Text Container -->
                 <div class="text-container text-center dark-font">
                     <h2 class="underline"> Visualise </h2>
@@ -211,10 +207,10 @@
                         </p>
                     </div>
                     <br>
-                    <p><strong>Note:</strong> The historical data for this particular section, especially "Recovered",
+                    <p class="last-p"><strong>Note:</strong> The historical data for this particular section, especially
+                        "Recovered",
                         may not accurately reflect the given country's statistics.</p>
                 </div>
-
                 <!-- Placeholder chart-containter for Chart.js -->
                 <div class="chart-container table-responsive">
                     <canvas id="lineChart" class="table">Time-Series Line Graph</canvas>
@@ -226,7 +222,6 @@
         <section id="covidMap" class="d-flex justify-content-center covid-data d-none">
             <!-- Container for Map -->
             <div class="container covid-data-container">
-
                 <!-- Container for Selector -->
                 <div class="input-section d-flex justify-content-center">
                     <!-- Statistic Selector -->
@@ -234,7 +229,6 @@
                         <option value="">Statistics Select</option>
                     </select>
                 </div>
-
                 <!-- Text Container -->
                 <div class="text-container text-center dark-font">
                     <h2 class="underline"> Map </h2>
@@ -254,12 +248,10 @@
                         <p>Select the <strong>Select a Statistic</strong> option from the dropdown to return to this
                             screen.
                         </p>
-
                     </div>
-                    <p><strong>Note:</strong> Countries that have not recorded data for a particular
+                    <p class="last-p"><strong>Note:</strong> Countries that have not recorded data for a particular
                         statistic today will be filtered out by default.</p>
                 </div>
-
                 <!-- Placeholder divs (map/arealegend) for Mapael -->
                 <div class="mapContainer">
                     <div class="map">Choropleth Map</div>
