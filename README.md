@@ -366,14 +366,14 @@ Inset border shadows are used on the following elements:
 
 The core functionality of the project is dependent on obtaining large amounts of data, to be accessed from various functions. As such, on page load, the disease.sh API is queried for the following data repositories:
 
->[https://disease.sh/v3/covid-19/countries](https://disease.sh/v3/covid-19/countries)
+`https://disease.sh/v3/covid-19/countries`
 
 This returns the daily statistics for all available countries, which is then stored in a global variable (`Global Compare Dataset`).
 
->[https://disease.sh/v3/covid-19/historical/{countries}?lastdays=30](https://disease.sh/v3/covid-19/historical/%7Bcountries%7D?lastdays=30)
+`https://disease.sh/v3/covid-19/historical/{countries}?lastdays=30`
 
 This returns Time Series data, over a 30-day period, for the countries specified within the `{countries}` variable, for accumulative figures for Total Cases, Total Recovered, and Total Deaths. 
-The available endpoints for this API were hard-coded as a list (`Condensed Country List`), and passed into the API request. **See Testing.MD for further details on this topic.** 
+The available endpoints for this API were hard-coded as a list (`Condensed Country List`), and passed into the API request. **See TESTING.md for further details on this topic.** 
 The data returned from this API request is then stored in a global variable (`Global Visual Dataset`).
 
 Whilst this data is being obtained, the Splash Screen is displayed to the user and interaction with the website's navigation system is disabled. 
