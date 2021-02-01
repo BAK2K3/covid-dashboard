@@ -47,7 +47,6 @@ function formatMapData() {
                         };
                     }
                 }
-
             });
 
             // For each statistic, iterate through the whole list of countries contained within world_countries.js
@@ -133,7 +132,6 @@ function generateLegends(statistic) {
                     },
                     label: `More than ${Number(Math.round(maxValue / 4)).toLocaleString()}`
                 }
-
             ]
         }
     };
@@ -178,7 +176,6 @@ function generateMap(statisticChoice) {
         areas: mapData[statisticChoice].areas,
         // Set generated legends
         legend: mapLegends
-
     });
 }
 
