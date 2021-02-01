@@ -721,6 +721,8 @@ This project was deployed to GitHub pages via the following steps:
 * CSS: Code snippet taken from [CSS-Tricks](https://css-tricks.com/the-current-state-of-styling-selects-in-2019/) and modified to style Selector elements.
 * CSS: Code snippet taken from [Hover.css](https://ianlunn.GitHub.io/Hover/) and modified for Fill Effect on the COVID Toggler.
 * CSS: Code snippet taken from [loading.io](https://loading.io/css/) and modified for the Beating Heart loading icon.
+* CSS: Code snippet taken from [CSS-Tricks](https://css-tricks.com/perfect-full-page-background-image/) for creating a background image for the HTML element.
+* CSS: Code snippet taken from [CSS-Tricks](https://css-tricks.com/couple-takes-sticky-footer/) for creating a sticky footer using Flexbox.
 * CSS: Code snippets taken from CSS-Tricks pages on [Neumorphism](https://css-tricks.com/neumorphism-and-css/) and [Box Shadow](https://css-tricks.com/snippets/css/css-box-shadow/) and modified to achieve the desired elevated effect on certain HTML elements.  
 * JavaScript: The disease.sh [documentation](https://disease.sh/docs/#/COVID-19%3A%20JHUCSSE/get_v3_covid_19_historical__countries_) was used extensively to understand the correct formatting for API requests.
 * JavaScript: The Chart.js [documentation](https://www.chartjs.org/docs/latest/) was used extensively to understand the installation, configuration, and data structures required for fully interactive dynamic graphs.
