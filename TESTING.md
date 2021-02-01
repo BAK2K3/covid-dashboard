@@ -331,7 +331,7 @@ Code Validation was completed via third party applications, in order to assess t
   - One Error was identified, regarding the pre-written CSS rule for .mapael .mapTooltip, as `moz-opacity` was defined incorrectly. This was easily resolved by adding the appropriate `-` to the beginning of the rule.
   - Warnings are present in the final deployed website, due to unknown vendor extensions and certain borders/backgrounds being the same colour, however I'm aware of these warnings and am satisfied these can be dismissed.
 
-3. [JSHint](https://jshint.com/) - JS Validation
+3. [**JSHint**](https://jshint.com/) - JS Validation
 
   - The project's JavaScript was validated using the open source automated service, JSHint, at intervals throughout the development process.
   - At no point were Errors presented. Warnings were sometimes present with regard to missing semicolons, however these were immediately rectified.
