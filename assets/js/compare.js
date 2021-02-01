@@ -5,7 +5,6 @@ function formatTableData() {
     let firstTargetCountry = $("#firstCountrySelect").val();
     let secondTargetCountry = $("#secondCountrySelect").val();
 
-
     let firstTargetCountryIndex;
     // If if first country is not default value
     if (firstTargetCountry !== "none") {
