@@ -380,6 +380,10 @@ p {
     font-weight: 500;
 }
 
+p.last-p {
+    margin-bottom: 8px;
+}
+
 /* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
 select {
     text-align: center;
