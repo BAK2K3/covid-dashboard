@@ -517,6 +517,24 @@ Regardless, from what I have identified this does not prevent any form of functi
 [Similar](https://stackoverflow.com/questions/22967790/uncaught-typeerror-cannot-read-property-offsetwidth-of-null) bugs have been reported when using the Google Maps API, when the order in which data is loaded is incorrect. 
 However, due to time restraints, and as this did not prevent any unexpected behaviour, this bug still exists.
 
+## Mobile URL Bar changing page height
+
+When testing the website on an actual mobile device, it was clear that a device's dynamic **URL Bar** is not considered in Chrome Dev Tools. As such, the following was identifier when using an actual mobile device (Phone or Table) to test the website:
+
+* When a user is able to scroll down the page, the web browser first removes the **URL Bar** from view prior to activating the usual scroll effect. 
+* As such, this completely changes the height of the `html` and `body` elements, where these are set to `100%`. 
+* This caused significant problems when dealing with *sticky* position of the `Footer` and the resizing of the `Background Image`. 
+* This was primarily addressed by moving setting the `html` element's `overflow` to `hidden`, and the `body` element's `overflow` to `auto`. 
+* However, minor bugs appear to still exist when using **Edge** on a **Mobile Device**. The bugs that have been identified, yet I have not been able to fix, are the following:
+
+**The background image does not always dynamically resize to the new HTML element's height (`viewport`) on scroll:**
+
+![Mobile Edge Footer](https://res.cloudinary.com/bak2k3/image/upload/v1612209189/covid-dashboard/Edge_Mobile_Footer_ooazgk.jpg)
+
+**When the background image does resize, it sometimes causes artifacts in the background image:**
+
+![Mobile Edge Background](https://res.cloudinary.com/bak2k3/image/upload/v1612209189/covid-dashboard/Edge_Mobile_Background_vjdony.jpg)
+
 # Other Technical Difficulties
 
 ## Inaccurate Statistics for Graph Data
