@@ -42,8 +42,6 @@ $(document).ready(function () {
             // Calls the toggleCovidSections with the exception
             toggleCovidSections("#covidInfo");
         }
-
-
     });
 });
 
@@ -66,7 +64,6 @@ function toggleCovidSections(activeElement) {
 
     // Add active element to view
     $(activeElement).removeClass("d-none");
-
 }
 
 function resetMapSection() {
