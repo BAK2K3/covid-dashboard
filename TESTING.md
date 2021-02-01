@@ -333,7 +333,7 @@ Code Validation was completed via third party applications, in order to assess t
 
 3. [JSHint](https://jshint.com/) - JS Validation
 
-  - The project's JavaScipt was validated using the open source automated service, JSHint, at intervals throughout the development process.
+  - The project's JavaScript was validated using the open source automated service, JSHint, at intervals throughout the development process.
   - At no point were Errors presented. Warnings were sometimes present with regard to missing semicolons, however these were immediately rectified.
   - Warnings are currently present, however these are regarding ES6 Compatibility; I'm aware of these and am satisfied these can be dismissed.
 
