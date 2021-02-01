@@ -325,13 +325,19 @@ Code Validation was completed via third party applications, in order to assess t
   - At no point were Errors presented.
   - At final deployment, no Errors or Warnings are present.
 
-1. [**W3 Jigsaw**](https://jigsaw.w3.org/css-validator/) – CSS Validation
+2. [**W3 Jigsaw**](https://jigsaw.w3.org/css-validator/) – CSS Validation
 
   - The project's CSS was validated using the automated W3 Jigsaw Validator at intervals throughout the development process.
   - One Error was identified, regarding the pre-written CSS rule for .mapael .mapTooltip, as `moz-opacity` was defined incorrectly. This was easily resolved by adding the appropriate `-` to the beginning of the rule.
   - Warnings are present in the final deployed website, due to unknown vendor extensions and certain borders/backgrounds being the same colour, however I'm aware of these warnings and am satisfied these can be dismissed.
 
-1. [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse) - Accessibility, Performance, and Best Practices Audit:
+3. [JSHint](https://jshint.com/) - JS Validation
+
+  - The project's JavaScipt was validated using the open source automated service, JSHint, at intervals throughout the development process.
+  - At no point were Errors presented. Warnings were sometimes present with regard to missing semicolons, however these were immediately rectified.
+  - Warnings are currently present, however these are regarding ES6 Compatibility; I'm aware of these and am satisfied these can be dismissed.
+
+4. [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse) - Accessibility, Performance, and Best Practices Audit:
 
   - **Desktop**
 
