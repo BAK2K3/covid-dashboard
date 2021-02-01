@@ -13,18 +13,24 @@
 
 body,
 html {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
     height: 100%;
 }
 
-body {
-    padding: 0;
-    margin: 0;
+html {
     /* https://css-tricks.com/perfect-full-page-background-image/ */
     background: url(../images/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     background-color: #72A3C0;
+    overflow: hidden;
+}
+
+body {
+    background: transparent;
+    padding: 0;
+    margin: 0;
     font-family: 'Raleway', sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -33,15 +39,17 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    overflow: auto;
+    
 }
 
 .content-wrapper {
     -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
+        -ms-flex: 1 0 auto; 
             flex: 1 0 auto; 
     -ms-flex-wrap: wrap; 
         flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px 20px 10px 20px;
 }
 
 /************************************************************* Font rules */
@@ -381,7 +389,7 @@ p {
 }
 
 p.last-p {
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 /* https://css-tricks.com/the-current-state-of-styling-selects-in-2019/ */
@@ -594,15 +602,14 @@ svg tspan {
 
 /********** Mobile Devices **********/
 
-@media only screen and (max-width: 576px) {
-    
+@media only screen and (max-width: 576px) {  
+
     /* Headings */
     header {
         margin-top:25px; 
     }
    
     .main-heading {
-
       font-size: 2rem;
     }
 
