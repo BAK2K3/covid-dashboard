@@ -32,7 +32,7 @@ function formatMapData() {
                         mapData[statistic].areas[fullISO[country.country]] = {
                             // Below is the required format for Mapael (Value: X, Href: Y, Tooltip, Z)
                             value: -1, href: "", tooltip: {
-                                content: `No data available for this statistic!`
+                                content: `<strong>${country.country}</strong>: No data available for this statistic!`
                             }
                         };
 
@@ -58,7 +58,7 @@ function formatMapData() {
                     // And provide a generic "No data available" and -1 value for identification on the map
                     mapData[statistic].areas[mapCountry] = {
                         value: -1, href: "", tooltip: {
-                            content: `No data available for this country!`
+                            content: `<strong>${getKeyByValue(fullISO, mapCountry)}</strong>: No data available for this country!`
                         }
                     };
                 }
