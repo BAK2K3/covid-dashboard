@@ -77,7 +77,6 @@ const statisticDictionary = {
     criticalPerOneMillion: null
 };
 
-
 // Function for obtaining key from specified value
 // https://stackoverflow.com/a/28191966/13810970
 function getKeyByValue(object, value) {
@@ -91,15 +90,16 @@ function fetchApiData() {
         $.getJSON("https://disease.sh/v3/covid-19/countries?allowNull=true"),
         $.getJSON(`https://disease.sh/v3/covid-19/historical/${condensedCountryList}`)
     ).then(
-
         function (compareDataset, visualDataset) {
             // Assign the response to the relevant global variable
             globalCompareDataset = compareDataset[0];
             globalVisualDataset = visualDataset[0];
 
+            // Generate Selector HTML from data obtained
             generateHTML();
 
         }, function () {
+            // If the API throws an error, present the Error Div to the user
             toggleCovidSections('#covidError');
             $('#covidToggler').addClass("d-none");
         });
@@ -143,4 +143,3 @@ function generateHTML() {
 $(document).ready(
     fetchApiData()
 );
-
