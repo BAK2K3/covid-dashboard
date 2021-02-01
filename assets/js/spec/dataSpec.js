@@ -65,9 +65,3 @@ describe("HTML Generation", function () {
         });
     });
 });
-
-
-
-
-
-
